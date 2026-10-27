@@ -1,0 +1,30 @@
+{
+  "indirme_zamani_utc": "2026-10-27T13:21:25+00:00",
+  "lisans": "Izmir Metropolitan Municipality Open Data License",
+  "dosyalar": [
+    {
+      "veri_seti": "Otobüs Durakları",
+      "paket": "eshot-otobus-duraklari",
+      "kaynak": "Otobüs Durak Listesi",
+      "url": "https://openfiles.izmir.bel.tr/211488/docs/eshot-otobus-duraklari.csv",
+      "dosya": "data/ref/eshot-otobus-duraklari__otobüs_durak_listesi.csv",
+      "kb": 709
+    },
+    {
+      "veri_seti": "Otobüs Hatları",
+      "paket": "eshot-otobus-hat-listesi",
+      "kaynak": "Otobüs Hatları",
+      "url": "https://openfiles.izmir.bel.tr/211488/docs/eshot-otobus-hatlari.csv",
+      "dosya": "data/ref/eshot-otobus-hat-listesi__otobüs_hatları.csv",
+      "kb": 61
+    },
+    {
+      "veri_seti": "Otobüs Hat Güzergahları",
+      "paket": "otobus-hat-guzergahlari",
+      "kaynak": "  Otobüs Hat Güzergahlarının Konum Bilgileri",
+      "url": "https://openfiles.izmir.bel.tr/211488/docs/eshot-otobus-hat-guzergahlari.csv",
+      "dosya": "data/ref/otobus-hat-guzergahlari__otobüs_hat_güzergahlarının_konum_bilgileri.csv",
+      "kb": 12593
+    }
+  ]
+}
