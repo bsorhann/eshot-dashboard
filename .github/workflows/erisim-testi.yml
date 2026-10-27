@@ -1,0 +1,28 @@
+name: Erisim testi
+
+# GitHub sunucularindan Izmir API'sine erisilebiliyor mu?
+# Actions sekmesinden elle calistirilir.
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Izmir API - hat 304 otobus konumlari
+        run: |
+          for i in 1 2 3; do
+            echo "--- Deneme $i ---"
+            curl -s -o yanit.json -w "HTTP %{http_code} | sure %{time_total}s\n" -m 20 \
+              -A "eshot-duzenlilik-projesi/0.1 (egitim amacli)" \
+              "https://openapi.izmir.bel.tr/api/iztek/hatotobuskonumlari/304" || echo "Baglanti kurulamadi"
+            head -c 400 yanit.json 2>/dev/null; echo
+            sleep 5
+          done
+
+      - name: Izmir Acik Veri Portali (CKAN)
+        run: |
+          curl -s -o /dev/null -w "HTTP %{http_code}\n" -m 20 \
+            "https://acikveri.bizizmir.com/api/3/action/package_show?id=eshot-otobus-hat-listesi" \
+            || echo "Baglanti kurulamadi"
