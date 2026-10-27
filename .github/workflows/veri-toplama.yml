@@ -17,7 +17,7 @@ concurrency:
 jobs:
   topla:
     runs-on: ubuntu-latest
-    timeout-minutes: 330
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
@@ -33,14 +33,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          bitis=$((SECONDS + 5 * 3600))
-          while [ $SECONDS -lt $bitis ]; do
+          # Isin toplam suresi 350 dk ile sinirli. Toplama 5,5 saatte biter;
+          # son tur kalan sureye gore kisaltilir, kaydetmeye her zaman zaman kalir.
+          bitis=$((SECONDS + 330 * 60))
+          while [ $((bitis - SECONDS)) -gt 300 ]; do
+            kalan_dk=$(( (bitis - SECONDS) / 60 ))
+            sure=$(( kalan_dk < 55 ? kalan_dk : 55 ))
             gun=$(date -u +%F)
             saat=$(date -u +%H%M%S)
             mkdir -p "data/raw/$gun"
             dosya="data/raw/$gun/$saat.csv"
 
-            python collector.py --cikti "$dosya" --sure 55 || echo "Toplayici hata verdi, devam ediliyor"
+            python collector.py --cikti "$dosya" --sure "$sure" || echo "Toplayici hata verdi, devam ediliyor"
 
             if [ -s "$dosya" ]; then
               gzip -f "$dosya"
