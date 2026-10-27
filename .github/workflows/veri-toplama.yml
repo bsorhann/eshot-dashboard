@@ -1,0 +1,55 @@
+name: Veri toplama
+
+# Saatte bir tetiklenir. Ayni anda yalnizca bir is calisir; calisan is bitince
+# siradaki hemen baslar. Her is ~5 saat toplar ve her saat depoya kaydeder.
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: veri-toplama
+  cancel-in-progress: false
+
+jobs:
+  topla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bagimliliklar
+        run: pip install requests
+
+      - name: Topla ve her saat kaydet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          bitis=$((SECONDS + 5 * 3600))
+          while [ $SECONDS -lt $bitis ]; do
+            gun=$(date -u +%F)
+            saat=$(date -u +%H%M%S)
+            mkdir -p "data/raw/$gun"
+            dosya="data/raw/$gun/$saat.csv"
+
+            python collector.py --cikti "$dosya" --sure 55 || echo "Toplayici hata verdi, devam ediliyor"
+
+            if [ -s "$dosya" ]; then
+              gzip -f "$dosya"
+              git add data
+              git commit -q -m "Veri: $gun $saat UTC" || echo "Kaydedilecek degisiklik yok"
+              for deneme in 1 2 3; do
+                git pull -q --rebase && git push -q && break
+                echo "Push basarisiz (deneme $deneme), 10 sn sonra tekrar"
+                sleep 10
+              done || true
+            fi
+          done
