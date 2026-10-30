@@ -1,0 +1,11 @@
+hat_id,hat_adi,rota_yon,olcum,medyan_dk,ort_dk,p90_dk,p99_dk,dagilim_cv,yigilma_orani,uzun_bekleme_orani,yon_adi
+304,Tınaztepe – Konak,1,7276,14.0085,16.4351,28.0543,50.6437,0.5449,0.0459,0.1993,Konak yönü
+304,Tınaztepe – Konak,2,6105,14.169,16.8542,29.0847,56.1474,0.6014,0.0482,0.1749,Tınaztepe yönü
+532,Bayraklı Şehir Hastanesi – Bostanlı İskele,1,2882,26.282,30.8286,51.7178,86.6397,0.5853,0.1513,0.2783,Bostanlı İskele yönü
+532,Bayraklı Şehir Hastanesi – Bostanlı İskele,2,3101,25.0522,29.695,49.2586,79.0047,0.5098,0.1206,0.3247,Bayraklı Şehir Hastanesi yönü
+533,Bayraklı Şehir Hastanesi – Bornova Metro,1,1088,13.3545,13.8748,22.2911,29.7613,0.4725,0.148,0.2197,Bornova Metro yönü
+533,Bayraklı Şehir Hastanesi – Bornova Metro,2,332,11.0235,13.9777,26.8457,67.1918,0.8335,0.2048,0.3163,Bayraklı Şehir Hastanesi yönü
+446,Evka 5 – Bostanlı İskele,1,6006,22.0323,23.9308,31.0222,72.1992,0.6909,0.0208,0.0866,Bostanlı İskele yönü
+446,Evka 5 – Bostanlı İskele,2,6090,22.463,24.3327,37.1942,73.018,0.4858,0.0657,0.1197,Evka 5 yönü
+534,Bayraklı Şehir Hastanesi – Halkapınar Metro,1,918,36.7523,37.5173,50.6423,73.4487,0.2631,0.0,0.0654,Halkapınar Metro yönü
+534,Bayraklı Şehir Hastanesi – Halkapınar Metro,2,847,35.5537,37.1793,45.955,71.3922,0.2428,0.0,0.0685,Bayraklı Şehir Hastanesi yönü
