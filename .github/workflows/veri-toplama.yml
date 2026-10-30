@@ -49,7 +49,7 @@ jobs:
             if [ -s "$dosya" ]; then
               gzip -f "$dosya"
               git add data
-              git commit -q -m "Veri: $gun $saat UTC" || echo "Kaydedilecek degisiklik yok"
+              git commit -q -m "Add bus position data $gun $saat UTC" || echo "Nothing to commit"
               for deneme in 1 2 3; do
                 git pull -q --rebase && git push -q && break
                 echo "Push basarisiz (deneme $deneme), 10 sn sonra tekrar"
