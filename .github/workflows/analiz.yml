@@ -1,7 +1,8 @@
 name: Analiz
 
-# Toplanan tum veriyi isler ve dashboard'un okudugu data/islenmis/ klasorunu gunceller.
-# Her gun Turkiye saatiyle 05:17'de (gece seferleri bitince) ve istendiginde elle calisir.
+# Son 14 gunun ham verisini Release'lerden indirir, isler ve dashboard'un
+# okudugu data/islenmis/ klasorunu gunceller. Her gun Turkiye saatiyle 05:17'de
+# (gece seferleri bitince) ve istendiginde elle calisir.
 on:
   schedule:
     - cron: "17 2 * * *"
@@ -17,7 +18,9 @@ concurrency:
 jobs:
   analiz:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,14 +31,23 @@ jobs:
       - name: Bagimliliklar
         run: pip install pandas numpy
 
+      - name: Son 14 gunun verisini indir
+        run: |
+          for i in $(seq 0 14); do
+            gun=$(date -u -d "$i day ago" +%F)
+            gh release download "veri-$gun" --dir "data/indirilen/$gun" --pattern "*.csv.gz" \
+              2> /dev/null && echo "$gun indirildi" || echo "$gun icin veri yok"
+          done
+          du -sh data/indirilen 2> /dev/null || true
+
       - name: Analiz
-        run: python analiz.py
+        run: python analiz.py --gun 14
 
       - name: Kaydet
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/islenmis
+          git add -A data/islenmis
           git commit -q -m "Update analysis results" || echo "Nothing to commit"
           for deneme in 1 2 3; do
             git pull -q --rebase && git push -q && break
