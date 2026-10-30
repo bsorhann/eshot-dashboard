@@ -31,7 +31,9 @@ API_URL = "https://openapi.izmir.bel.tr/api/iztek/hatotobuskonumlari/{hat_id}"
 VARSAYILAN_HATLAR = [532, 533, 534, 446, 304]
 
 DB_YOLU = "otobus_konumlari.db"
-ISTEK_ZAMAN_ASIMI = 20  # saniye
+# (bağlantı, okuma) saniye. API her saatin ~15. dakikasında birkaç dakika yanıt
+# vermiyor; kısa zaman aşımıyla o turlarda dakikalarca takılı kalmıyoruz.
+ISTEK_ZAMAN_ASIMI = (5, 10)
 SUTUNLAR = ["zaman_utc", "hat_id", "otobus_id", "yon", "koor_x", "koor_y", "sira"]
 
 logging.basicConfig(

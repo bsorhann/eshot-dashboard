@@ -59,8 +59,10 @@ def canli_konumlar(df: pd.DataFrame, esik: int = 5) -> pd.DataFrame:
             left_on="zaman_utc", right_on="onceki_zaman",
             by=["hat_id", "otobus_id"], allow_exact_matches=False,
         )
-        kalan["mesafe"] = np.hypot(kalan["koor_x"] - kalan["onceki_x"],
-                                   kalan["koor_y"] - kalan["onceki_y"]).fillna(0)
+        sayi = lambda s: pd.to_numeric(s, errors="coerce").astype(float)
+        kalan["mesafe"] = np.hypot(sayi(kalan["koor_x"]) - sayi(kalan["onceki_x"]),
+                                   sayi(kalan["koor_y"]) - sayi(kalan["onceki_y"]))
+        kalan["mesafe"] = kalan["mesafe"].fillna(0)
         secilen = kalan.sort_values("mesafe").drop_duplicates(GRUP, keep="first")
         canli = pd.concat([canli, secilen[canli.columns]], ignore_index=True)
 

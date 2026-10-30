@@ -28,6 +28,8 @@ GUZERGAH_MAKS_UZAKLIK_M = 150   # bundan uzak konumlar güzergah dışı sayıl�
 DURAK_MAKS_UZAKLIK_M = 50       # durak bu yönün güzergahına bu kadar yakın olmalı
 SEFER_MAKS_BOSLUK_SN = 300      # iki ölçüm arası bundan uzunsa sefer bölünür
 SEFER_MAKS_GERI_M = 300         # bu kadar geri gidiş = yeni sefer (hat sonuna gelip dönmüş)
+VERI_BOSLUK_ESIK_DK = 8         # bundan uzun veri gelmeyen dönemler aralık ölçümünden çıkarılır
+GUVENILIR_DURAK_ORANI = 0.8     # geçiş sayısı medyanın bu oranından az olan duraklar dışarıda
 
 
 # ---------------------------------------------------------------- yardımcılar
@@ -76,7 +78,11 @@ def ham_veri_yukle(desen=os.path.join("data", "raw", "*", "*.csv.gz")):
     dosyalar = sorted(glob.glob(desen))
     if not dosyalar:
         raise SystemExit(f"Veri bulunamadi: {desen}")
-    return pd.concat((pd.read_csv(f) for f in dosyalar), ignore_index=True)
+    tipler = {"hat_id": "int64", "otobus_id": "int64", "yon": "float64",
+              "koor_x": "float64", "koor_y": "float64", "sira": "int64"}
+    parcalar = [pd.read_csv(f, dtype=tipler) for f in dosyalar]
+    parcalar = [p for p in parcalar if len(p)]  # gece: otobus yok, yalnizca baslik
+    return pd.concat(parcalar, ignore_index=True)
 
 
 # ---------------------------------------------------------------- ana adımlar
@@ -172,31 +178,129 @@ def durak_gecisleri(k, durak_tablo):
         ["hat_id", "rota_yon", "durak_sira", "gecis_zamani"])
 
 
-def sefer_araliklari(gecis):
-    """Aynı durağa ardışık iki farklı otobüsün geliş farkı (dakika)."""
+def guvenilir_durak_isaretle(gecis, durak_tablo, oran=GUVENILIR_DURAK_ORANI):
+    """
+    Hat sonlarındaki duraklarda otobüs bekleyip döndüğü için geçişler kaçırılır ve
+    sahte uzun aralıklar oluşur. Geçiş sayısı, o hat-yöndeki durakların medyanının
+    %80'inden az olan duraklar güvenilmez sayılır.
+    """
+    say = gecis.groupby(["hat_id", "rota_yon", "durak_sira"]).size().rename("gecis_sayisi")
+    d = durak_tablo.merge(say.reset_index(), on=["hat_id", "rota_yon", "durak_sira"], how="left")
+    d["gecis_sayisi"] = d.gecis_sayisi.fillna(0).astype(int)
+    medyan = d.groupby(["hat_id", "rota_yon"]).gecis_sayisi.transform("median")
+    d["guvenilir"] = d.gecis_sayisi >= oran * medyan
+    return d
+
+
+def veri_bosluklari(ham, esik_dk=VERI_BOSLUK_ESIK_DK):
+    """Hiç veri gelmeyen dönemler (gece, iş geçişi, API kesintisi): [(başlangıç, bitiş), ...]"""
+    t = pd.to_datetime(ham.zaman_utc.drop_duplicates(), utc=True).sort_values().reset_index(drop=True)
+    fark = t.diff()
+    i = fark[fark > pd.Timedelta(minutes=esik_dk)].index
+    return pd.DataFrame({"bas": t[i - 1].values, "bit": t[i].values})
+
+
+def sefer_araliklari(gecis, bosluklar=None):
+    """
+    Aynı durağa ardışık iki farklı otobüsün geliş farkı (dakika).
+    İki geçiş arasına bir veri boşluğu giriyorsa aralık ölçülemez, atlanır.
+    """
     g = gecis.sort_values(["hat_id", "rota_yon", "durak_sira", "gecis_zamani"]).copy()
     grup = g.groupby(["hat_id", "rota_yon", "durak_sira"])
     g["onceki_otobus"] = grup.otobus_id.shift()
-    g["aralik_dk"] = grup.gecis_zamani.diff().dt.total_seconds() / 60
-    return g.dropna(subset=["aralik_dk"])[lambda x: x.onceki_otobus != x.otobus_id]
+    g["onceki_gecis"] = grup.gecis_zamani.shift()
+    g["aralik_dk"] = (g.gecis_zamani - g.onceki_gecis).dt.total_seconds() / 60
+    g = g.dropna(subset=["aralik_dk"])
+    g = g[g.onceki_otobus != g.otobus_id]
+
+    if bosluklar is not None and len(bosluklar):
+        bas = bosluklar.bas.values
+        bit = bosluklar.bit.values
+        o = g.onceki_gecis.values
+        s = g.gecis_zamani.values
+        # aralık [o, s] ile herhangi bir boşluk [bas, bit] kesişiyor mu?
+        j = np.searchsorted(bit, o, side="left")       # o'dan sonra biten ilk boşluk
+        j_ok = j < len(bas)
+        kesisir = np.zeros(len(g), dtype=bool)
+        kesisir[j_ok] = bas[j[j_ok]] < s[j_ok]
+        g = g[~kesisir]
+    return g.drop(columns="onceki_gecis")
 
 
-def ozet(aralik, hat_listesi):
-    """Hat ve yön bazında düzenlilik metrikleri."""
-    def metrik(x):
-        med = x.median()
-        return pd.Series({
-            "olcum": len(x),
-            "medyan_dk": med,
-            "ort_dk": x.mean(),
-            "dagilim_cv": x.std() / x.mean() if x.mean() else np.nan,
-            "yigilma_orani": (x < 0.5 * med).mean(),        # beklenenin yarısından kısa
-            "uzun_bekleme_orani": (x > 1.5 * med).mean(),   # beklenenin 1,5 katından uzun
-        })
-    o = aralik.groupby(["hat_id", "rota_yon"]).aralik_dk.apply(metrik).unstack().reset_index()
-    adlar = hat_listesi.set_index("HAT_NO").HAT_ADI
-    o.insert(1, "hat_adi", o.hat_id.map(adlar))
-    return o
+YEREL_SAAT = "Europe/Istanbul"
+HY = ["hat_id", "rota_yon"]
+
+
+def aralik_isaretle(aralik):
+    """
+    Her aralığı, kendi hat-yönünün tipik aralığına (medyan) göre etiketler:
+      yigilma = medyanın yarısından kısa (otobüsler üst üste geldi)
+      uzun    = medyanın 1,5 katından uzun (durakta uzun bekleme)
+    """
+    a = aralik.copy()
+    a["hy_medyan"] = a.groupby(HY).aralik_dk.transform("median")
+    a["yigilma"] = a.aralik_dk < 0.5 * a.hy_medyan
+    a["uzun"] = a.aralik_dk > 1.5 * a.hy_medyan
+    yerel = pd.to_datetime(a.gecis_zamani, utc=True).dt.tz_convert(YEREL_SAAT)
+    a["saat"] = yerel.dt.hour
+    a["gun"] = yerel.dt.date.astype(str)
+    return a
+
+
+def _metrikler(g):
+    return pd.Series({
+        "olcum": len(g),
+        "medyan_dk": g.aralik_dk.median(),
+        "ort_dk": g.aralik_dk.mean(),
+        "p90_dk": g.aralik_dk.quantile(0.9),
+        "dagilim_cv": g.aralik_dk.std() / g.aralik_dk.mean() if g.aralik_dk.mean() else np.nan,
+        "yigilma_orani": g.yigilma.mean(),
+        "uzun_bekleme_orani": g.uzun.mean(),
+    })
+
+
+def tr_baslik(metin):
+    """'BOSTANLI İSKELE' -> 'Bostanlı İskele' (Türkçe I/İ kurallarıyla)."""
+    if not isinstance(metin, str):
+        return metin
+    kelimeler = []
+    for k in metin.strip().split():
+        kucuk = k.replace("I", "ı").replace("İ", "i").lower()
+        ilk = {"i": "İ", "ı": "I"}.get(kucuk[:1], kucuk[:1].upper())
+        kelimeler.append(ilk + kucuk[1:])
+    return " ".join(kelimeler)
+
+
+def yon_etiketleri(hat_listesi):
+    """Güzergah yönü 1: başlangıç -> bitiş, yön 2: bitiş -> başlangıç (veriyle doğrulandı)."""
+    h = hat_listesi.set_index("HAT_NO")
+    # Uçlar hat adından alınır; ayrı sütunlarda yazım tutarsızlıkları var (HASTANESI/HASTANESİ)
+    parcalar = h.HAT_ADI.astype(str).str.split(r"\s+-\s+", n=1, regex=True)
+    bas = parcalar.str[0].map(tr_baslik)
+    bit = parcalar.str[-1].map(tr_baslik)
+    return pd.concat([
+        pd.DataFrame({"hat_id": h.index, "rota_yon": 1, "yon_adi": (bit + " yönü").values}),
+        pd.DataFrame({"hat_id": h.index, "rota_yon": 2, "yon_adi": (bas + " yönü").values}),
+    ])
+
+
+def ozet_tablolari(a, durak_tablo, hat_listesi):
+    adlar = hat_listesi.set_index("HAT_NO").HAT_ADI.astype(str).str.split(r"\s+-\s+", regex=True).map(
+        lambda p: " – ".join(tr_baslik(x) for x in p))
+    yonler = yon_etiketleri(hat_listesi)
+
+    ozet = a.groupby(HY).apply(_metrikler, include_groups=False).reset_index()
+    ozet.insert(1, "hat_adi", ozet.hat_id.map(adlar))
+    ozet = ozet.merge(yonler, on=HY, how="left")
+
+    saatlik = a.groupby(HY + ["saat"]).apply(_metrikler, include_groups=False).reset_index()
+
+    durak = a.groupby(HY + ["durak_sira"]).apply(_metrikler, include_groups=False).reset_index()
+    durak = durak.merge(durak_tablo[HY + ["durak_sira", "DURAK_ID", "DURAK_ADI", "ENLEM", "BOYLAM"]],
+                        on=HY + ["durak_sira"], how="left")
+
+    gunluk = a.groupby(HY + ["gun"]).apply(_metrikler, include_groups=False).reset_index()
+    return ozet, saatlik, durak, gunluk
 
 
 def main():
@@ -210,21 +314,48 @@ def main():
     k = seferlere_bol(konum, eslesme)
     durak_tablo = duraklari_hazirla(duraklar, guzergah, sorted(temiz.hat_id.unique()))
     gecis = durak_gecisleri(k, durak_tablo)
-    aralik = sefer_araliklari(gecis)
+    durak_tablo = guvenilir_durak_isaretle(gecis, durak_tablo)
+    guvenilir = durak_tablo[durak_tablo.guvenilir][["hat_id", "rota_yon", "durak_sira"]]
+    gecis_g = gecis.merge(guvenilir, on=["hat_id", "rota_yon", "durak_sira"])
+    bosluklar = veri_bosluklari(ham)
+    aralik = aralik_isaretle(sefer_araliklari(gecis_g, bosluklar))
+    o, saatlik, durak_ozet, gunluk = ozet_tablolari(aralik, durak_tablo[durak_tablo.guvenilir], hat_listesi)
 
     os.makedirs(CIKTI, exist_ok=True)
-    durak_tablo.to_csv(os.path.join(CIKTI, "duraklar.csv"), index=False)
-    gecis.to_csv(os.path.join(CIKTI, "durak_gecisleri.csv"), index=False)
-    aralik.to_csv(os.path.join(CIKTI, "sefer_araliklari.csv"), index=False)
-    o = ozet(aralik, hat_listesi)
-    o.to_csv(os.path.join(CIKTI, "ozet.csv"), index=False)
+    yaz = lambda df, ad: df.to_csv(os.path.join(CIKTI, ad), index=False)
+    yaz(durak_tablo, "duraklar.csv")
+    yaz(gecis, "durak_gecisleri.csv.gz")
+    yaz(aralik, "sefer_araliklari.csv.gz")
+    yaz(o, "ozet.csv")
+    yaz(saatlik, "saatlik.csv")
+    yaz(durak_ozet, "durak_ozet.csv")
+    yaz(gunluk, "gunluk.csv")
+
+    turlar = pd.to_datetime(ham.zaman_utc.drop_duplicates(), utc=True)
+    gps = ham.dropna(subset=["koor_x"])
+    meta = {
+        "guncelleme_utc": pd.Timestamp.now(tz="UTC").isoformat(timespec="seconds"),
+        "ilk_olcum_utc": turlar.min().isoformat(),
+        "son_olcum_utc": turlar.max().isoformat(),
+        "tur_sayisi": int(turlar.nunique()),
+        "ham_kayit": int(len(ham)),
+        "gps_kayit": int(len(gps)),
+        "canli_konum": int(len(temiz)),
+        "hayalet_orani": round(1 - len(temiz) / len(gps), 3),
+        "aralik_olcumu": int(len(aralik)),
+        "hatlar": sorted(int(h) for h in temiz.hat_id.unique()),
+    }
+    with open(os.path.join(CIKTI, "meta.json"), "w", encoding="utf-8") as f:
+        import json
+        json.dump(meta, f, ensure_ascii=False, indent=2)
 
     print(f"Ham: {len(ham):,} | Temiz: {len(temiz):,} | Guzergahta: {len(k):,} | "
           f"Sefer parcasi: {k.sefer.nunique():,}")
     print("Yon eslesmesi (hat, api_yon) -> (rota_yon, ileri giden oran):")
     for anahtar, deger in sorted(eslesme.items()):
         print(f"  {anahtar} -> {deger}")
-    print(f"Durak (hat x yon): {len(durak_tablo)} | Gecis: {len(gecis):,} | Aralik: {len(aralik):,}")
+    print(f"Durak (hat x yon): {len(durak_tablo)} (guvenilir: {durak_tablo.guvenilir.sum()}) | "
+          f"Gecis: {len(gecis):,} | Aralik: {len(aralik):,}")
     print("\n" + o.round(2).to_string(index=False))
 
 
