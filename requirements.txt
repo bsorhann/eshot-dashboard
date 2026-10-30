@@ -1,2 +1,6 @@
 requests>=2.31
-pandas>=2.0
+pandas>=2.2
+numpy>=1.26
+streamlit>=1.40
+altair>=5
+pydeck>=0.9

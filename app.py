@@ -111,8 +111,8 @@ st.caption(
     + " · Kaynak: İzmir Büyükşehir Belediyesi Açık Veri Portalı"
 )
 if not secim["tamamlandi"] and secim["gun_sayisi"] < MIN_GUN_BU_AY:
-    st.warning(f"{ay_adi(ay)} yeni başladı, yalnızca {secim['gun_sayisi']} günlük veri var. "
-               "Sonuçlar ay ilerledikçe oturacak.")
+    st.warning(f"{ay_adi(ay)} için şimdilik yalnızca {secim['gun_sayisi']} günlük veri var. "
+               "Sonuçlar veri biriktikçe oturacak.")
 
 # ---------------------------------------------------------------- ayın öne çıkanları
 
