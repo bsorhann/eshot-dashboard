@@ -18,6 +18,8 @@ MAVI = "#2a78d6"      # vurgulanan seri
 GRI = "#9a998f"       # bağlam serileri (açık ve koyu temada okunur)
 YAZI = "#898781"      # grafik içi etiket/çizgi rengi (iki temada da okunur)
 MIN_OLCUM_SAAT = 50   # bundan az ölçümü olan saatler gösterilmez
+MIN_OLCUM_HAT = 200   # sıralamaya girmek için gereken en az ölçüm (az veriyle sıralama yanıltır)
+SIRALAMA_N = 15       # karşılaştırma grafiğinde gösterilen hat-yön sayısı
 
 st.set_page_config(page_title="İzmir otobüs düzenliliği", page_icon="🚌", layout="wide")
 
@@ -29,9 +31,10 @@ def yukle():
     oku = lambda ad: pd.read_csv(os.path.join(VERI, ad))
     with open(os.path.join(VERI, "meta.json"), encoding="utf-8") as f:
         meta = json.load(f)
-    aralik = pd.read_csv(os.path.join(VERI, "sefer_araliklari.csv.gz"),
-                         usecols=["hat_id", "rota_yon", "aralik_dk", "uzun", "yigilma"])
-    return meta, oku("ozet.csv"), oku("saatlik.csv"), oku("durak_ozet.csv"), aralik
+    ozet = oku("ozet.csv")
+    ozet["hat_adi"] = ozet.hat_adi.fillna("")
+    ozet["yon_adi"] = ozet.yon_adi.fillna(ozet.rota_yon.map({1: "Gidiş", 2: "Dönüş"}))
+    return meta, ozet, oku("saatlik.csv"), oku("durak_ozet.csv"), oku("dagilim.csv")
 
 
 def yuzde(x):
@@ -53,7 +56,7 @@ def tarih(iso):
 
 
 try:
-    meta, ozet, saatlik, durak, aralik = yukle()
+    meta, ozet, saatlik, durak, dagilim = yukle()
 except FileNotFoundError:
     st.error("Henüz işlenmiş veri yok. Analiz iş akışı ilk kez çalıştığında burası dolacak.")
     st.stop()
@@ -63,14 +66,15 @@ except FileNotFoundError:
 
 st.title("İzmir otobüs düzenliliği")
 st.markdown(
-    "ESHOT otobüslerinin canlı konumları her dakika kaydediliyor. Bu sayfa, otobüslerin "
-    "duraklara **ne kadar düzenli** geldiğini ölçüyor: durakta tipik olarak ne kadar "
-    "beklendiğini, otobüslerin ne sıklıkla üst üste geldiğini ve ne sıklıkla uzun bekleme oluştuğunu."
+    "ESHOT'un tüm otobüs hatlarındaki araçların canlı konumları 5 dakikada bir kaydediliyor. "
+    "Bu sayfa, otobüslerin duraklara **ne kadar düzenli** geldiğini ölçüyor: durakta tipik olarak "
+    "ne kadar beklendiğini, otobüslerin ne sıklıkla üst üste geldiğini ve ne sıklıkla uzun bekleme oluştuğunu."
 )
 st.caption(
-    f"Veri: {tarih(meta['ilk_olcum_utc'])} – {tarih(meta['son_olcum_utc'])} · "
-    f"{meta['aralik_olcumu']:,} bekleme ölçümü · Kaynak: İzmir Büyükşehir Belediyesi Açık Veri Portalı"
-    .replace(",", ".")
+    (f"Veri: {tarih(meta['ilk_olcum_utc'])} – {tarih(meta['son_olcum_utc'])} · "
+     f"{meta.get('hat_sayisi', ozet.hat_id.nunique())} hat · "
+     f"{meta['aralik_olcumu']:,} bekleme ölçümü").replace(",", ".")
+    + " · Kaynak: İzmir Büyükşehir Belediyesi Açık Veri Portalı"
 )
 
 # ---------------------------------------------------------------- filtreler
@@ -79,8 +83,9 @@ ozet["etiket"] = ozet.hat_id.astype(str) + " · " + ozet.hat_adi
 hatlar = ozet.drop_duplicates("hat_id").sort_values("hat_id")
 c1, c2 = st.columns([2, 2])
 with c1:
-    hat_etiket = st.selectbox("Hat", hatlar.etiket.tolist(),
-                              index=int((hatlar.hat_id == 532).values.argmax()))
+    varsayilan = int((hatlar.hat_id == 532).values.argmax()) if (hatlar.hat_id == 532).any() else 0
+    hat_etiket = st.selectbox("Hat (numara veya ad yazarak arayabilirsin)", hatlar.etiket.tolist(),
+                              index=varsayilan)
 hat = int(hat_etiket.split(" · ")[0])
 yonler = ozet[ozet.hat_id == hat].sort_values("rota_yon")
 with c2:
@@ -110,14 +115,19 @@ st.divider()
 
 # ---------------------------------------------------------------- hat karşılaştırması
 
-st.subheader("Hatlar arasında karşılaştırma")
-st.caption("Uzun bekleme oranı: tipik beklemenin 1,5 katını aşan bekleyişlerin payı. Düşük olan daha iyi.")
+st.subheader(f"En düzensiz {SIRALAMA_N} hat-yön")
+st.caption(f"Uzun bekleme oranı: tipik beklemenin 1,5 katını aşan bekleyişlerin payı. Yalnızca en az "
+           f"{MIN_OLCUM_HAT} ölçümü olan hat-yönler sıralandı. Seçtiğin hat listede yoksa en alta eklenir.")
 k = ozet.assign(
     satir=ozet.hat_id.astype(str) + " · " + ozet.yon_adi,
     secili=(ozet.hat_id == hat) & (ozet.rota_yon == yon),
     oran_metin=ozet.uzun_bekleme_orani.map(yuzde),
     medyan_metin=ozet.medyan_dk.round().astype(int).astype(str) + " dk",
 )
+k = pd.concat([
+    k[k.olcum >= MIN_OLCUM_HAT].nlargest(SIRALAMA_N, "uzun_bekleme_orani"),
+    k[k.secili],
+]).drop_duplicates(["hat_id", "rota_yon"])
 taban = alt.Chart(k).encode(
     y=alt.Y("satir:N", sort="-x", title=None, axis=alt.Axis(labelLimit=320)),
     x=alt.X("uzun_bekleme_orani:Q", title="Uzun bekleme oranı",
@@ -133,6 +143,25 @@ cubuk = taban.mark_bar(cornerRadiusEnd=4, height=18).encode(
 etiket = taban.mark_text(align="left", dx=4, fontSize=12).encode(text="oran_metin:N",
                                                                   color=alt.value(YAZI))
 st.altair_chart((cubuk + etiket).properties(height=len(k) * 30 + 20), width="stretch")
+
+with st.expander(f"Tüm hatların tablosu ({ozet.hat_id.nunique()} hat)"):
+    tablo = ozet[["hat_id", "hat_adi", "yon_adi", "olcum", "medyan_dk", "p90_dk",
+                  "uzun_bekleme_orani", "yigilma_orani"]].sort_values("uzun_bekleme_orani", ascending=False)
+    st.dataframe(
+        tablo.assign(uzun_bekleme_orani=tablo.uzun_bekleme_orani * 100,
+                     yigilma_orani=tablo.yigilma_orani * 100),
+        hide_index=True, width="stretch", height=420,
+        column_config={
+            "hat_id": st.column_config.NumberColumn("Hat", format="%d"),
+            "hat_adi": "Hat adı",
+            "yon_adi": "Yön",
+            "olcum": st.column_config.NumberColumn("Ölçüm", format="%d"),
+            "medyan_dk": st.column_config.NumberColumn("Tipik bekleme (dk)", format="%.0f"),
+            "p90_dk": st.column_config.NumberColumn("10'da 9'u en fazla (dk)", format="%.0f"),
+            "uzun_bekleme_orani": st.column_config.NumberColumn("Uzun bekleme %", format="%.0f"),
+            "yigilma_orani": st.column_config.NumberColumn("Yığılma %", format="%.0f"),
+        })
+    st.caption("Sütun başlığına tıklayarak sıralayabilirsin. Az ölçümlü satırlara temkinli bak.")
 
 st.divider()
 
@@ -221,27 +250,34 @@ st.divider()
 # ---------------------------------------------------------------- dağılım
 
 st.subheader("Bekleme sürelerinin dağılımı")
-a = aralik[(aralik.hat_id == hat) & (aralik.rota_yon == yon)]
-ust = float(a.aralik_dk.quantile(0.99))
-a = a[a.aralik_dk <= ust]
-hist = alt.Chart(a).mark_bar(color=MAVI, cornerRadiusEnd=2).encode(
-    x=alt.X("aralik_dk:Q", bin=alt.Bin(step=2), title="Ardışık iki otobüs arası (dk)"),
-    y=alt.Y("count():Q", title="Ölçüm sayısı"),
-    tooltip=[alt.Tooltip("aralik_dk:Q", bin=alt.Bin(step=2), title="Aralık (dk)"),
-             alt.Tooltip("count():Q", title="Ölçüm")])
+a = dagilim[(dagilim.hat_id == hat) & (dagilim.rota_yon == yon)].copy()
+a = a[a.kutu_dk <= secili.p99_dk]
+a["kutu_bit"] = a.kutu_dk + 1.8   # kutular arasında ince boşluk
+a["aralik_metin"] = a.kutu_dk.astype(str) + "–" + (a.kutu_dk + 2).astype(str) + " dk"
+hist = alt.Chart(a).mark_rect(color=MAVI, cornerRadiusTopLeft=2, cornerRadiusTopRight=2).encode(
+    x=alt.X("kutu_dk:Q", title="Ardışık iki otobüs arası (dk)", scale=alt.Scale(domainMin=0)),
+    x2="kutu_bit:Q",
+    y=alt.Y("adet:Q", title="Ölçüm sayısı"),
+    y2=alt.datum(0),
+    tooltip=[alt.Tooltip("aralik_metin:N", title="Aralık"), alt.Tooltip("adet:Q", title="Ölçüm")])
 cizgi = alt.Chart(pd.DataFrame({"m": [secili.medyan_dk]})).mark_rule(
     strokeDash=[4, 4], color=YAZI, strokeWidth=2).encode(x="m:Q")
 st.altair_chart((hist + cizgi).properties(height=260), width="stretch")
 st.caption(f"Kesikli çizgi tipik beklemeyi ({secili.medyan_dk:.0f} dk) gösteriyor. Düzenli bir hatta "
            "çubuklar bu çizginin etrafında toplanır; yayıldıkça düzensizlik artar. "
            "En uzun %1'lik kısım grafikte gösterilmiyor.")
+st.caption("Durak geçiş anları 5 dakika arayla alınan iki konum arasında oranlanarak bulunduğu "
+           "için tek tek aralıklarda 1-2 dakikalık sapma olabilir; oranlar ve medyanlar bundan çok az etkilenir.")
 
 # ---------------------------------------------------------------- yöntem
 
 with st.expander("Bu ölçümler nasıl yapıldı?"):
     st.markdown(f"""
-1. **Veri toplama.** İzmir Büyükşehir Belediyesi'nin açık veri API'sinden seçilen hatlardaki
-   otobüslerin konumları her dakika çekiliyor (GitHub Actions üzerinde, otomatik).
+1. **Veri toplama.** İzmir Büyükşehir Belediyesi'nin açık veri API'sinden ESHOT'un tüm hatlarındaki
+   otobüslerin konumları 5 dakikada bir çekiliyor (GitHub Actions üzerinde, otomatik). Sayfa son
+   {meta.get('gun_sayisi', 14)} günün verisini gösteriyor ve her gece güncelleniyor. Dakikalık veriyle
+   yapılan karşılaştırmada 5 dakikalık örnekleme, tipik bekleme ve uzun bekleme oranında ancak
+   birkaç puanlık fark yarattı.
 2. **Hayalet kayıt temizliği.** API, otobüslerin canlı konumunun yanında garaj, aktarma merkezi
    ve benzinlik gibi yerlerde kalmış eski konumlarını da döndürüyor. GPS'li kayıtların
    **{yuzde(meta['hayalet_orani'])}'i** bu tür hayalet kayıt; zaman içinde hiç değişmeyen

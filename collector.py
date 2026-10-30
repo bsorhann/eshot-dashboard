@@ -11,16 +11,21 @@ Kullanım:
     python collector.py --hatlar 446 202         # belirli hatlar
     python collector.py --tek-sefer              # bir tur çek ve çık (test)
     python collector.py --cikti veri.csv --sure 55   # CSV'ye yaz, 55 dakika sonra çık
+    python collector.py --tum-hatlar --paralel 10 --aralik 300 --cikti veri.csv
+                                                     # 446 hattın tamamı, 5 dakikada bir
 
 Durdurmak için: Ctrl+C
 """
 
 import argparse
 import csv
+import glob
 import logging
 import os
 import sqlite3
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 import requests
@@ -29,6 +34,7 @@ API_URL = "https://openapi.izmir.bel.tr/api/iztek/hatotobuskonumlari/{hat_id}"
 
 # İzlenecek hatlar. hat_bul.py ile hat numaralarını bulup buraya ekle.
 VARSAYILAN_HATLAR = [532, 533, 534, 446, 304]
+HAT_LISTESI_DESENI = os.path.join("data", "ref", "eshot-otobus-hat-listesi__*.csv")
 
 DB_YOLU = "otobus_konumlari.db"
 # (bağlantı, okuma) saniye. API her saatin ~15. dakikasında birkaç dakika yanıt
@@ -138,30 +144,57 @@ def koordinat(deger):
     return sayi if sayi != 0 else None  # 0,0 = GPS sinyali yok
 
 
-def bir_tur(yazici, session: requests.Session, hatlar):
+_yerel = threading.local()
+
+
+def _oturum():
+    """Her iş parçacığına kendi HTTP oturumu."""
+    if not hasattr(_yerel, "s"):
+        _yerel.s = requests.Session()
+        _yerel.s.headers["User-Agent"] = "eshot-duzenlilik-projesi/0.2 (egitim amacli)"
+    return _yerel.s
+
+
+def tek_hat(hat_id):
+    """Bir hattı çeker. Zaman damgası istek anına aittir (paralel turlarda doğruluk için)."""
+    kod, otobusler, hata = hat_konumlarini_cek(_oturum(), hat_id)
     zaman = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    satirlar = [
+        (zaman, hat_id, o.get("OtobusId"), o.get("Yon"),
+         koordinat(o.get("KoorX")), koordinat(o.get("KoorY")), i)
+        for i, o in enumerate(otobusler)
+        if o.get("OtobusId") is not None
+    ]
+    return satirlar, ((zaman, hat_id, kod, hata) if hata else None)
+
+
+def bir_tur(yazici, hatlar, paralel=1):
     satirlar, hatalar = [], []
-    for hat_id in hatlar:
-        kod, otobusler, hata = hat_konumlarini_cek(session, hat_id)
-        if hata:
-            hatalar.append((zaman, hat_id, kod, hata))
-            log.warning("Hat %s: %s (kod %s)", hat_id, hata, kod)
-        satirlar += [
-            (
-                zaman,
-                hat_id,
-                o.get("OtobusId"),
-                o.get("Yon"),
-                koordinat(o.get("KoorX")),
-                koordinat(o.get("KoorY")),
-                i,
-            )
-            for i, o in enumerate(otobusler)
-            if o.get("OtobusId") is not None
-        ]
-        time.sleep(1)  # API'ye nazik olalım: hatlar arasında 1 sn bekle
+    if paralel <= 1:
+        sonuclar = []
+        for h in hatlar:
+            sonuclar.append(tek_hat(h))
+            time.sleep(1)  # tek tek çekerken API'ye nazik olalım
+    else:
+        with ThreadPoolExecutor(max_workers=paralel) as havuz:
+            sonuclar = list(havuz.map(tek_hat, hatlar))
+    for s, h in sonuclar:
+        satirlar += s
+        if h:
+            hatalar.append(h)
     yazici.yaz(satirlar, hatalar)
+    if hatalar:
+        log.warning("%d hatta hata (ör. hat %s: %s)", len(hatalar), hatalar[0][1], hatalar[0][3][:120])
     log.info("%d hat tarandı, %d otobüs konumu kaydedildi", len(hatlar), len(satirlar))
+
+
+def tum_hatlar(desen=HAT_LISTESI_DESENI):
+    """Referans hat listesindeki tüm hat numaraları (data/ref, ';' ayraçlı)."""
+    dosyalar = glob.glob(desen)
+    if not dosyalar:
+        raise SystemExit(f"Hat listesi bulunamadı: {desen} (önce referans_indir.py çalıştır)")
+    with open(dosyalar[0], encoding="utf-8-sig", newline="") as f:
+        return sorted({int(r["HAT_NO"]) for r in csv.DictReader(f, delimiter=";") if r["HAT_NO"].strip()})
 
 
 # ---------------------------------------------------------------- ana döngü
@@ -169,6 +202,8 @@ def bir_tur(yazici, session: requests.Session, hatlar):
 def main():
     p = argparse.ArgumentParser(description="ESHOT canlı otobüs konumu toplayıcı")
     p.add_argument("--hatlar", type=int, nargs="+", default=VARSAYILAN_HATLAR)
+    p.add_argument("--tum-hatlar", action="store_true", help="Referans listesindeki tüm hatlar")
+    p.add_argument("--paralel", type=int, default=1, help="Aynı anda kaç istek")
     p.add_argument("--aralik", type=int, default=60, help="Turlar arası saniye")
     p.add_argument("--db", default=DB_YOLU, help="SQLite dosyası (varsayılan çıktı)")
     p.add_argument("--cikti", help="SQLite yerine bu CSV dosyasına yaz")
@@ -176,17 +211,16 @@ def main():
     p.add_argument("--tek-sefer", action="store_true", help="Bir tur çek ve çık")
     args = p.parse_args()
 
+    hatlar = tum_hatlar() if args.tum_hatlar else args.hatlar
     yazici = CsvYazici(args.cikti) if args.cikti else SqliteYazici(args.db)
-    session = requests.Session()
-    session.headers["User-Agent"] = "eshot-duzenlilik-projesi/0.1 (egitim amacli)"
     bitis = time.time() + args.sure * 60 if args.sure else None
 
-    log.info("Başladı. Hatlar: %s | Aralık: %s sn | Çıktı: %s | Süre: %s dk",
-             args.hatlar, args.aralik, args.cikti or args.db, args.sure or "sınırsız")
+    log.info("Başladı. %d hat | Paralel: %d | Aralık: %s sn | Çıktı: %s | Süre: %s dk",
+             len(hatlar), args.paralel, args.aralik, args.cikti or args.db, args.sure or "sınırsız")
     try:
         while True:
             baslangic = time.time()
-            bir_tur(yazici, session, args.hatlar)
+            bir_tur(yazici, hatlar, args.paralel)
             if args.tek_sefer:
                 break
             bekle = max(0, args.aralik - (time.time() - baslangic))
