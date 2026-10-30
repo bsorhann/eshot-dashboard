@@ -1,7 +1,9 @@
 name: Veri toplama
 
 # Saatte bir tetiklenir. Ayni anda yalnizca bir is calisir; calisan is bitince
-# siradaki hemen baslar. Her is ~5 saat toplar ve her saat depoya kaydeder.
+# siradaki hemen baslar. Her is ~5,5 saat boyunca 446 hattin tamamini 5 dakikada
+# bir toplar. Saatlik dosyalar git gecmisine degil, gunluk bir Release'e yuklenir
+# (depoyu sisirmemek icin): etiket "veri-YYYY-MM-DD".
 on:
   schedule:
     - cron: "7 * * * *"
@@ -18,6 +20,8 @@ jobs:
   topla:
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,32 +32,33 @@ jobs:
       - name: Bagimliliklar
         run: pip install requests
 
-      - name: Topla ve her saat kaydet
+      - name: Topla ve her saat Release'e yukle
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           # Isin toplam suresi 350 dk ile sinirli. Toplama 5,5 saatte biter;
-          # son tur kalan sureye gore kisaltilir, kaydetmeye her zaman zaman kalir.
+          # son parca kalan sureye gore kisaltilir, yuklemeye her zaman zaman kalir.
           bitis=$((SECONDS + 330 * 60))
-          while [ $((bitis - SECONDS)) -gt 300 ]; do
+          mkdir -p cikti
+          while [ $((bitis - SECONDS)) -gt 360 ]; do
             kalan_dk=$(( (bitis - SECONDS) / 60 ))
             sure=$(( kalan_dk < 55 ? kalan_dk : 55 ))
             gun=$(date -u +%F)
             saat=$(date -u +%H%M%S)
-            mkdir -p "data/raw/$gun"
-            dosya="data/raw/$gun/$saat.csv"
+            dosya="cikti/$saat.csv"
 
-            python collector.py --cikti "$dosya" --sure "$sure" || echo "Toplayici hata verdi, devam ediliyor"
+            python collector.py --tum-hatlar --paralel 10 --aralik 300 \
+              --cikti "$dosya" --sure "$sure" || echo "Toplayici hata verdi, devam ediliyor"
 
             if [ -s "$dosya" ]; then
               gzip -f "$dosya"
-              git add data
-              git commit -q -m "Add bus position data $gun $saat UTC" || echo "Nothing to commit"
+              etiket="veri-$gun"
+              gh release view "$etiket" > /dev/null 2>&1 || \
+                gh release create "$etiket" --prerelease --title "Bus position data $gun" \
+                  --notes "Raw ESHOT bus positions for $gun (UTC), all lines, every 5 minutes." || true
               for deneme in 1 2 3; do
-                git pull -q --rebase && git push -q && break
-                echo "Push basarisiz (deneme $deneme), 10 sn sonra tekrar"
-                sleep 10
+                gh release upload "$etiket" "$dosya.gz" --clobber && break
+                echo "Yukleme basarisiz (deneme $deneme), 15 sn sonra tekrar"
+                sleep 15
               done || true
+              rm -f "$dosya.gz"
             fi
           done
