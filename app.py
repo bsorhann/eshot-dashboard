@@ -121,7 +121,8 @@ if len(aday) >= 3:
     st.subheader(f"{ay_adi(ay)}: öne çıkanlar" + ("" if secim["tamamlandi"] else " (şimdilik)"))
     kartlar = [
         ("En dakik", aday.nsmallest(1, "uzun_bekleme_orani").iloc[0],
-         lambda r: f"Bekleyişlerin yalnızca {yuzde(r.uzun_bekleme_orani)}'i uzun sürdü"),
+         lambda r: ("Hiçbir bekleyiş normalden uzun sürmedi" if r.uzun_bekleme_orani < 0.005
+                    else f"Bekleyişlerin yalnızca {yuzde(r.uzun_bekleme_orani)}'i uzun sürdü")),
         ("En çok bekleten", aday.nlargest(1, "uzun_bekleme_orani").iloc[0],
          lambda r: f"{her_n_de_bir(r.uzun_bekleme_orani).capitalize()} normalden uzun sürdü"),
         ("El ele gezenler", aday.nlargest(1, "yigilma_orani").iloc[0],
