@@ -1,9 +1,10 @@
 name: Veri toplama
 
 # Saatte bir tetiklenir. Ayni anda yalnizca bir is calisir; calisan is bitince
-# siradaki hemen baslar. Her is ~5,5 saat boyunca 446 hattin tamamini 5 dakikada
-# bir toplar. Saatlik dosyalar git gecmisine degil, gunluk bir Release'e yuklenir
-# (depoyu sisirmemek icin): etiket "veri-YYYY-MM-DD".
+# siradaki hemen baslar. Her iste toplayici ~5,5 saat kesintisiz calisir:
+# Izmir API'sinin istek sinirina (dakikada ~60) uyarak otobusu olan hatlari 5 dakikada,
+# bos donen hatlari 30 dakikada bir sorar. Saatlik dosyalar git gecmisine degil,
+# gunluk bir Release'e yuklenir (depoyu sisirmemek icin): etiket "veri-YYYY-MM-DD".
 on:
   schedule:
     - cron: "7 * * * *"
@@ -32,33 +33,35 @@ jobs:
       - name: Bagimliliklar
         run: pip install requests
 
-      - name: Topla ve her saat Release'e yukle
+      - name: Topla ve hazir dosyalari Release'e yukle
         run: |
-          # Isin toplam suresi 350 dk ile sinirli. Toplama 5,5 saatte biter;
-          # son parca kalan sureye gore kisaltilir, yuklemeye her zaman zaman kalir.
-          bitis=$((SECONDS + 330 * 60))
-          mkdir -p cikti
-          while [ $((bitis - SECONDS)) -gt 360 ]; do
-            kalan_dk=$(( (bitis - SECONDS) / 60 ))
-            sure=$(( kalan_dk < 55 ? kalan_dk : 55 ))
-            gun=$(date -u +%F)
-            saat=$(date -u +%H%M%S)
-            dosya="cikti/$saat.csv"
-
-            python collector.py --tum-hatlar --paralel 10 --aralik 300 \
-              --cikti "$dosya" --sure "$sure" || echo "Toplayici hata verdi, devam ediliyor"
-
-            if [ -s "$dosya" ]; then
-              gzip -f "$dosya"
+          yukle() {
+            for f in cikti/hazir/*.csv.gz; do
+              [ -e "$f" ] || continue
+              ad=$(basename "$f" .csv.gz)        # 2026-10-30__124347
+              gun=${ad%%__*}; saat=${ad##*__}
               etiket="veri-$gun"
+              mkdir -p yukleme && cp "$f" "yukleme/$saat.csv.gz"
               gh release view "$etiket" > /dev/null 2>&1 || \
                 gh release create "$etiket" --prerelease --title "Bus position data $gun" \
-                  --notes "Raw ESHOT bus positions for $gun (UTC), all lines, every 5 minutes." || true
+                  --notes "Raw ESHOT bus positions for $gun (UTC), all lines, rate-limited scheduler." || true
               for deneme in 1 2 3; do
-                gh release upload "$etiket" "$dosya.gz" --clobber && break
+                if gh release upload "$etiket" "yukleme/$saat.csv.gz" --clobber; then
+                  rm -f "$f"; break
+                fi
                 echo "Yukleme basarisiz (deneme $deneme), 15 sn sonra tekrar"
                 sleep 15
-              done || true
-              rm -f "$dosya.gz"
-            fi
+              done
+              rm -f "yukleme/$saat.csv.gz"
+            done
+          }
+
+          # Toplayici 330 dk calisir; is 350 dk ile sinirli, son yuklemeye zaman kalir.
+          python collector.py --tum-hatlar --planlayici --donen-klasor cikti --sure 330 &
+          PID=$!
+          while kill -0 "$PID" 2> /dev/null; do
+            sleep 60
+            yukle
           done
+          wait "$PID" || echo "Toplayici hata ile bitti"
+          yukle
