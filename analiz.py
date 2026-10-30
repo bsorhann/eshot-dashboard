@@ -43,10 +43,10 @@ HAM_DESENLER = [os.path.join("data", "raw", "*", "*.csv.gz"),
 
 GUZERGAH_MAKS_UZAKLIK_M = 150   # bundan uzak konumlar güzergah dışı sayılır
 DURAK_MAKS_UZAKLIK_M = 50       # durak bu yönün güzergahına bu kadar yakın olmalı
-SEFER_MAKS_BOSLUK_SN = 660      # iki ölçüm arası bundan uzunsa sefer bölünür (5 dk örnekleme + 1 kayıp)
+SEFER_MAKS_BOSLUK_SN = 900      # iki ölçüm arası bundan uzunsa sefer bölünür (hız sınırı nedeniyle 5-8 dk örnekleme + 1 kayıp)
 SEFER_MAKS_GERI_M = 300         # bu kadar geri gidiş = yeni sefer (hat sonuna gelip dönmüş)
 YON_MAKS_ADIM_M = 8000          # yön eşleştirmede dikkate alınan en büyük adım
-VERI_BOSLUK_ESIK_DK = 12        # bundan uzun veri gelmeyen dönemler aralık ölçümünden çıkarılır
+VERI_BOSLUK_ESIK_DK = 15        # bundan uzun veri gelmeyen dönemler aralık ölçümünden çıkarılır
 GUVENILIR_DURAK_ORANI = 0.8     # geçiş sayısı medyanın bu oranından az olan duraklar dışarıda
 DAGILIM_ADIM_DK = 2             # dağılım grafiği kutu genişliği
 DAGILIM_UST_DK = 180            # bundan uzun aralıklar son kutuya yığılır
