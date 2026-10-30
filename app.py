@@ -20,16 +20,29 @@ YAZI = "#898781"      # grafik içi etiket/çizgi rengi (iki temada da okunur)
 MIN_OLCUM_SAAT = 50   # bundan az ölçümü olan saatler gösterilmez
 MIN_OLCUM_HAT = 200   # sıralamaya girmek için gereken en az ölçüm (az veriyle sıralama yanıltır)
 SIRALAMA_N = 15       # karşılaştırma grafiğinde gösterilen hat-yön sayısı
+MIN_MEDYAN_DK = 3     # tipik beklemesi bundan kısa hat-yönler gerçekçi değil (veri/güzergah sorunu); yarışmaz
 
 st.set_page_config(page_title="İzmir otobüs düzenliliği", page_icon="🚌", layout="wide")
 
 
 # ---------------------------------------------------------------- veri
 
+AY_ADLARI = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
+             "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+MIN_GUN_BU_AY = 7     # içinde bulunulan ay bundan az gün içeriyorsa varsayılan olarak geçen ay açılır
+
+
 @st.cache_data(ttl=3600)
-def yukle():
-    oku = lambda ad: pd.read_csv(os.path.join(VERI, ad))
-    with open(os.path.join(VERI, "meta.json"), encoding="utf-8") as f:
+def aylari_yukle():
+    with open(os.path.join(VERI, "aylar.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
+@st.cache_data(ttl=3600)
+def yukle(ay):
+    klasor = os.path.join(VERI, ay)
+    oku = lambda ad: pd.read_csv(os.path.join(klasor, ad))
+    with open(os.path.join(klasor, "meta.json"), encoding="utf-8") as f:
         meta = json.load(f)
     ozet = oku("ozet.csv")
     ozet["hat_adi"] = ozet.hat_adi.fillna("")
@@ -50,19 +63,31 @@ def her_n_de_bir(oran):
 
 def tarih(iso):
     t = pd.Timestamp(iso).tz_convert("Europe/Istanbul")
-    aylar = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
-             "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
-    return f"{t.day} {aylar[t.month - 1]} {t:%H:%M}"
+    return f"{t.day} {AY_ADLARI[t.month - 1]} {t:%H:%M}"
+
+
+def ay_adi(ay):
+    yil, no = ay.split("-")
+    return f"{AY_ADLARI[int(no) - 1]} {yil}"
+
+
+def ay_etiketi(a):
+    if a["tamamlandi"]:
+        return ay_adi(a["ay"])
+    return f"{ay_adi(a['ay'])} (devam ediyor · {a['gun_sayisi']} gün)"
 
 
 try:
-    meta, ozet, saatlik, durak, dagilim = yukle()
+    aylar = aylari_yukle()
 except FileNotFoundError:
     st.error("Henüz işlenmiş veri yok. Analiz iş akışı ilk kez çalıştığında burası dolacak.")
     st.stop()
+if not aylar:
+    st.error("Henüz işlenmiş veri yok.")
+    st.stop()
 
 
-# ---------------------------------------------------------------- başlık
+# ---------------------------------------------------------------- başlık ve ay seçimi
 
 st.title("İzmir otobüs düzenliliği")
 st.markdown(
@@ -70,12 +95,48 @@ st.markdown(
     "Bu sayfa, otobüslerin duraklara **ne kadar düzenli** geldiğini ölçüyor: durakta tipik olarak "
     "ne kadar beklendiğini, otobüslerin ne sıklıkla üst üste geldiğini ve ne sıklıkla uzun bekleme oluştuğunu."
 )
+
+# Ayın ilk günlerinde (az veri) varsayılan olarak tamamlanmış son ay açılır.
+varsayilan_ay = 0
+if not aylar[0]["tamamlandi"] and aylar[0]["gun_sayisi"] < MIN_GUN_BU_AY and len(aylar) > 1:
+    varsayilan_ay = 1
+secim = st.selectbox("Dönem", aylar, index=varsayilan_ay, format_func=ay_etiketi)
+ay = secim["ay"]
+meta, ozet, saatlik, durak, dagilim = yukle(ay)
+
 st.caption(
     (f"Veri: {tarih(meta['ilk_olcum_utc'])} – {tarih(meta['son_olcum_utc'])} · "
      f"{meta.get('hat_sayisi', ozet.hat_id.nunique())} hat · "
      f"{meta['aralik_olcumu']:,} bekleme ölçümü").replace(",", ".")
     + " · Kaynak: İzmir Büyükşehir Belediyesi Açık Veri Portalı"
 )
+if not secim["tamamlandi"] and secim["gun_sayisi"] < MIN_GUN_BU_AY:
+    st.warning(f"{ay_adi(ay)} yeni başladı, yalnızca {secim['gun_sayisi']} günlük veri var. "
+               "Sonuçlar ay ilerledikçe oturacak.")
+
+# ---------------------------------------------------------------- ayın öne çıkanları
+
+aday = ozet[(ozet.olcum >= MIN_OLCUM_HAT) & (ozet.medyan_dk >= MIN_MEDYAN_DK)]
+if len(aday) >= 3:
+    st.subheader(f"{ay_adi(ay)}: öne çıkanlar" + ("" if secim["tamamlandi"] else " (şimdilik)"))
+    kartlar = [
+        ("En dakik", aday.nsmallest(1, "uzun_bekleme_orani").iloc[0],
+         lambda r: f"Bekleyişlerin yalnızca {yuzde(r.uzun_bekleme_orani)}'i uzun sürdü"),
+        ("En çok bekleten", aday.nlargest(1, "uzun_bekleme_orani").iloc[0],
+         lambda r: f"{her_n_de_bir(r.uzun_bekleme_orani).capitalize()} normalden uzun sürdü"),
+        ("El ele gezenler", aday.nlargest(1, "yigilma_orani").iloc[0],
+         lambda r: f"Otobüsler {yuzde(r.yigilma_orani)} oranında üst üste geldi"),
+    ]
+    for kolon, (baslik, r, cumle) in zip(st.columns(3), kartlar):
+        with kolon.container(border=True):
+            st.caption(baslik)
+            st.markdown(f"### {int(r.hat_id)} · {r.yon_adi}")
+            st.markdown(f"{r.hat_adi}  \n{cumle(r)}. Tipik bekleme {r.medyan_dk:.0f} dk.")
+    st.caption(f"Yalnızca en az {MIN_OLCUM_HAT} ölçümü olan ve tipik beklemesi en az {MIN_MEDYAN_DK} dk "
+               "olan hat-yönler yarışıyor. Oranlar her hattın "
+               "kendi tipik beklemesine göre hesaplandığı için seyrek ve sık hatlar adil biçimde karşılaştırılıyor.")
+
+st.divider()
 
 # ---------------------------------------------------------------- filtreler
 
@@ -125,7 +186,7 @@ k = ozet.assign(
     medyan_metin=ozet.medyan_dk.round().astype(int).astype(str) + " dk",
 )
 k = pd.concat([
-    k[k.olcum >= MIN_OLCUM_HAT].nlargest(SIRALAMA_N, "uzun_bekleme_orani"),
+    k[(k.olcum >= MIN_OLCUM_HAT) & (k.medyan_dk >= MIN_MEDYAN_DK)].nlargest(SIRALAMA_N, "uzun_bekleme_orani"),
     k[k.secili],
 ]).drop_duplicates(["hat_id", "rota_yon"])
 taban = alt.Chart(k).encode(
@@ -274,8 +335,9 @@ st.caption("Durak geçiş anları 5 dakika arayla alınan iki konum arasında or
 with st.expander("Bu ölçümler nasıl yapıldı?"):
     st.markdown(f"""
 1. **Veri toplama.** İzmir Büyükşehir Belediyesi'nin açık veri API'sinden ESHOT'un tüm hatlarındaki
-   otobüslerin konumları 5 dakikada bir çekiliyor (GitHub Actions üzerinde, otomatik). Sayfa son
-   {meta.get('gun_sayisi', 14)} günün verisini gösteriyor ve her gece güncelleniyor. Dakikalık veriyle
+   otobüslerin konumları 5 dakikada bir çekiliyor (GitHub Actions üzerinde, otomatik). Sonuçlar takvim
+   ayı bazında hesaplanıyor: içinde bulunulan ay her gece güncelleniyor, biten aylar ayın 1'inde
+   kesinleşiyor. Bu ay için {meta.get('gun_sayisi', '?')} günlük veri kullanıldı. Dakikalık veriyle
    yapılan karşılaştırmada 5 dakikalık örnekleme, tipik bekleme ve uzun bekleme oranında ancak
    birkaç puanlık fark yarattı.
 2. **Hayalet kayıt temizliği.** API, otobüslerin canlı konumunun yanında garaj, aktarma merkezi

@@ -11,10 +11,12 @@ Sonra tüm günler birlikte:
   6. Sefer aralığı      -> aynı durağa ardışık iki otobüsün geliş farkı
   7. Özet tabloları     -> dashboard'un okuduğu küçük CSV'ler (data/islenmis/)
 
+Sonuçlar takvim ayı bazında data/islenmis/<YYYY-MM>/ klasörlerine yazılır.
+
 Kullanım:
-    python analiz.py                 # son 14 günün verisi
-    python analiz.py --gun 30        # son 30 gün
-    python analiz.py --gun 0         # bulunan tüm veri
+    python analiz.py                 # dünün ve bugünün ayı (her gece çalışan varsayılan)
+    python analiz.py --ay 2026-11    # belirli bir ay
+    python analiz.py --hepsi         # verisi bulunan tüm aylar
 
 Ham veri aranan yerler: data/raw/<gün>/*.csv.gz (eski, git içinde) ve
 data/indirilen/<gün>/*.csv.gz (Release'lerden indirilen).
@@ -397,20 +399,18 @@ def ozet_tablolari(a, durak_tablo, hat_listesi):
 
 # ---------------------------------------------------------------- ana akış
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--gun", type=int, default=14, help="Son kaç gün işlensin (0 = hepsi)")
-    args = p.parse_args()
-    t0 = time.time()
+def yaz(df, klasor, ad):
+    """CSV yazar. Metrikler 4 ondalık basamak; koordinatlar 5 basamak (~1 m).
+    (Genel %.4g biçimi koordinatları 38.37'ye indirip durakları yüzlerce metre kaydırıyordu.)"""
+    df = df.copy()
+    for s in df.select_dtypes("float").columns:
+        df[s] = df[s].round(5 if s in ("ENLEM", "BOYLAM") else 4)
+    df.to_csv(os.path.join(klasor, ad), index=False)
 
-    guzergah, duraklar, hat_listesi = referans_yukle()
-    rotalar = rota_sozlugu(guzergah)
-    durak_tablo = duraklari_hazirla(duraklar, rotalar, sorted({h for h, _ in rotalar}))
-    gunler = gunlere_gore_dosyalar(args.gun)
-    if not gunler:
-        raise SystemExit("Islenecek veri bulunamadi.")
-    print(f"{len(gunler)} gun: {list(gunler)[0]} .. {list(gunler)[-1]} | "
-          f"durak tablosu: {len(durak_tablo):,} satir ({time.time() - t0:.0f} sn)")
+
+def ay_isle(ay, gunler, rotalar, durak_tablo_tum, hat_listesi, t0):
+    """Bir takvim ayının günlerini işler ve data/islenmis/<ay>/ klasörüne yazar."""
+    print(f"== {ay}: {len(gunler)} gun ({list(gunler)[0]} .. {list(gunler)[-1]})")
 
     # Her gün ayrı işlenir; gün sınırı 00:00 UTC = 03:00 yerel, sefer olmayan saat.
     # Bir durağın aralıkları yalnızca o durağın geçişlerine bağlı olduğundan, güvenilmez
@@ -425,7 +425,7 @@ def main():
         if ham.empty:
             continue
         zamanlar = pd.unique(ham.zaman_utc)
-        gecis, s, _ = gun_isle(ham, rotalar, durak_tablo)
+        gecis, s, _ = gun_isle(ham, rotalar, durak_tablo_tum)
         if len(gecis):
             gecis_sayilari.append(gecis.groupby(["hat_id", "rota_yon", "durak_sira"]).size())
             a = aralik_sikistir(sefer_araliklari(gecis, veri_bosluklari(zamanlar)))
@@ -441,9 +441,11 @@ def main():
         del ham, gecis
 
     if not gecis_sayilari:
-        raise SystemExit("Hic gecis bulunamadi.")
+        print(f"  {ay}: hic gecis bulunamadi, atlandi.")
+        shutil.rmtree(gecici, ignore_errors=True)
+        return
     toplam = pd.concat(gecis_sayilari).groupby(level=[0, 1, 2]).sum()
-    durak_tablo = guvenilir_durak_isaretle(toplam, durak_tablo)
+    durak_tablo = guvenilir_durak_isaretle(toplam, durak_tablo_tum)
     guvenilir_durak = durak_tablo[durak_tablo.guvenilir]
     guvenilir_anahtar = durak_anahtari(guvenilir_durak).values
 
@@ -461,34 +463,24 @@ def main():
         sonuclar.append(ozet_tablolari(aralik_isaretle(aralik), guvenilir_durak, hat_listesi))
         del aralik
     shutil.rmtree(gecici, ignore_errors=True)
-    o, saatlik, durak_ozet, gunluk, dagilim = (
+    if not sonuclar:
+        print(f"  {ay}: olculebilen aralik yok, atlandi.")
+        return
+    o, saatlik, durak_ozet, _gunluk, dagilim = (
         pd.concat([s[i] for s in sonuclar], ignore_index=True) for i in range(5))
-    tum_zamanlar = np.concatenate(tum_zamanlar)
 
-    os.makedirs(CIKTI, exist_ok=True)
-    for eski in ("durak_gecisleri.csv.gz", "sefer_araliklari.csv.gz"):  # artik uretilmiyor
-        if os.path.exists(os.path.join(CIKTI, eski)):
-            os.remove(os.path.join(CIKTI, eski))
-    for eski in ("duraklar.csv", "gunluk.csv"):  # dashboard kullanmıyor; depoyu şişirmesin
-        if os.path.exists(os.path.join(CIKTI, eski)):
-            os.remove(os.path.join(CIKTI, eski))
     # Her gece depoya kaydedildiği için yalnızca dashboard'un kullandığı sütunlar yazılır.
-    def yaz(df, ad):
-        # Metrikler 4 ondalık basamak; koordinatlar ayrıca 5 basamağa yuvarlanır (~1 m).
-        # (Genel %.4g biçimi koordinatları 38.37'ye indirip durakları yüzlerce metre kaydırıyordu.)
-        df = df.copy()
-        for s in df.select_dtypes("float").columns:
-            df[s] = df[s].round(5 if s in ("ENLEM", "BOYLAM") else 4)
-        df.to_csv(os.path.join(CIKTI, ad), index=False)
-    yaz(o, "ozet.csv")
-    yaz(saatlik[HY + ["saat", "olcum", "medyan_dk", "uzun_bekleme_orani"]], "saatlik.csv")
-    durak_ozet = durak_ozet.assign(ENLEM=durak_ozet.ENLEM.round(5), BOYLAM=durak_ozet.BOYLAM.round(5))
+    klasor = os.path.join(CIKTI, ay)
+    os.makedirs(klasor, exist_ok=True)
+    yaz(o, klasor, "ozet.csv")
+    yaz(saatlik[HY + ["saat", "olcum", "medyan_dk", "uzun_bekleme_orani"]], klasor, "saatlik.csv")
     yaz(durak_ozet[HY + ["durak_sira", "DURAK_ADI", "ENLEM", "BOYLAM", "olcum", "medyan_dk",
-                        "uzun_bekleme_orani"]], "durak_ozet.csv")
-    yaz(dagilim, "dagilim.csv")
+                        "uzun_bekleme_orani"]], klasor, "durak_ozet.csv")
+    yaz(dagilim, klasor, "dagilim.csv")
 
-    zt = pd.to_datetime(pd.Series(pd.unique(tum_zamanlar)), utc=True)
+    zt = pd.to_datetime(pd.Series(pd.unique(np.concatenate(tum_zamanlar))), utc=True)
     meta = {
+        "ay": ay,
         "guncelleme_utc": pd.Timestamp.now(tz="UTC").isoformat(timespec="seconds"),
         "ilk_olcum_utc": zt.min().isoformat(),
         "son_olcum_utc": zt.max().isoformat(),
@@ -500,13 +492,73 @@ def main():
         "aralik_olcumu": int(sayac["aralik"]),
         "hat_sayisi": int(o.hat_id.nunique()),
     }
-    with open(os.path.join(CIKTI, "meta.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(klasor, "meta.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
 
-    print(f"Gecis: {sayac['gecis']:,} | Aralik: {sayac['aralik']:,} | Hat: {meta['hat_sayisi']} | "
-          f"Toplam sure: {time.time() - t0:.0f} sn")
-    print(o.sort_values("uzun_bekleme_orani", ascending=False).head(10)[
+    print(f"  {ay}: gecis {sayac['gecis']:,} | aralik {sayac['aralik']:,} | hat {meta['hat_sayisi']} | "
+          f"sure {time.time() - t0:.0f} sn")
+    print(o.sort_values("uzun_bekleme_orani", ascending=False).head(5)[
         ["hat_id", "yon_adi", "olcum", "medyan_dk", "uzun_bekleme_orani"]].round(2).to_string(index=False))
+
+
+def ay_listesini_guncelle():
+    """data/islenmis/aylar.json: dashboard'un ay seçimi için mevcut aylar (yeniden eskiye)."""
+    bu_ay = pd.Timestamp.now(tz="UTC").strftime("%Y-%m")
+    aylar = []
+    for m in sorted(glob.glob(os.path.join(CIKTI, "*", "meta.json")), reverse=True):
+        with open(m, encoding="utf-8") as f:
+            meta = json.load(f)
+        aylar.append({"ay": meta["ay"], "gun_sayisi": meta["gun_sayisi"],
+                      "tamamlandi": meta["ay"] < bu_ay, "hat_sayisi": meta["hat_sayisi"]})
+    with open(os.path.join(CIKTI, "aylar.json"), "w", encoding="utf-8") as f:
+        json.dump(aylar, f, ensure_ascii=False, indent=2)
+    print("Aylar:", [(a["ay"], a["gun_sayisi"]) for a in aylar])
+
+
+def eski_duz_dosyalari_sil():
+    """Ay klasörlerinden önceki düz yapıdan kalan dosyalar."""
+    for ad in ("ozet.csv", "saatlik.csv", "durak_ozet.csv", "dagilim.csv", "meta.json", "duraklar.csv",
+               "gunluk.csv", "durak_gecisleri.csv.gz", "sefer_araliklari.csv.gz"):
+        yol = os.path.join(CIKTI, ad)
+        if os.path.exists(yol):
+            os.remove(yol)
+
+
+def main():
+    p = argparse.ArgumentParser(description="Takvim ayı bazında düzenlilik analizi")
+    p.add_argument("--ay", nargs="*",
+                   help="İşlenecek aylar (YYYY-MM). Verilmezse dünün ve bugünün ayı (UTC): "
+                        "her gece içinde bulunulan ay güncellenir, ayın 1'inde biten ay kesinleşir.")
+    p.add_argument("--hepsi", action="store_true", help="Verisi bulunan tüm aylar")
+    args = p.parse_args()
+    t0 = time.time()
+
+    tum_gunler = gunlere_gore_dosyalar(0)
+    if not tum_gunler:
+        raise SystemExit("Islenecek veri bulunamadi.")
+    if args.hepsi:
+        aylar = sorted({g[:7] for g in tum_gunler})
+    elif args.ay:
+        aylar = sorted(set(args.ay))
+    else:
+        simdi = pd.Timestamp.now(tz="UTC")
+        aylar = sorted({(simdi - pd.Timedelta(days=1)).strftime("%Y-%m"), simdi.strftime("%Y-%m")})
+
+    guzergah, duraklar, hat_listesi = referans_yukle()
+    rotalar = rota_sozlugu(guzergah)
+    durak_tablo = duraklari_hazirla(duraklar, rotalar, sorted({h for h, _ in rotalar}))
+    print(f"Aylar: {aylar} | durak tablosu: {len(durak_tablo):,} satir ({time.time() - t0:.0f} sn)")
+
+    os.makedirs(CIKTI, exist_ok=True)
+    eski_duz_dosyalari_sil()
+    for ay in aylar:
+        gunler = {g: f for g, f in tum_gunler.items() if g.startswith(ay)}
+        if gunler:
+            ay_isle(ay, gunler, rotalar, durak_tablo, hat_listesi, t0)
+        else:
+            print(f"== {ay}: veri yok")
+    ay_listesini_guncelle()
+    print(f"Toplam sure: {time.time() - t0:.0f} sn")
 
 
 if __name__ == "__main__":
