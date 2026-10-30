@@ -1,12 +1,18 @@
 name: Analiz
 
-# Son 14 gunun ham verisini Release'lerden indirir, isler ve dashboard'un
-# okudugu data/islenmis/ klasorunu gunceller. Her gun Turkiye saatiyle 05:17'de
-# (gece seferleri bitince) ve istendiginde elle calisir.
+# Takvim ayi bazinda duzenlilik analizi. Her gun Turkiye saatiyle 05:17'de (gece
+# seferleri bitince) icinde bulunulan ayi yeniden hesaplar; ayin 1'inde biten ay da
+# son kez hesaplanip kesinlesir. Sonuclar data/islenmis/<YYYY-MM>/ altina yazilir.
+# Elle calistirirken bir ay (YYYY-MM) girilirse yalnizca o ay hesaplanir.
 on:
   schedule:
     - cron: "17 2 * * *"
   workflow_dispatch:
+    inputs:
+      ay:
+        description: "Hesaplanacak ay (YYYY-MM). Bos birakilirsa dunun ve bugunun ayi."
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -18,9 +24,10 @@ concurrency:
 jobs:
   analiz:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     env:
       GH_TOKEN: ${{ github.token }}
+      AY: ${{ github.event.inputs.ay }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,17 +38,27 @@ jobs:
       - name: Bagimliliklar
         run: pip install pandas numpy
 
-      - name: Son 14 gunun verisini indir
+      - name: Ayin verisini indir
         run: |
-          for i in $(seq 0 14); do
-            gun=$(date -u -d "$i day ago" +%F)
+          if [ -n "$AY" ]; then
+            bas="$AY-01"
+            bit=$(date -u -d "$bas +1 month -1 day" +%F)
+          else
+            bas=$(date -u -d "1 day ago" +%Y-%m-01)
+            bit=$(date -u +%F)
+          fi
+          echo "Indirilecek gunler: $bas .. $bit"
+          gun="$bas"
+          while [ "$(date -u -d "$gun" +%s)" -le "$(date -u -d "$bit" +%s)" ]; do
             gh release download "veri-$gun" --dir "data/indirilen/$gun" --pattern "*.csv.gz" \
               2> /dev/null && echo "$gun indirildi" || echo "$gun icin veri yok"
+            gun=$(date -u -d "$gun +1 day" +%F)
           done
           du -sh data/indirilen 2> /dev/null || true
 
       - name: Analiz
-        run: python analiz.py --gun 14
+        run: |
+          if [ -n "$AY" ]; then python analiz.py --ay "$AY"; else python analiz.py; fi
 
       - name: Kaydet
         run: |
