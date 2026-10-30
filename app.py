@@ -15,7 +15,8 @@ import streamlit as st
 
 VERI = os.path.join("data", "islenmis")
 MAVI = "#2a78d6"      # vurgulanan seri
-GRI = "#c3c2b7"       # bağlam serileri
+GRI = "#9a998f"       # bağlam serileri (açık ve koyu temada okunur)
+YAZI = "#898781"      # grafik içi etiket/çizgi rengi (iki temada da okunur)
 MIN_OLCUM_SAAT = 50   # bundan az ölçümü olan saatler gösterilmez
 
 st.set_page_config(page_title="İzmir otobüs düzenliliği", page_icon="🚌", layout="wide")
@@ -130,7 +131,7 @@ cubuk = taban.mark_bar(cornerRadiusEnd=4, height=18).encode(
              alt.Tooltip("olcum:Q", title="Ölçüm", format=",")],
 )
 etiket = taban.mark_text(align="left", dx=4, fontSize=12).encode(text="oran_metin:N",
-                                                                  color=alt.value("#52514e"))
+                                                                  color=alt.value(YAZI))
 st.altair_chart((cubuk + etiket).properties(height=len(k) * 30 + 20), width="stretch")
 
 st.divider()
@@ -184,15 +185,16 @@ else:
     d["medyan_metin"] = d.medyan_dk.round().astype(int).astype(str) + " dk"
     sol, sag = st.columns([3, 2])
     with sol:
-        # sıralı tek renk: açık = iyi, koyu = çok uzun bekleme
+        # Tek renk, büyüklük = uzun bekleme oranı. Renk koyulaştırmak koyu haritada
+        # en önemli noktaları kaybettiriyordu; büyüklük iki temada da okunur.
         enk, enb = d.uzun_bekleme_orani.min(), d.uzun_bekleme_orani.max()
         oran = ((d.uzun_bekleme_orani - enk) / (enb - enk if enb > enk else 1)).clip(0, 1)
-        acik, koyu = (181, 212, 244), (12, 68, 124)
-        d["renk"] = [[int(a + (b - a) * o) for a, b in zip(acik, koyu)] + [230] for o in oran]
+        d["yaricap_px"] = 4 + 10 * oran
         katman = pdk.Layer(
-            "ScatterplotLayer", data=d, get_position="[BOYLAM, ENLEM]", get_fill_color="renk",
-            get_line_color=[255, 255, 255], line_width_min_pixels=1.5, stroked=True,
-            get_radius=55, radius_min_pixels=5, radius_max_pixels=12, pickable=True)
+            "ScatterplotLayer", data=d, get_position="[BOYLAM, ENLEM]",
+            get_fill_color=[42, 120, 214, 230], get_line_color=[255, 255, 255],
+            line_width_min_pixels=1.5, stroked=True, radius_units="pixels",
+            get_radius="yaricap_px", pickable=True)
         st.pydeck_chart(pdk.Deck(
             layers=[katman],
             initial_view_state=pdk.ViewState(latitude=d.ENLEM.mean(), longitude=d.BOYLAM.mean(), zoom=12),
@@ -200,7 +202,7 @@ else:
                              "Uzun bekleme: {oran_metin}"},
             map_style=None,
         ), height=420)
-        st.caption("Koyu mavi duraklarda uzun bekleme daha sık.")
+        st.caption("Nokta büyüdükçe o durakta uzun bekleme daha sık.")
     with sag:
         st.markdown("**Durak sırasına göre uzun bekleme**")
         st.altair_chart(
@@ -228,7 +230,7 @@ hist = alt.Chart(a).mark_bar(color=MAVI, cornerRadiusEnd=2).encode(
     tooltip=[alt.Tooltip("aralik_dk:Q", bin=alt.Bin(step=2), title="Aralık (dk)"),
              alt.Tooltip("count():Q", title="Ölçüm")])
 cizgi = alt.Chart(pd.DataFrame({"m": [secili.medyan_dk]})).mark_rule(
-    strokeDash=[4, 4], color="#52514e", strokeWidth=1.5).encode(x="m:Q")
+    strokeDash=[4, 4], color=YAZI, strokeWidth=2).encode(x="m:Q")
 st.altair_chart((hist + cizgi).properties(height=260), width="stretch")
 st.caption(f"Kesikli çizgi tipik beklemeyi ({secili.medyan_dk:.0f} dk) gösteriyor. Düzenli bir hatta "
            "çubuklar bu çizginin etrafında toplanır; yayıldıkça düzensizlik artar. "
