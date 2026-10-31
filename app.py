@@ -74,6 +74,17 @@ def tarih(iso):
     return f"{t.day} {AY_ADLARI[t.month - 1]} {t:%H:%M}"
 
 
+def kadraj_zoom(d, genislik_px=600, yukseklik_px=400):
+    """Güzergahın tamamı haritaya sığacak yakınlaştırma seviyesi (Web Mercator yaklaşımı)."""
+    import math
+    lon_aralik = max(d.BOYLAM.max() - d.BOYLAM.min(), 0.005)
+    lat_aralik = max(d.ENLEM.max() - d.ENLEM.min(), 0.005) / math.cos(math.radians(d.ENLEM.mean()))
+    # deck.gl dünyayı zoom 0da 512 piksel kabul eder (256 değil).
+    zoom = min(math.log2(360 * genislik_px / 512 / lon_aralik),
+               math.log2(360 * yukseklik_px / 512 / lat_aralik)) - 0.3  # kenarlarda pay
+    return max(8.0, min(15.0, zoom))
+
+
 def ay_adi(ay):
     yil, no = ay.split("-")
     return f"{AY_ADLARI[int(no) - 1]} {yil}"
@@ -289,15 +300,20 @@ else:
         # en önemli noktaları kaybettiriyordu; büyüklük iki temada da okunur.
         enk, enb = d.uzun_bekleme_orani.min(), d.uzun_bekleme_orani.max()
         oran = ((d.uzun_bekleme_orani - enk) / (enb - enk if enb > enk else 1)).clip(0, 1)
-        d["yaricap_px"] = 4 + 10 * oran
+        # Yarıçap metre cinsinden; ekranda 4-16 piksel arasında tutulur. (radius_units="pixels"
+        # kullanılmadı: pydeck metni "pixels" adlı bir değişken sanıp noktaları dev boyutta çiziyordu.)
+        d["yaricap_m"] = 40 + 160 * oran
         katman = pdk.Layer(
             "ScatterplotLayer", data=d, get_position="[BOYLAM, ENLEM]",
             get_fill_color=[42, 120, 214, 230], get_line_color=[255, 255, 255],
-            line_width_min_pixels=1.5, stroked=True, radius_units="pixels",
-            get_radius="yaricap_px", pickable=True)
+            line_width_min_pixels=1.5, stroked=True, get_radius="yaricap_m",
+            radius_min_pixels=4, radius_max_pixels=16, pickable=True)
         st.pydeck_chart(pdk.Deck(
             layers=[katman],
-            initial_view_state=pdk.ViewState(latitude=d.ENLEM.mean(), longitude=d.BOYLAM.mean(), zoom=12),
+            initial_view_state=pdk.ViewState(
+                latitude=(d.ENLEM.min() + d.ENLEM.max()) / 2,
+                longitude=(d.BOYLAM.min() + d.BOYLAM.max()) / 2,
+                zoom=kadraj_zoom(d)),
             tooltip={"html": "<b>{DURAK_ADI}</b><br/>Tipik bekleme: {medyan_metin}<br/>"
                              "Uzun bekleme: {oran_metin}"},
             map_style=None,
