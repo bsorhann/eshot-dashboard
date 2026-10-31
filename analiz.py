@@ -289,16 +289,19 @@ def veri_bosluklari(zamanlar, esik_dk=VERI_BOSLUK_ESIK_DK):
 
 def sefer_araliklari(gecis, bosluklar=None):
     """
-    Aynı durağa ardışık iki farklı otobüsün geliş farkı (dakika).
+    Aynı durağa ardışık iki farklı seferin geliş farkı (dakika).
     İki geçiş arasına bir veri boşluğu giriyorsa aralık ölçülemez, atlanır.
     """
     g = gecis.sort_values(["hat_id", "rota_yon", "durak_sira", "gecis_zamani"]).copy()
     grup = g.groupby(["hat_id", "rota_yon", "durak_sira"])
-    g["onceki_otobus"] = grup.otobus_id.shift()
+    # Farklı SEFER şartı: tek otobüslü hatlarda aynı otobüsün bir sonraki turu da gerçek bir
+    # beklemedir (eskiden "farklı otobüs" şartı bu hatları hiç ölçmüyordu); aynı seferdeki
+    # GPS titremesinden doğan çift geçişler ise elenir.
+    g["onceki_sefer"] = grup.sefer.shift()
     g["onceki_gecis"] = grup.gecis_zamani.shift()
     g["aralik_dk"] = (g.gecis_zamani - g.onceki_gecis).dt.total_seconds() / 60
     g = g.dropna(subset=["aralik_dk"])
-    g = g[g.onceki_otobus != g.otobus_id]
+    g = g[g.onceki_sefer != g.sefer]
 
     if bosluklar is not None and len(bosluklar):
         bas = bosluklar.bas.values
@@ -311,7 +314,7 @@ def sefer_araliklari(gecis, bosluklar=None):
         kesisir = np.zeros(len(g), dtype=bool)
         kesisir[j_ok] = bas[j[j_ok]] < s[j_ok]
         g = g[~kesisir]
-    return g.drop(columns=["onceki_gecis", "onceki_otobus"])
+    return g.drop(columns=["onceki_gecis", "onceki_sefer"])
 
 
 def aralik_sikistir(aralik):

@@ -32,14 +32,22 @@ AY_ADLARI = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
 MIN_GUN_BU_AY = 7     # içinde bulunulan ay bundan az gün içeriyorsa varsayılan olarak geçen ay açılır
 
 
-@st.cache_data(ttl=3600)
-def aylari_yukle():
+def surum(*parcalar):
+    """Dosyanın değiştirilme zamanı: önbellek anahtarı. Yeni analiz gelince önbellek kendiliğinden yenilenir."""
+    try:
+        return os.path.getmtime(os.path.join(VERI, *parcalar))
+    except OSError:
+        return 0
+
+
+@st.cache_data
+def aylari_yukle(surum_anahtari):
     with open(os.path.join(VERI, "aylar.json"), encoding="utf-8") as f:
         return json.load(f)
 
 
-@st.cache_data(ttl=3600)
-def yukle(ay):
+@st.cache_data(max_entries=6)
+def yukle(ay, surum_anahtari):
     klasor = os.path.join(VERI, ay)
     oku = lambda ad: pd.read_csv(os.path.join(klasor, ad))
     with open(os.path.join(klasor, "meta.json"), encoding="utf-8") as f:
@@ -78,7 +86,7 @@ def ay_etiketi(a):
 
 
 try:
-    aylar = aylari_yukle()
+    aylar = aylari_yukle(surum("aylar.json"))
 except FileNotFoundError:
     st.error("Henüz işlenmiş veri yok. Analiz iş akışı ilk kez çalıştığında burası dolacak.")
     st.stop()
@@ -102,7 +110,7 @@ if not aylar[0]["tamamlandi"] and aylar[0]["gun_sayisi"] < MIN_GUN_BU_AY and len
     varsayilan_ay = 1
 secim = st.selectbox("Dönem", aylar, index=varsayilan_ay, format_func=ay_etiketi)
 ay = secim["ay"]
-meta, ozet, saatlik, durak, dagilim = yukle(ay)
+meta, ozet, saatlik, durak, dagilim = yukle(ay, surum(ay, "meta.json"))
 
 st.caption(
     (f"Veri: {tarih(meta['ilk_olcum_utc'])} – {tarih(meta['son_olcum_utc'])} · "
