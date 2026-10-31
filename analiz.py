@@ -327,15 +327,27 @@ def aralik_sikistir(aralik):
     })
 
 
+# Saat dilimleri (yerel saat). Tarifede sefer sıklığı dilime göre değiştiği için her
+# bekleme, aynı hat-yönün AYNI DİLİMDEKİ tipik beklemesiyle karşılaştırılır. Tüm günün
+# medyanıyla karşılaştırmak, akşam/gece planlı seyrek seferleri "uzun bekleme" gibi gösteriyordu.
+SAAT_DILIMI = np.array([0] * 6 + [1] * 4 + [2] * 6 + [3] * 4 + [4] * 4)  # 0-5 gece, 6-9 sabah zirvesi,
+#                                                                          10-15 gün içi, 16-19 akşam zirvesi, 20-23 akşam
+MIN_DILIM_OLCUM = 20  # dilimde bundan az ölçüm varsa hattın tüm gün medyanı kullanılır
+
+
 def aralik_isaretle(a):
     """
-    Her aralığı, kendi hat-yönünün tipik aralığına (medyan) göre etiketler:
+    Her aralığı, kendi hat-yönünün aynı saat dilimindeki tipik aralığına (medyan) göre etiketler:
       yigilma = medyanın yarısından kısa (otobüsler üst üste geldi)
       uzun    = medyanın 1,5 katından uzun (durakta uzun bekleme)
     """
-    hy_medyan = a.groupby(HY).aralik_dk.transform("median")
-    a["yigilma"] = a.aralik_dk < 0.5 * hy_medyan
-    a["uzun"] = a.aralik_dk > 1.5 * hy_medyan
+    dilim = SAAT_DILIMI[a.saat.astype(int).values]
+    g = a.assign(_dilim=dilim).groupby(HY + ["_dilim"]).aralik_dk
+    referans = g.transform("median")
+    yeterli = g.transform("size") >= MIN_DILIM_OLCUM
+    referans = referans.where(yeterli, a.groupby(HY).aralik_dk.transform("median"))
+    a["yigilma"] = a.aralik_dk < 0.5 * referans
+    a["uzun"] = a.aralik_dk > 1.5 * referans
     return a
 
 

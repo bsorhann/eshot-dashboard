@@ -164,9 +164,10 @@ k1.metric("Tipik bekleme", f"{secili.medyan_dk:.0f} dk",
 k2.metric("10 beklemeden 9'u en fazla", f"{secili.p90_dk:.0f} dk",
           help="Aralıkların %90'ı bu süreden kısa.")
 k3.metric("Uzun bekleme", yuzde(secili.uzun_bekleme_orani),
-          help="Tipik beklemenin 1,5 katından uzun süren aralıkların oranı.")
+          help="Hattın aynı saat dilimindeki tipik beklemesinin 1,5 katından uzun süren "
+               "aralıkların oranı. Planlı seyrek saatler (gece, akşam) haksız yere cezalandırılmaz.")
 k4.metric("Üst üste gelme (yığılma)", yuzde(secili.yigilma_orani),
-          help="Tipik beklemenin yarısından kısa aralıkların oranı: iki otobüs neredeyse "
+          help="Aynı saat dilimindeki tipik beklemenin yarısından kısa aralıkların oranı: iki otobüs neredeyse "
                "birlikte geliyor, ardından genelde uzun bir boşluk oluşuyor.")
 st.markdown(
     f"**{hat} numaralı hatta, {yon_adi.replace(' yönü', '')} yönünde** durakta "
@@ -178,7 +179,7 @@ st.divider()
 # ---------------------------------------------------------------- hat karşılaştırması
 
 st.subheader(f"En düzensiz {SIRALAMA_N} hat-yön")
-st.caption(f"Uzun bekleme oranı: tipik beklemenin 1,5 katını aşan bekleyişlerin payı. Yalnızca en az "
+st.caption(f"Uzun bekleme oranı: aynı saat dilimindeki tipik beklemenin 1,5 katını aşan bekleyişlerin payı. Yalnızca en az "
            f"{MIN_OLCUM_HAT} ölçümü olan hat-yönler sıralandı. Seçtiğin hat listede yoksa en alta eklenir.")
 k = ozet.assign(
     satir=ozet.hat_id.astype(str) + " · " + ozet.yon_adi,
@@ -352,12 +353,15 @@ with st.expander("Bu ölçümler nasıl yapıldı?"):
    toplanamayan dönemlere (gece, kesinti) denk gelen aralıklar ve hat uçlarındaki güvenilmez
    duraklar hesaba katılmıyor.
 
-**Tanımlar:** *Tipik bekleme* = aralıkların medyanı. *Uzun bekleme* = tipik beklemenin 1,5 katından
-uzun. *Yığılma* = tipik beklemenin yarısından kısa (otobüsler üst üste geliyor).
+**Tanımlar:** *Tipik bekleme* = aralıkların medyanı. *Uzun bekleme* = hattın **aynı saat
+dilimindeki** tipik beklemesinin 1,5 katından uzun. *Yığılma* = aynı dilimdeki tipik beklemenin
+yarısından kısa (otobüsler üst üste geliyor). Saat dilimleri: gece (00-06), sabah zirvesi (06-10),
+gün içi (10-16), akşam zirvesi (16-20), akşam (20-24). Böylece akşam ve gecenin planlı olarak
+seyrek seferleri "uzun bekleme" sayılmıyor; ölçü tarifeden değil, düzensizlikten etkileniyor.
 
 **Sınırlar:** Tarifedeki planlanan sefer aralıkları açık veride bulunmadığı için ölçümler
-planlanana değil, hattın kendi tipik değerine göre yapılıyor. Akşam ve hafta sonu sefer
-sıklığı değiştiğinden saat bazındaki grafikler daha doğru bir tablo verir.
+planlanana değil, hattın kendi tipik değerine göre yapılıyor. Hafta içi ve hafta sonu
+tarifeleri henüz ayrılmıyor.
 
 Kaynak: [İzmir Büyükşehir Belediyesi Açık Veri Portalı](https://acikveri.bizizmir.com) ·
 İzmir Metropolitan Municipality Open Data License · Son güncelleme: {tarih(meta['guncelleme_utc'])}
