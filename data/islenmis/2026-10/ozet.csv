@@ -1,559 +1,563 @@
 hat_id,hat_adi,rota_yon,olcum,medyan_dk,ort_dk,p90_dk,p99_dk,dagilim_cv,yigilma_orani,uzun_bekleme_orani,yon_adi
-8,Güzelbahçe – Fahrettin Altay Aktarma Merkezi,1,2653,29.2155,32.9038,53.9638,74.6929,0.457,0.0441,0.1809,Fahrettin Altay Aktarma Merkezi yönü
-8,Güzelbahçe – Fahrettin Altay Aktarma Merkezi,2,2572,26.6292,29.9087,48.3871,67.5892,0.4194,0.0292,0.1769,Güzelbahçe yönü
-16,Vatan Mahallesi – Üçyol,1,304,47.3713,55.7186,115.3269,120.7561,0.4673,0.0,0.1513,Üçyol yönü
+8,Güzelbahçe – Fahrettin Altay Aktarma Merkezi,1,3130,29.4182,33.3924,54.3331,73.8092,0.4419,0.0425,0.1668,Fahrettin Altay Aktarma Merkezi yönü
+8,Güzelbahçe – Fahrettin Altay Aktarma Merkezi,2,3160,26.177,30.2374,51.5886,67.9905,0.442,0.0424,0.1541,Güzelbahçe yönü
+16,Vatan Mahallesi – Üçyol,1,304,47.3713,55.7186,115.3269,120.7561,0.4673,0.0,0.0,Üçyol yönü
 16,Vatan Mahallesi – Üçyol,2,251,46.4142,46.9535,52.81,77.905,0.2261,0.0,0.0757,Vatan Mahallesi yönü
 32,Çimentepe Sitesi – Konak,1,56,22.0592,27.7121,37.1388,91.098,0.5198,0.0,0.3214,Konak yönü
 32,Çimentepe Sitesi – Konak,2,25,22.5686,26.197,45.7161,46.9259,0.4118,0.0,0.2,Çimentepe Sitesi yönü
-64,Ayakkabıcılar Sitesi – Kemer Aktarma Merkezi,1,480,30.0549,36.0441,50.285,98.5886,0.4135,0.0,0.1542,Kemer Aktarma Merkezi yönü
-64,Ayakkabıcılar Sitesi – Kemer Aktarma Merkezi,2,510,30.5751,38.5368,77.3288,94.6932,0.5232,0.0,0.1667,Ayakkabıcılar Sitesi yönü
-72,İşçievleri – Konak,1,889,26.1707,32.2621,46.2017,194.2566,0.9985,0.126,0.1339,Konak yönü
-72,İşçievleri – Konak,2,815,27.7355,31.1301,53.328,118.9229,0.7124,0.2209,0.1853,İşçievleri yönü
-104,Buca Toplu Konutları – Konak,1,1480,24.4,36.0157,52.1028,237.7334,1.0673,0.0027,0.1993,Konak yönü
-104,Buca Toplu Konutları – Konak,2,886,28.5189,40.7368,67.2449,210.3337,0.8846,0.0,0.2844,Buca Toplu Konutları yönü
-128,Egekent 2 – Egekent Aktarma,1,898,25.1662,32.9349,39.7547,174.4401,0.7439,0.0,0.1047,Egekent Aktarma yönü
-128,Egekent 2 – Egekent Aktarma,2,801,26.2218,28.8038,36.922,107.4738,0.3943,0.0,0.0187,Egekent 2 yönü
-136,Örnekköy – Karşıyaka,1,1051,20.7815,28.8809,34.112,168.328,0.9117,0.0038,0.1541,Karşıyaka yönü
-136,Örnekköy – Karşıyaka,2,897,23.4708,30.7113,41.0827,167.4725,0.8856,0.0,0.1683,Örnekköy yönü
-152,Gaziemir – Konak,1,252,27.9582,42.3348,50.8434,214.412,0.9549,0.0,0.3095,Konak yönü
-152,Gaziemir – Konak,2,606,32.9186,51.8863,102.906,171.9221,0.7408,0.0858,0.3135,Gaziemir yönü
-168,Evka 4 – Halkapınar Metro,1,1453,15.0926,22.9496,35.4822,106.3723,0.8917,0.0317,0.2884,Halkapınar Metro yönü
-168,Evka 4 – Halkapınar Metro,2,1065,15.805,22.4565,37.207,93.167,0.7281,0.0038,0.2977,Evka 4 yönü
+64,Ayakkabıcılar Sitesi – Kemer Aktarma Merkezi,1,663,38.1328,36.1387,49.129,98.6001,0.3925,0.0196,0.0965,Kemer Aktarma Merkezi yönü
+64,Ayakkabıcılar Sitesi – Kemer Aktarma Merkezi,2,669,36.8514,39.03,65.426,94.6047,0.4542,0.0,0.1136,Ayakkabıcılar Sitesi yönü
+72,İşçievleri – Konak,1,1154,25.5279,30.5428,44.7561,178.8816,0.9374,0.0295,0.1386,Konak yönü
+72,İşçievleri – Konak,2,1031,27.0646,29.9823,46.1361,118.1671,0.6657,0.1552,0.1823,İşçievleri yönü
+104,Buca Toplu Konutları – Konak,1,2058,24.7641,32.9909,51.3965,237.3204,1.0007,0.0243,0.0364,Konak yönü
+104,Buca Toplu Konutları – Konak,2,1297,27.2999,36.8471,66.6426,209.9553,0.8667,0.0609,0.0655,Buca Toplu Konutları yönü
+128,Egekent 2 – Egekent Aktarma,1,1165,25.3137,31.0948,36.4077,174.2269,0.7009,0.0,0.0567,Egekent Aktarma yönü
+128,Egekent 2 – Egekent Aktarma,2,1065,25.8917,28.3047,36.6821,107.4721,0.3957,0.0,0.0601,Egekent 2 yönü
+136,Örnekköy – Karşıyaka,1,1383,20.7273,27.5829,33.5449,160.636,0.8444,0.0,0.1468,Karşıyaka yönü
+136,Örnekköy – Karşıyaka,2,1161,22.3096,29.0315,40.4389,167.0835,0.8423,0.0129,0.1688,Örnekköy yönü
+152,Gaziemir – Konak,1,370,28.507,58.6805,183.5282,229.1424,1.0771,0.0595,0.3108,Konak yönü
+152,Gaziemir – Konak,2,662,34.6345,57.6433,118.842,171.9207,0.7177,0.0302,0.1178,Gaziemir yönü
+168,Evka 4 – Halkapınar Metro,1,2032,15.3433,20.7818,34.1196,101.7312,0.8586,0.0285,0.092,Halkapınar Metro yönü
+168,Evka 4 – Halkapınar Metro,2,1481,15.5725,20.3706,34.5438,92.61,0.701,0.054,0.0574,Evka 4 yönü
 176,Demirciköy – Adatepe,1,140,75.0756,74.9954,83.35,84.1061,0.0963,0.0,0.0,Adatepe yönü
-224,Cennetçeşme – Konak,1,1091,35.5989,41.8491,66.5633,185.695,0.6939,0.055,0.1897,Konak yönü
-224,Cennetçeşme – Konak,2,962,33.778,41.8321,78.1961,170.4213,0.7583,0.053,0.1809,Cennetçeşme yönü
-240,Zübeyde Hanım Mahallesi – Halkapınar Metro 2,1,801,21.7426,30.3627,60.2983,199.7312,1.0045,0.0,0.2022,Halkapınar Metro 2 yönü
-240,Zübeyde Hanım Mahallesi – Halkapınar Metro 2,2,715,21.5426,31.0276,73.3669,155.101,0.9653,0.0559,0.1566,Zübeyde Hanım Mahallesi yönü
-304,Tınaztepe – Konak,1,8377,14.0793,16.5075,28.6369,50.0069,0.5481,0.0468,0.1935,Konak yönü
-304,Tınaztepe – Konak,2,6276,14.3119,17.1183,30.2562,56.244,0.5984,0.0441,0.1801,Tınaztepe yönü
-344,Evka 2 – Çiğli Aktarma Merkezi,1,229,34.9219,47.2655,93.4623,223.843,0.8538,0.0,0.1135,Çiğli Aktarma Merkezi yönü
-344,Evka 2 – Çiğli Aktarma Merkezi,2,274,36.2609,50.5329,39.7733,234.4493,0.9952,0.0,0.0912,Evka 2 yönü
-368,Ümit Mahallesi – Bornova Metro,1,284,31.8052,40.0301,90.7388,143.5809,0.7722,0.0704,0.1479,Bornova Metro yönü
-368,Ümit Mahallesi – Bornova Metro,2,418,32.9773,37.0874,63.2852,117.1,0.6877,0.256,0.1986,Ümit Mahallesi yönü
-480,İnciraltı – Üçkuyular İskele,1,239,31.6053,38.7743,59.5218,62.2502,0.331,0.0,0.272,Üçkuyular İskele yönü
-480,İnciraltı – Üçkuyular İskele,2,333,32.6014,37.0364,44.7172,125.0364,0.6388,0.0,0.0601,İnciraltı yönü
-520,Salih Omurtak – Üçyol Metro,1,194,42.9228,56.7138,133.3377,173.9426,0.66,0.0,0.1237,Üçyol Metro yönü
-520,Salih Omurtak – Üçyol Metro,2,213,35.6869,52.4886,144.6373,177.5492,0.83,0.0,0.1315,Salih Omurtak yönü
-536,Bayraklı Şehir Hastanesi – Şirinyer Aktarma Merkezi,1,58,81.5918,75.6469,85.6618,86.0502,0.1291,0.0,0.0,Şirinyer Aktarma Merkezi yönü
-536,Bayraklı Şehir Hastanesi – Şirinyer Aktarma Merkezi,2,57,80.4896,76.272,85.6869,85.8994,0.1287,0.0,0.0,Bayraklı Şehir Hastanesi yönü
-560,Pınarbaşı – Halkapınar Metro,1,1854,16.9784,18.4216,26.9123,97.2973,0.7182,0.1375,0.1321,Halkapınar Metro yönü
-560,Pınarbaşı – Halkapınar Metro,2,1504,17.4474,18.6116,25.8008,44.4946,0.4897,0.0552,0.0831,Pınarbaşı yönü
-568,Evka 4 – Bornova Metro,1,1837,18.9242,24.295,32.7912,99.523,0.7748,0.012,0.2891,Bornova Metro yönü
-568,Evka 4 – Bornova Metro,2,1487,21.8126,24.1914,32.0329,125.6123,0.6972,0.1036,0.0565,Evka 4 yönü
+224,Cennetçeşme – Konak,1,1417,39.7126,42.0057,65.6016,185.9241,0.6932,0.0042,0.1884,Konak yönü
+224,Cennetçeşme – Konak,2,1130,35.6792,41.8449,75.5973,165.1201,0.7003,0.0124,0.1044,Cennetçeşme yönü
+240,Zübeyde Hanım Mahallesi – Halkapınar Metro 2,1,953,22.7972,32.2474,51.5895,194.6902,0.8858,0.0126,0.191,Halkapınar Metro 2 yönü
+240,Zübeyde Hanım Mahallesi – Halkapınar Metro 2,2,862,22.7233,33.5924,54.4014,146.0752,0.8297,0.0673,0.1218,Zübeyde Hanım Mahallesi yönü
+304,Tınaztepe – Konak,1,8732,14.0931,16.5733,28.9195,49.7712,0.5467,0.0491,0.1831,Konak yönü
+304,Tınaztepe – Konak,2,6516,14.4601,17.3193,31.0529,56.1571,0.5922,0.0408,0.1891,Tınaztepe yönü
+344,Evka 2 – Çiğli Aktarma Merkezi,1,337,34.8789,43.2927,37.4548,223.5974,0.7797,0.0,0.0772,Çiğli Aktarma Merkezi yönü
+344,Evka 2 – Çiğli Aktarma Merkezi,2,380,35.6403,46.257,40.0375,234.3399,0.9354,0.0,0.0658,Evka 2 yönü
+368,Ümit Mahallesi – Bornova Metro,1,301,32.1534,43.984,98.6045,143.5808,0.7755,0.0664,0.2591,Bornova Metro yönü
+368,Ümit Mahallesi – Bornova Metro,2,452,35.6744,47.1102,113.7288,170.8276,0.9104,0.25,0.1195,Ümit Mahallesi yönü
+480,İnciraltı – Üçkuyular İskele,1,390,30.4664,38.5884,62.8242,87.4132,0.5082,0.0026,0.2641,Üçkuyular İskele yönü
+480,İnciraltı – Üçkuyular İskele,2,564,27.4543,32.3905,44.5373,124.0958,0.6366,0.0,0.0621,İnciraltı yönü
+520,Salih Omurtak – Üçyol Metro,1,194,42.9228,56.7138,133.3377,173.9426,0.66,0.0,0.1134,Üçyol Metro yönü
+520,Salih Omurtak – Üçyol Metro,2,205,35.6869,51.7952,144.5934,177.5498,0.8214,0.0,0.1268,Salih Omurtak yönü
+536,Bayraklı Şehir Hastanesi – Şirinyer Aktarma Merkezi,1,91,80.9802,77.2108,85.5704,86.0379,0.1055,0.0,0.0,Şirinyer Aktarma Merkezi yönü
+536,Bayraklı Şehir Hastanesi – Şirinyer Aktarma Merkezi,2,92,77.3165,76.2539,85.6418,85.8731,0.1015,0.0,0.0,Bayraklı Şehir Hastanesi yönü
+560,Pınarbaşı – Halkapınar Metro,1,2317,17.879,18.6926,26.1147,96.9751,0.6445,0.0557,0.0703,Halkapınar Metro yönü
+560,Pınarbaşı – Halkapınar Metro,2,1853,17.7282,18.6201,25.2229,36.2791,0.446,0.0092,0.02,Pınarbaşı yönü
+568,Evka 4 – Bornova Metro,1,2303,18.3454,23.4406,32.5894,98.7566,0.7424,0.0386,0.102,Bornova Metro yönü
+568,Evka 4 – Bornova Metro,2,1816,20.3301,23.2845,32.1366,106.8331,0.6597,0.0909,0.0721,Evka 4 yönü
 584,İnönü Mahallesi – Bornova Metro,1,5,94.908,94.8234,95.1337,95.2573,0.0034,0.0,0.0,Bornova Metro yönü
 584,İnönü Mahallesi – Bornova Metro,2,22,90.9326,90.9886,91.9607,92.183,0.0083,0.0,0.0,İnönü Mahallesi yönü
-608,Egekent 2 – İzmir Otogar,1,1295,31.1185,36.5501,36.7255,172.7948,0.6553,0.0,0.071,İzmir Otogar yönü
-608,Egekent 2 – İzmir Otogar,2,1205,32.659,39.1957,54.7506,179.0625,0.6741,0.0199,0.1452,Egekent 2 yönü
-616,Kaymakçı – Ödemiş,1,385,40.4473,39.0695,41.5768,44.313,0.2243,0.0,0.0026,Ödemiş yönü
-616,Kaymakçı – Ödemiş,2,398,40.0103,45.3303,43.4367,132.8219,0.5664,0.0025,0.093,Kaymakçı yönü
-640,Sığacık – Seferihisar,1,128,45.2909,45.0189,49.062,49.2366,0.0792,0.0,0.0,Seferihisar yönü
-640,Sığacık – Seferihisar,2,282,45.7322,76.064,225.3041,310.5009,1.0339,0.0,0.1489,Sığacık yönü
-648,Gazi Mahallesi – Menemen Aktarma Merkezi,1,451,46.8845,44.2339,51.0213,54.3234,0.1719,0.0222,0.0,Menemen Aktarma Merkezi yönü
-648,Gazi Mahallesi – Menemen Aktarma Merkezi,2,243,49.0644,66.0703,106.52,111.4285,0.4071,0.0,0.3169,Gazi Mahallesi yönü
-664,Yeni Foça – Eskı Foça,1,202,44.9268,50.8959,48.515,149.4133,0.4913,0.0,0.0594,Eskı Foça yönü
-664,Yeni Foça – Eskı Foça,2,191,44.4551,45.0872,47.9595,59.6928,0.0627,0.0,0.0,Yeni Foça yönü
-680,Bozyaka – Lozan Meydanı,1,1477,12.2582,15.4404,21.2563,137.8719,1.258,0.0907,0.155,Lozan Meydanı yönü
-680,Bozyaka – Lozan Meydanı,2,1218,12.7755,16.5022,23.7704,125.0205,1.1243,0.0796,0.1938,Bozyaka yönü
-712,Pancar Aktarma Merkezi – Torbalı,1,2505,30.4609,36.7458,51.7679,201.0794,0.8327,0.0471,0.1529,Torbalı yönü
-712,Pancar Aktarma Merkezi – Torbalı,2,2479,29.8131,35.5321,59.9662,80.6924,0.5804,0.0327,0.2344,Pancar Aktarma Merkezi yönü
+608,Egekent 2 – İzmir Otogar,1,1599,32.5942,38.6143,56.6761,172.6655,0.597,0.0025,0.1169,İzmir Otogar yönü
+608,Egekent 2 – İzmir Otogar,2,1457,36.7594,41.3646,75.2663,177.2032,0.6187,0.0577,0.1874,Egekent 2 yönü
+616,Kaymakçı – Ödemiş,1,631,40.0024,39.6955,43.9283,45.7922,0.2122,0.0,0.0048,Ödemiş yönü
+616,Kaymakçı – Ödemiş,2,589,40.28,43.9977,43.8651,132.7899,0.4819,0.0,0.0628,Kaymakçı yönü
+640,Sığacık – Seferihisar,1,345,45.4827,45.2156,48.8765,49.291,0.0594,0.0,0.0,Seferihisar yönü
+640,Sığacık – Seferihisar,2,525,45.5747,61.9096,49.5278,310.3197,0.9625,0.0,0.0,Sığacık yönü
+648,Gazi Mahallesi – Menemen Aktarma Merkezi,1,625,49.2694,53.7368,100.5718,107.637,0.3937,0.0096,0.1408,Menemen Aktarma Merkezi yönü
+648,Gazi Mahallesi – Menemen Aktarma Merkezi,2,421,49.9562,69.6284,104.9193,111.1705,0.3914,0.1805,0.0,Gazi Mahallesi yönü
+664,Yeni Foça – Eskı Foça,1,316,45.7067,49.0948,48.4254,149.4117,0.4101,0.0253,0.0,Eskı Foça yönü
+664,Yeni Foça – Eskı Foça,2,331,44.732,45.0654,47.2031,50.134,0.0492,0.0,0.0,Yeni Foça yönü
+680,Bozyaka – Lozan Meydanı,1,1855,12.0877,15.4918,23.8162,137.8559,1.1466,0.0668,0.2075,Lozan Meydanı yönü
+680,Bozyaka – Lozan Meydanı,2,1477,12.9996,16.6899,24.7779,124.5726,1.0295,0.0454,0.2072,Bozyaka yönü
+712,Pancar Aktarma Merkezi – Torbalı,1,3226,30.7551,37.0726,54.357,201.0727,0.7545,0.0356,0.1438,Torbalı yönü
+712,Pancar Aktarma Merkezi – Torbalı,2,3234,28.7605,34.5519,59.1627,79.8486,0.5456,0.0297,0.1592,Pancar Aktarma Merkezi yönü
 728,Kısık Sanayi – Sarnıç Aktarma Merkezi,1,126,40.061,40.1199,42.3762,43.1594,0.0422,0.0,0.0,Sarnıç Aktarma Merkezi yönü
-728,Kısık Sanayi – Sarnıç Aktarma Merkezi,2,62,40.0004,40.1894,41.5836,41.6878,0.0207,0.0,0.0,Kısık Sanayi yönü
-744,Foça – Hatundere Aktarma Merkezi,1,1862,24.4332,25.847,39.3255,65.1416,0.4453,0.044,0.1343,Hatundere Aktarma Merkezi yönü
-744,Foça – Hatundere Aktarma Merkezi,2,1569,25.4622,29.2752,52.771,81.3418,0.5355,0.0516,0.1542,Foça yönü
-752,Buruncuk – Hatundere Aktarma Merkezi,1,199,29.6776,30.0209,43.9434,45.6353,0.2747,0.0101,0.0352,Hatundere Aktarma Merkezi yönü
-752,Buruncuk – Hatundere Aktarma Merkezi,2,349,26.9941,28.6398,45.4713,46.7441,0.2371,0.0,0.1117,Buruncuk yönü
-760,Çeşme-urla,1,345,60.8236,69.4279,117.593,118.4718,0.3233,0.0,0.1739,Çeşme-urla yönü
-760,Çeşme-urla,2,421,66.3592,79.9337,119.9297,121.7453,0.3226,0.0,0.2922,Çeşme-urla yönü
-776,Doğanbey – Cumaovası Aktarma Merkezi,1,969,33.5017,43.5964,78.311,83.2909,0.436,0.0,0.257,Cumaovası Aktarma Merkezi yönü
-776,Doğanbey – Cumaovası Aktarma Merkezi,2,662,43.0619,66.861,146.1397,148.076,0.6285,0.0,0.3746,Doğanbey yönü
-800,Menemen Aktarma – Bornova Metro,1,4702,10.8946,11.9127,20.6381,32.8499,0.5552,0.1259,0.1893,Bornova Metro yönü
-800,Menemen Aktarma – Bornova Metro,2,4526,10.9036,11.7885,19.502,26.9137,0.4919,0.1107,0.1812,Menemen Aktarma yönü
-808,Cumaovası Aktarma Merkezi – Esbaş Aktarma Merkezi,1,701,31.4386,39.5612,86.3877,91.0234,0.5096,0.0,0.2282,Esbaş Aktarma Merkezi yönü
-808,Cumaovası Aktarma Merkezi – Esbaş Aktarma Merkezi,2,895,29.4186,39.2277,87.8445,104.4412,0.6557,0.0011,0.2313,Cumaovası Aktarma Merkezi yönü
-848,Koyundere – Ulukent Aktarma Merkezi 1,1,668,30.5586,30.6525,35.3916,38.4967,0.1029,0.0,0.0,Ulukent Aktarma Merkezi 1 yönü
-848,Koyundere – Ulukent Aktarma Merkezi 1,2,372,29.8762,29.966,32.8389,34.1238,0.0734,0.0,0.0,Koyundere yönü
-912,Egekent Aktarma Merkezi – Alsancak Gar,1,1241,12.8661,13.9705,19.7575,32.8827,0.411,0.0298,0.1386,Alsancak Gar yönü
-912,Egekent Aktarma Merkezi – Alsancak Gar,2,952,14.446,16.1874,26.3574,38.6283,0.4634,0.02,0.1975,Egekent Aktarma Merkezi yönü
-984,Urla – Fahrettin Altay Aktarma Merkezi,1,2775,23.5064,27.0833,45.5345,63.7722,0.4693,0.0631,0.173,Fahrettin Altay Aktarma Merkezi yönü
-984,Urla – Fahrettin Altay Aktarma Merkezi,2,2837,22.4428,24.7066,39.0007,61.2518,0.3703,0.0539,0.1378,Urla yönü
-17,Uzundere Toplu Konutları – Fahrettin Altay Aktarma Merkezi,1,883,17.8254,19.3067,25.7863,49.7255,0.3651,0.0159,0.0974,Fahrettin Altay Aktarma Merkezi yönü
-17,Uzundere Toplu Konutları – Fahrettin Altay Aktarma Merkezi,2,535,16.7564,18.8034,30.1431,52.3644,0.6226,0.0467,0.1888,Uzundere Toplu Konutları yönü
-25,Oyunlar Köyü – Üçkuyular İskele,1,221,33.3798,36.2921,38.5385,192.6173,0.595,0.0,0.0181,Üçkuyular İskele yönü
-25,Oyunlar Köyü – Üçkuyular İskele,2,156,34.7334,46.015,39.2859,217.4007,0.9307,0.0,0.0962,Oyunlar Köyü yönü
-33,Kadifekale – Konak,1,260,16.196,21.3538,30.9223,72.198,0.7345,0.0,0.1731,Konak yönü
-33,Kadifekale – Konak,2,491,16.8721,21.2535,28.9082,90.2494,0.6582,0.0,0.1548,Kadifekale yönü
-41,Levent – Gümrük,1,132,21.726,26.3424,38.9538,87.4843,0.5203,0.0303,0.2045,Gümrük yönü
-41,Levent – Gümrük,2,140,21.3038,28.1688,38.5269,100.0601,0.743,0.0,0.1357,Levent yönü
+728,Kısık Sanayi – Sarnıç Aktarma Merkezi,2,65,40.0077,40.192,41.5739,41.683,0.0203,0.0,0.0,Kısık Sanayi yönü
+744,Foça – Hatundere Aktarma Merkezi,1,2368,24.7589,26.5949,42.7749,65.1349,0.427,0.0034,0.0921,Hatundere Aktarma Merkezi yönü
+744,Foça – Hatundere Aktarma Merkezi,2,2031,26.2991,28.9158,44.7119,81.2064,0.526,0.0817,0.1354,Foça yönü
+752,Buruncuk – Hatundere Aktarma Merkezi,1,330,30.8539,31.9918,43.7972,89.8488,0.3063,0.003,0.0515,Hatundere Aktarma Merkezi yönü
+752,Buruncuk – Hatundere Aktarma Merkezi,2,534,29.1629,29.9897,38.2328,46.7483,0.2694,0.0,0.0056,Buruncuk yönü
+760,Çeşme-urla,1,631,62.5926,72.5709,117.5557,118.4195,0.3116,0.0,0.1949,Çeşme-urla yönü
+760,Çeşme-urla,2,620,66.8498,84.5726,119.609,121.6966,0.3083,0.0,0.2032,Çeşme-urla yönü
+776,Doğanbey – Cumaovası Aktarma Merkezi,1,1404,33.6736,42.8012,78.317,100.867,0.4703,0.0527,0.1396,Cumaovası Aktarma Merkezi yönü
+776,Doğanbey – Cumaovası Aktarma Merkezi,2,1245,37.132,53.4149,85.7771,147.7877,0.6409,0.0651,0.2129,Doğanbey yönü
+800,Menemen Aktarma – Bornova Metro,1,6119,10.6785,11.5938,19.5568,31.7599,0.5442,0.1121,0.1437,Bornova Metro yönü
+800,Menemen Aktarma – Bornova Metro,2,5761,10.8119,11.6849,19.2588,29.7424,0.5167,0.1224,0.1505,Menemen Aktarma yönü
+808,Cumaovası Aktarma Merkezi – Esbaş Aktarma Merkezi,1,952,32.294,39.8568,60.0364,90.9146,0.4504,0.0,0.1912,Esbaş Aktarma Merkezi yönü
+808,Cumaovası Aktarma Merkezi – Esbaş Aktarma Merkezi,2,1098,31.0654,40.3158,85.5602,104.4172,0.5989,0.0009,0.1885,Cumaovası Aktarma Merkezi yönü
+848,Koyundere – Ulukent Aktarma Merkezi 1,1,852,31.6964,31.6925,37.4346,40.9824,0.1168,0.0,0.0,Ulukent Aktarma Merkezi 1 yönü
+848,Koyundere – Ulukent Aktarma Merkezi 1,2,510,30.711,31.3435,37.5234,37.9248,0.1085,0.0,0.0,Koyundere yönü
+912,Egekent Aktarma Merkezi – Alsancak Gar,1,1560,13.0204,14.339,20.5701,36.3032,0.4141,0.0237,0.1026,Alsancak Gar yönü
+912,Egekent Aktarma Merkezi – Alsancak Gar,2,1289,13.9442,15.8365,25.1488,38.4634,0.43,0.0194,0.1288,Egekent Aktarma Merkezi yönü
+984,Urla – Fahrettin Altay Aktarma Merkezi,1,3685,22.9611,25.9513,44.9471,62.7001,0.4942,0.0999,0.1153,Fahrettin Altay Aktarma Merkezi yönü
+984,Urla – Fahrettin Altay Aktarma Merkezi,2,3781,22.2632,24.9507,39.4628,61.2018,0.3832,0.0381,0.1471,Urla yönü
+17,Uzundere Toplu Konutları – Fahrettin Altay Aktarma Merkezi,1,1037,17.9016,19.7211,33.2688,49.3764,0.365,0.0039,0.1427,Fahrettin Altay Aktarma Merkezi yönü
+17,Uzundere Toplu Konutları – Fahrettin Altay Aktarma Merkezi,2,629,17.1059,20.0671,32.4597,76.0101,0.7215,0.0079,0.1606,Uzundere Toplu Konutları yönü
+25,Oyunlar Köyü – Üçkuyular İskele,1,296,34.2121,36.1259,38.4826,192.5931,0.5168,0.0,0.0135,Üçkuyular İskele yönü
+25,Oyunlar Köyü – Üçkuyular İskele,2,204,34.7334,43.487,44.2378,201.6371,0.8707,0.0,0.0735,Oyunlar Köyü yönü
+33,Kadifekale – Konak,1,343,16.8437,23.5445,30.0649,184.718,1.1473,0.0583,0.0962,Konak yönü
+33,Kadifekale – Konak,2,704,16.1899,19.0988,25.4878,89.4096,0.6384,0.0043,0.0739,Kadifekale yönü
+41,Levent – Gümrük,1,202,20.9746,25.5641,41.0155,87.3458,0.525,0.0198,0.1931,Gümrük yönü
+41,Levent – Gümrük,2,180,21.036,28.5417,40.0965,100.0993,0.9022,0.0,0.15,Levent yönü
 57,Altındağ – Kemer Aktarma Merkezi,1,44,124.0456,86.8042,125.8683,126.1249,0.5083,0.4318,0.0,Kemer Aktarma Merkezi yönü
-57,Altındağ – Kemer Aktarma Merkezi,2,19,46.7296,73.8493,111.984,112.1201,0.4506,0.0,0.4211,Altındağ yönü
-105,Çamlıkule – Konak,1,1573,19.7824,21.0274,33.1446,49.2008,0.5321,0.0496,0.1418,Konak yönü
-105,Çamlıkule – Konak,2,1423,19.7825,22.1262,29.7018,141.7509,0.9481,0.0977,0.1005,Çamlıkule yönü
-121,Mavişehir Aktarma Merkezi – Konak,1,892,35.2532,40.805,43.3675,206.3155,0.6537,0.0,0.0953,Konak yönü
-121,Mavişehir Aktarma Merkezi – Konak,2,737,33.7991,43.274,86.7821,216.0386,0.7988,0.0801,0.1723,Mavişehir Aktarma Merkezi yönü
-137,Yamanlar – Karşıyaka,1,340,25.6258,34.0659,41.5319,262.3038,1.1689,0.0,0.1324,Karşıyaka yönü
-137,Yamanlar – Karşıyaka,2,290,27.3393,29.003,31.9903,48.6773,1.2242,0.0,0.0724,Yamanlar yönü
-153,Çamkule – Kemer Aktarma Merkezi,1,289,25.5962,27.143,31.3575,32.0003,0.1045,0.0,0.0,Kemer Aktarma Merkezi yönü
-153,Çamkule – Kemer Aktarma Merkezi,2,214,27.4909,27.9132,30.5551,41.0988,0.1533,0.0,0.0,Çamkule yönü
-177,Kaynaklar – Adatepe,1,99,205.7766,172.9795,209.2771,348.9841,0.3967,0.3434,0.0606,Adatepe yönü
+57,Altındağ – Kemer Aktarma Merkezi,2,18,46.7312,75.4115,111.9912,112.121,0.4445,0.0,0.4444,Altındağ yönü
+105,Çamlıkule – Konak,1,1902,19.8388,21.5862,33.2701,48.9797,0.5001,0.031,0.1288,Konak yönü
+105,Çamlıkule – Konak,2,1761,19.8595,21.8964,29.6729,141.4464,0.8745,0.0965,0.0903,Çamlıkule yönü
+121,Mavişehir Aktarma Merkezi – Konak,1,1089,36.9128,42.6978,84.6971,205.7696,0.6045,0.0,0.1249,Konak yönü
+121,Mavişehir Aktarma Merkezi – Konak,2,884,39.1078,45.4285,83.6862,215.5276,0.7232,0.0,0.2036,Mavişehir Aktarma Merkezi yönü
+137,Yamanlar – Karşıyaka,1,561,27.6391,32.0141,32.1186,261.8596,0.9727,0.0,0.0856,Karşıyaka yönü
+137,Yamanlar – Karşıyaka,2,423,28.0773,29.6777,32.0042,57.6699,1.0029,0.0,0.0757,Yamanlar yönü
+153,Çamkule – Kemer Aktarma Merkezi,1,438,28.7935,28.0964,31.4106,32.569,0.0979,0.0,0.0,Kemer Aktarma Merkezi yönü
+153,Çamkule – Kemer Aktarma Merkezi,2,322,28.6464,28.702,32.4348,41.0638,0.1336,0.0,0.0,Çamkule yönü
+177,Kaynaklar – Adatepe,1,99,205.7766,172.9795,209.2771,348.9841,0.3967,0.0,0.101,Adatepe yönü
 177,Kaynaklar – Adatepe,2,16,200.5838,172.3784,200.584,200.584,0.2927,0.25,0.0,Kaynaklar yönü
-193,Yurtoğlu – Konak,1,969,20.7127,35.4093,83.7388,159.3958,0.8744,0.0155,0.3509,Konak yönü
-193,Yurtoğlu – Konak,2,754,23.5956,37.0809,72.2956,138.4936,0.915,0.0385,0.3369,Yurtoğlu yönü
-233,Esbaş Aktarma Merkezi – Konak,1,1450,21.4115,26.376,36.3776,176.237,0.8598,0.0,0.1062,Konak yönü
-233,Esbaş Aktarma Merkezi – Konak,2,1460,22.125,26.3245,36.701,146.4926,0.7982,0.0562,0.1068,Esbaş Aktarma Merkezi yönü
-249,Evka 4 – Kemer,1,1690,22.6659,31.1122,47.9966,208.2616,1.0384,0.0,0.1911,Kemer yönü
-249,Evka 4 – Kemer,2,1581,26.4869,31.499,48.9874,218.1894,0.9147,0.0601,0.1202,Evka 4 yönü
-321,Çamlı – Fahrettin Altay Aktarma Merkezi,1,1065,45.5595,50.258,63.8962,120.724,0.4122,0.0,0.0188,Fahrettin Altay Aktarma Merkezi yönü
-321,Çamlı – Fahrettin Altay Aktarma Merkezi,2,945,52.7087,55.5774,80.612,124.9779,0.2953,0.0,0.1418,Çamlı yönü
-329,Güzeltepe – Çiğli Aktarma Merkezi,1,184,36.6426,48.777,113.4682,121.3528,0.675,0.0,0.1957,Çiğli Aktarma Merkezi yönü
-329,Güzeltepe – Çiğli Aktarma Merkezi,2,406,34.7227,46.0297,95.1285,258.036,0.8977,0.0,0.1133,Güzeltepe yönü
-353,Gaziemir – Tınaztepe,1,1269,30.6597,35.2132,44.7986,145.4826,0.8085,0.0772,0.0827,Tınaztepe yönü
-353,Gaziemir – Tınaztepe,2,1397,29.9174,38.0022,71.4171,138.122,0.7104,0.0759,0.1539,Gaziemir yönü
+193,Yurtoğlu – Konak,1,1307,20.7179,33.839,57.8646,159.0689,0.8369,0.0406,0.2204,Konak yönü
+193,Yurtoğlu – Konak,2,1013,22.8219,35.1721,67.2684,138.3561,0.8706,0.0128,0.2853,Yurtoğlu yönü
+233,Esbaş Aktarma Merkezi – Konak,1,1856,21.2762,25.1249,32.2371,156.946,0.8156,0.0275,0.0954,Konak yönü
+233,Esbaş Aktarma Merkezi – Konak,2,1782,21.8777,26.1249,50.7231,122.446,0.7927,0.064,0.1083,Esbaş Aktarma Merkezi yönü
+249,Evka 4 – Kemer,1,2223,22.5893,29.25,45.7811,207.5763,0.9739,0.0076,0.0909,Kemer yönü
+249,Evka 4 – Kemer,2,2126,25.0147,29.2205,38.1408,197.8568,0.8629,0.0136,0.1007,Evka 4 yönü
+321,Çamlı – Fahrettin Altay Aktarma Merkezi,1,1395,51.2935,53.8246,64.214,222.7411,0.4313,0.0,0.0351,Fahrettin Altay Aktarma Merkezi yönü
+321,Çamlı – Fahrettin Altay Aktarma Merkezi,2,1236,58.8224,57.4108,80.0364,124.5974,0.2586,0.0,0.1117,Çamlı yönü
+329,Güzeltepe – Çiğli Aktarma Merkezi,1,285,35.4231,43.8096,108.4551,121.3098,0.6229,0.0,0.0877,Çiğli Aktarma Merkezi yönü
+329,Güzeltepe – Çiğli Aktarma Merkezi,2,536,34.9726,43.6337,45.0782,257.5252,0.83,0.0,0.0858,Güzeltepe yönü
+353,Gaziemir – Tınaztepe,1,1456,32.3634,37.5426,71.5006,145.3687,0.7517,0.0453,0.1442,Tınaztepe yönü
+353,Gaziemir – Tınaztepe,2,1810,32.1562,39.4755,71.4057,138.8458,0.6683,0.0558,0.1271,Gaziemir yönü
 361,Bahriye Üçok – Karşıyaka İskele,1,52,60.1375,68.3935,147.4219,148.2454,0.6391,0.2115,0.2115,Karşıyaka İskele yönü
 361,Bahriye Üçok – Karşıyaka İskele,2,26,273.6798,200.9145,288.2988,376.0862,0.6442,0.3462,0.0,Bahriye Üçok yönü
-417,Buca Koop – Konak,1,203,31.0856,45.1265,110.4008,164.7831,0.8732,0.0296,0.2463,Konak yönü
-417,Buca Koop – Konak,2,392,27.0218,35.1779,58.6073,121.321,0.8516,0.0918,0.2219,Buca Koop yönü
+417,Buca Koop – Konak,1,203,31.0856,45.1265,110.4008,164.7831,0.8732,0.0296,0.2118,Konak yönü
+417,Buca Koop – Konak,2,392,27.0218,35.1779,58.6073,121.321,0.8516,0.1786,0.1964,Buca Koop yönü
 441,Çınartepe – Şirinyer Aktarma Merkezi,1,114,34.0205,39.4715,63.4495,121.2519,0.4871,0.0,0.2544,Şirinyer Aktarma Merkezi yönü
-441,Çınartepe – Şirinyer Aktarma Merkezi,2,66,40.8528,45.2254,59.539,86.9911,0.3194,0.0,0.0303,Çınartepe yönü
-449,İzyuva – Evka 3 Metro,1,126,15.3314,15.9458,20.5416,20.9579,0.1554,0.0,0.0,Evka 3 Metro yönü
+441,Çınartepe – Şirinyer Aktarma Merkezi,2,66,40.8528,45.2254,59.539,86.9911,0.3194,0.2576,0.0,Çınartepe yönü
+449,İzyuva – Evka 3 Metro,1,128,15.3523,15.9986,20.5415,20.9559,0.1559,0.0,0.0,Evka 3 Metro yönü
 449,İzyuva – Evka 3 Metro,2,66,15.271,33.303,80.7056,169.1733,1.1915,0.0,0.3788,İzyuva yönü
-465,Tınaztepe – Konak,1,1009,18.5917,21.222,29.0465,59.621,0.4999,0.0208,0.115,Konak yönü
-465,Tınaztepe – Konak,2,1093,16.4513,19.145,34.7564,54.6035,0.5986,0.1043,0.1802,Tınaztepe yönü
-505,Çamkule – Bornova Metro,1,619,24.2527,31.6375,56.6965,138.9478,0.7231,0.0258,0.2052,Bornova Metro yönü
-505,Çamkule – Bornova Metro,2,547,25.4008,32.5197,51.9393,131.7108,0.7152,0.0329,0.1773,Çamkule yönü
-529,Yakakent Mahallesi – Çiğli Aktarma Merkezi,1,217,36.1407,36.9778,41.9425,45.1999,0.0926,0.0,0.0,Çiğli Aktarma Merkezi yönü
-529,Yakakent Mahallesi – Çiğli Aktarma Merkezi,2,366,37.5144,39.3413,60.1376,61.432,0.2264,0.0,0.1202,Yakakent Mahallesi yönü
-585,Evka 4 – Bornova Metro,1,2282,13.6748,20.1756,21.5536,173.5959,1.3009,0.0219,0.1963,Bornova Metro yönü
-585,Evka 4 – Bornova Metro,2,2029,13.6339,19.9251,27.2559,126.2491,1.0295,0.0414,0.2109,Evka 4 yönü
-657,Maltepe – Menemen Aktarma Merkezi,1,213,72.9828,72.0663,86.8428,89.2133,0.1672,0.0,0.0,Menemen Aktarma Merkezi yönü
-657,Maltepe – Menemen Aktarma Merkezi,2,210,59.5026,71.1865,100.1864,105.031,0.2856,0.0,0.3333,Maltepe yönü
-681,Fahrettin Altay – Lozan Meydanı,1,421,38.5947,38.6748,42.5046,65.8102,0.1436,0.0,0.0166,Lozan Meydanı yönü
-681,Fahrettin Altay – Lozan Meydanı,2,376,37.0788,38.3704,42.0803,154.3982,0.4403,0.0,0.0186,Fahrettin Altay yönü
-705,Ayrancılar – Sarnıç Aktarma Merkezi,1,718,30.4459,41.4286,74.3234,200.6633,0.9749,0.1226,0.1838,Sarnıç Aktarma Merkezi yönü
-705,Ayrancılar – Sarnıç Aktarma Merkezi,2,1292,25.6173,30.4364,60.7142,193.5825,0.8801,0.1169,0.1293,Ayrancılar yönü
-713,Deü Meslek Yüksek Okulu – Torbalı,1,297,32.0691,38.0548,45.2571,71.5147,0.5658,0.0,0.0572,Torbalı yönü
-713,Deü Meslek Yüksek Okulu – Torbalı,2,242,38.2594,54.9912,60.1097,249.307,0.9532,0.0,0.2686,Deü Meslek Yüksek Okulu yönü
-721,Karakuyu – Torbalı,1,368,49.1196,48.3579,58.5205,59.8623,0.1378,0.0,0.0,Torbalı yönü
-721,Karakuyu – Torbalı,2,404,46.9324,48.0628,60.5722,62.837,0.1695,0.0,0.0,Karakuyu yönü
-729,Ataköy – Cumaovası Aktarma Merkezi,1,126,75.2193,74.6074,75.8023,75.8026,0.0231,0.0,0.0,Cumaovası Aktarma Merkezi yönü
+465,Tınaztepe – Konak,1,1191,19.8003,23.3659,44.2827,62.1197,0.5355,0.042,0.1209,Konak yönü
+465,Tınaztepe – Konak,2,1274,18.0475,22.0289,46.4566,71.4263,0.6889,0.1515,0.1327,Tınaztepe yönü
+505,Çamkule – Bornova Metro,1,855,23.6064,29.1595,55.0442,138.673,0.688,0.0632,0.0421,Bornova Metro yönü
+505,Çamkule – Bornova Metro,2,733,25.0491,30.2942,51.1609,129.3076,0.6761,0.0055,0.0982,Çamkule yönü
+529,Yakakent Mahallesi – Çiğli Aktarma Merkezi,1,330,36.9764,38.071,44.9584,45.3779,0.1003,0.0,0.0,Çiğli Aktarma Merkezi yönü
+529,Yakakent Mahallesi – Çiğli Aktarma Merkezi,2,510,38.3192,40.3576,48.0699,61.0483,0.195,0.0,0.0,Yakakent Mahallesi yönü
+585,Evka 4 – Bornova Metro,1,3077,13.0764,18.0605,21.1616,141.0662,1.2716,0.0169,0.1144,Bornova Metro yönü
+585,Evka 4 – Bornova Metro,2,2761,13.1372,18.1877,25.7589,121.2231,1.0,0.0141,0.1072,Evka 4 yönü
+657,Maltepe – Menemen Aktarma Merkezi,1,379,70.7926,70.8978,86.3344,89.3173,0.1359,0.0,0.0264,Menemen Aktarma Merkezi yönü
+657,Maltepe – Menemen Aktarma Merkezi,2,346,64.0169,70.2325,98.995,104.8473,0.23,0.0,0.0,Maltepe yönü
+681,Fahrettin Altay – Lozan Meydanı,1,513,39.8816,41.7133,43.5077,79.7319,0.2658,0.0,0.0799,Lozan Meydanı yönü
+681,Fahrettin Altay – Lozan Meydanı,2,498,38.592,41.8166,47.6657,152.1288,0.4315,0.0,0.0823,Fahrettin Altay yönü
+705,Ayrancılar – Sarnıç Aktarma Merkezi,1,1059,26.9661,34.7947,69.237,200.4678,1.0013,0.2398,0.1284,Sarnıç Aktarma Merkezi yönü
+705,Ayrancılar – Sarnıç Aktarma Merkezi,2,1689,26.3869,29.5609,39.8068,192.5319,0.7973,0.0349,0.2126,Ayrancılar yönü
+713,Deü Meslek Yüksek Okulu – Torbalı,1,267,32.0327,36.9294,45.1191,71.5192,0.5873,0.0,0.0262,Torbalı yönü
+713,Deü Meslek Yüksek Okulu – Torbalı,2,296,39.315,56.4436,65.7866,249.2954,0.8428,0.0,0.0878,Deü Meslek Yüksek Okulu yönü
+721,Karakuyu – Torbalı,1,416,49.1196,54.0777,59.2942,151.8634,0.4623,0.0,0.0577,Torbalı yönü
+721,Karakuyu – Torbalı,2,488,48.423,48.6829,59.8747,62.8104,0.1556,0.0,0.0,Karakuyu yönü
+729,Ataköy – Cumaovası Aktarma Merkezi,1,133,75.2031,74.5939,75.8023,75.8026,0.0227,0.0,0.0,Cumaovası Aktarma Merkezi yönü
 729,Ataköy – Cumaovası Aktarma Merkezi,2,228,68.473,69.214,73.6487,74.1905,0.0422,0.0,0.0,Ataköy yönü
-745,Yeni Foça – Biçerova Aktarma Merkezi,1,1115,26.075,26.2142,28.4233,47.4497,0.1335,0.0,0.0108,Biçerova Aktarma Merkezi yönü
-745,Yeni Foça – Biçerova Aktarma Merkezi,2,942,25.7126,25.9567,29.7116,50.7767,0.2216,0.052,0.017,Yeni Foça yönü
-761,Karaburun – Urla,1,547,60.8921,72.7774,120.6734,122.5995,0.4516,0.1133,0.2962,Urla yönü
-761,Karaburun – Urla,2,298,64.7764,66.0772,72.3723,75.0533,0.0716,0.0,0.0,Karaburun yönü
-769,Çambel – Kemalpaşa,1,211,60.0169,61.2637,65.3644,118.7844,0.1426,0.0,0.019,Kemalpaşa yönü
-769,Çambel – Kemalpaşa,2,56,58.2668,58.2628,58.9751,59.1523,0.0087,0.0,0.0,Çambel yönü
-777,Doğal Yaşam Parkı – Karşıyaka,1,126,60.0825,60.0695,61.8109,62.0515,0.0205,0.0,0.0,Karşıyaka yönü
-777,Doğal Yaşam Parkı – Karşıyaka,2,174,59.7512,58.271,61.7902,63.5922,0.0603,0.0,0.0,Doğal Yaşam Parkı yönü
-817,Egekent Aktarma Merkezi – Çiğli Aktarma Merkezi,1,174,51.8907,50.5326,53.9059,55.5137,0.0598,0.0,0.0,Çiğli Aktarma Merkezi yönü
-817,Egekent Aktarma Merkezi – Çiğli Aktarma Merkezi,2,139,50.6475,53.0178,66.7361,147.3627,0.3896,0.0,0.036,Egekent Aktarma Merkezi yönü
-873,Yenitepe Evleri – Fahrettin Altay Aktarma Merkezi,1,284,40.5164,43.9643,50.3662,120.271,0.4673,0.0,0.0563,Fahrettin Altay Aktarma Merkezi yönü
-873,Yenitepe Evleri – Fahrettin Altay Aktarma Merkezi,2,177,35.2985,36.2477,50.5723,52.1692,0.3164,0.0,0.0,Yenitepe Evleri yönü
-889,Sarnıç – Sarnıç Aktarma Merkezi,1,215,24.3469,25.346,26.4959,75.6478,0.2812,0.0,0.0186,Sarnıç Aktarma Merkezi yönü
-889,Sarnıç – Sarnıç Aktarma Merkezi,2,342,25.1715,26.5913,28.5069,72.206,0.301,0.0,0.0292,Sarnıç yönü
-969,Balçova – Fahrettin Altay Aktarma Merkezi,1,358,16.3616,23.3524,36.438,50.8442,0.4533,0.0,0.4022,Fahrettin Altay Aktarma Merkezi yönü
-969,Balçova – Fahrettin Altay Aktarma Merkezi,2,143,29.6781,29.6648,47.5646,101.5894,0.6504,0.2587,0.1119,Balçova yönü
-985,Seferihisar – Fahrettin Altay Aktarma Merkezi,1,698,62.1742,65.4807,69.828,130.5272,0.1633,0.0,0.0229,Fahrettin Altay Aktarma Merkezi yönü
-985,Seferihisar – Fahrettin Altay Aktarma Merkezi,2,788,61.4488,68.1748,82.3361,125.5955,0.26,0.0,0.0711,Seferihisar yönü
-10,Üçkuyular İskele – Konak,1,268,44.7483,46.7128,57.9844,132.8183,0.271,0.0,0.0224,Konak yönü
-10,Üçkuyular İskele – Konak,2,376,42.8784,44.4947,51.3972,81.3063,0.1813,0.0,0.016,Üçkuyular İskele yönü
-18,Yeşilyurt – Konak,1,1030,23.3436,26.2335,44.6902,75.1195,0.4934,0.033,0.2019,Konak yönü
-18,Yeşilyurt – Konak,2,977,23.3512,27.2265,47.9512,68.3277,0.5456,0.132,0.2764,Yeşilyurt yönü
-34,Esentepe – Gümrük,1,827,19.0019,19.2226,25.659,43.0986,0.455,0.0423,0.0399,Gümrük yönü
-34,Esentepe – Gümrük,2,660,21.6881,21.5322,32.5236,76.3148,0.5338,0.1742,0.1,Esentepe yönü
-42,Çınartepe – Gümrük,1,815,15.2942,22.2778,36.7873,161.7036,1.2528,0.0331,0.2294,Gümrük yönü
-42,Çınartepe – Gümrük,2,560,16.8978,24.1753,39.5259,183.3681,1.0643,0.0714,0.275,Çınartepe yönü
-74,Yenigün Mahallesi – Şirinyer Aktarma Merkezi,1,562,20.8165,35.5826,49.5185,280.7731,1.2399,0.0338,0.3345,Şirinyer Aktarma Merkezi yönü
-74,Yenigün Mahallesi – Şirinyer Aktarma Merkezi,2,678,35.6311,35.44,59.7208,145.6348,0.5967,0.267,0.149,Yenigün Mahallesi yönü
-82,Siteler – Fahrettin Altay Aktarma Merkezi,1,1138,46.2205,58.5779,84.9197,212.0497,0.5993,0.0,0.2232,Fahrettin Altay Aktarma Merkezi yönü
-82,Siteler – Fahrettin Altay Aktarma Merkezi,2,1005,43.4277,51.9182,85.5088,88.4086,0.412,0.0,0.3194,Siteler yönü
+745,Yeni Foça – Biçerova Aktarma Merkezi,1,1458,26.1281,26.2797,28.4703,31.3959,0.1194,0.0,0.0082,Biçerova Aktarma Merkezi yönü
+745,Yeni Foça – Biçerova Aktarma Merkezi,2,1276,25.7258,25.9696,29.4801,50.7541,0.2054,0.04,0.0157,Yeni Foça yönü
+761,Karaburun – Urla,1,622,61.9924,71.9239,120.433,122.458,0.4297,0.1624,0.0,Urla yönü
+761,Karaburun – Urla,2,329,64.3961,65.7036,72.0285,75.0394,0.0711,0.0,0.0,Karaburun yönü
+769,Çambel – Kemalpaşa,1,436,59.9641,60.5602,64.7586,66.4236,0.1028,0.0,0.0092,Kemalpaşa yönü
+769,Çambel – Kemalpaşa,2,246,60.6342,66.9013,65.8637,181.5252,0.3881,0.0,0.0488,Çambel yönü
+777,Doğal Yaşam Parkı – Karşıyaka,1,242,60.4114,60.4308,61.991,62.1628,0.018,0.0,0.0,Karşıyaka yönü
+777,Doğal Yaşam Parkı – Karşıyaka,2,273,60.101,59.2798,62.1522,64.8968,0.0549,0.0,0.0,Doğal Yaşam Parkı yönü
+817,Egekent Aktarma Merkezi – Çiğli Aktarma Merkezi,1,282,50.8523,50.6298,53.816,55.4655,0.0513,0.0,0.0,Çiğli Aktarma Merkezi yönü
+817,Egekent Aktarma Merkezi – Çiğli Aktarma Merkezi,2,238,50.4506,52.2342,63.9881,147.1104,0.305,0.0,0.021,Egekent Aktarma Merkezi yönü
+873,Yenitepe Evleri – Fahrettin Altay Aktarma Merkezi,1,284,40.5164,43.9643,50.3662,120.271,0.4673,0.0176,0.0563,Fahrettin Altay Aktarma Merkezi yönü
+873,Yenitepe Evleri – Fahrettin Altay Aktarma Merkezi,2,183,35.2304,36.0713,50.6397,52.3096,0.3233,0.0,0.1913,Yenitepe Evleri yönü
+889,Sarnıç – Sarnıç Aktarma Merkezi,1,302,25.0532,26.5831,31.3139,75.1636,0.2418,0.0,0.0132,Sarnıç Aktarma Merkezi yönü
+889,Sarnıç – Sarnıç Aktarma Merkezi,2,417,26.0567,27.1045,30.2433,72.1996,0.2467,0.0,0.0192,Sarnıç yönü
+969,Balçova – Fahrettin Altay Aktarma Merkezi,1,572,15.0625,19.5172,35.0929,47.6116,0.5064,0.0,0.1049,Fahrettin Altay Aktarma Merkezi yönü
+969,Balçova – Fahrettin Altay Aktarma Merkezi,2,233,16.9454,25.7008,46.0114,101.3879,0.7507,0.0258,0.2961,Balçova yönü
+985,Seferihisar – Fahrettin Altay Aktarma Merkezi,1,1116,62.6278,64.3331,72.8263,130.4055,0.1887,0.0323,0.0143,Fahrettin Altay Aktarma Merkezi yönü
+985,Seferihisar – Fahrettin Altay Aktarma Merkezi,2,1190,64.3508,69.1334,79.9869,125.5347,0.2151,0.0,0.0471,Seferihisar yönü
+10,Üçkuyular İskele – Konak,1,363,44.7804,46.4665,58.1397,92.7909,0.2486,0.0,0.0165,Konak yönü
+10,Üçkuyular İskele – Konak,2,486,44.8406,44.7999,50.7559,81.2875,0.158,0.0,0.0123,Üçkuyular İskele yönü
+18,Yeşilyurt – Konak,1,1177,24.3694,27.7353,46.6264,74.8182,0.4812,0.0093,0.237,Konak yönü
+18,Yeşilyurt – Konak,2,1120,25.3227,28.5007,48.3943,68.9072,0.5371,0.0741,0.2402,Yeşilyurt yönü
+34,Esentepe – Gümrük,1,1083,19.9066,19.6373,25.3272,43.351,0.4155,0.0,0.0674,Gümrük yönü
+34,Esentepe – Gümrük,2,858,21.2397,21.3389,30.5775,75.2511,0.4817,0.028,0.1131,Esentepe yönü
+42,Çınartepe – Gümrük,1,1062,15.2767,21.4699,36.1937,161.6032,1.1513,0.0,0.2354,Gümrük yönü
+42,Çınartepe – Gümrük,2,663,18.7488,25.0621,39.2446,169.7329,0.955,0.0045,0.2157,Çınartepe yönü
+74,Yenigün Mahallesi – Şirinyer Aktarma Merkezi,1,764,22.2898,34.9017,48.8598,280.3126,1.1049,0.1204,0.1976,Şirinyer Aktarma Merkezi yönü
+74,Yenigün Mahallesi – Şirinyer Aktarma Merkezi,2,986,34.4502,33.9741,58.4073,99.1875,0.5738,0.1034,0.2312,Yenigün Mahallesi yönü
+82,Siteler – Fahrettin Altay Aktarma Merkezi,1,1391,45.0207,58.8032,105.8838,211.6815,0.5995,0.0058,0.2646,Fahrettin Altay Aktarma Merkezi yönü
+82,Siteler – Fahrettin Altay Aktarma Merkezi,2,1397,40.3907,50.6384,84.9627,88.2708,0.4014,0.0,0.2369,Siteler yönü
 114,Evka 3 – Evka 3 Metro,2,172,15.5604,17.4808,20.2255,50.6687,0.4246,0.0,0.0465,Evka 3 yönü
-258,Onur Mahallesi – Karşıyaka,1,684,25.7028,34.3993,60.096,103.8661,0.8327,0.0058,0.2193,Karşıyaka yönü
-258,Onur Mahallesi – Karşıyaka,2,544,23.026,28.2663,60.6402,67.0474,0.5778,0.0515,0.1415,Onur Mahallesi yönü
-290,Bostanlı İskele – Tınaztepe,1,180,32.4552,51.2635,91.5894,106.1355,0.565,0.0,0.4333,Tınaztepe yönü
+258,Onur Mahallesi – Karşıyaka,1,845,25.9319,35.4097,57.7336,103.7591,0.7482,0.0615,0.155,Karşıyaka yönü
+258,Onur Mahallesi – Karşıyaka,2,632,22.9476,30.2258,61.08,66.7343,0.5862,0.038,0.2041,Onur Mahallesi yönü
+290,Bostanlı İskele – Tınaztepe,1,180,32.4552,51.2635,91.5894,106.1355,0.565,0.0,0.2556,Tınaztepe yönü
 290,Bostanlı İskele – Tınaztepe,2,238,29.282,41.4833,75.5851,142.8545,0.7627,0.0,0.2941,Bostanlı İskele yönü
-314,Evka 3 – Bornova Metro,1,202,36.7811,38.9582,47.0286,48.7367,0.1603,0.0,0.0,Bornova Metro yönü
-314,Evka 3 – Bornova Metro,2,150,43.2851,41.3711,46.0054,47.4866,0.0973,0.0,0.0,Evka 3 yönü
-322,Mustafa Kemal Mahallesi – Bostanlı İskele,1,105,34.6673,41.8005,47.9158,115.5526,0.5213,0.0,0.0667,Bostanlı İskele yönü
-322,Mustafa Kemal Mahallesi – Bostanlı İskele,2,90,35.7625,38.1682,44.6612,44.7928,0.1206,0.0,0.0,Mustafa Kemal Mahallesi yönü
-330,Bostanlı İskele – Evka 3 Metro,1,949,20.6528,34.0086,74.3476,252.1443,1.1998,0.0,0.1686,Evka 3 Metro yönü
-330,Bostanlı İskele – Evka 3 Metro,2,969,20.7894,30.6441,49.3319,129.1624,0.9602,0.0,0.194,Bostanlı İskele yönü
-346,Evka 5 – Egekent Aktarma Merkezi,1,303,18.6176,24.5379,26.893,121.0245,0.9102,0.0,0.0891,Egekent Aktarma Merkezi yönü
-346,Evka 5 – Egekent Aktarma Merkezi,2,259,20.0908,22.1928,31.234,92.7566,0.5235,0.0039,0.1197,Evka 5 yönü
-418,Şirinyer Aktarma Merkezi – Halkapınar Metro,1,388,32.2934,40.3972,56.3585,125.7563,0.6452,0.0,0.1392,Halkapınar Metro yönü
-418,Şirinyer Aktarma Merkezi – Halkapınar Metro,2,341,31.6458,36.9553,43.8218,193.257,0.6704,0.0,0.0968,Şirinyer Aktarma Merkezi yönü
-442,Atatürk Mahallesi – Bostanlı İskele,2,37,88.8742,84.412,89.3324,89.5621,0.2084,0.0541,0.0,Atatürk Mahallesi yönü
-466,Şirinyer Aktarma Merkezi – Konak,1,480,21.9803,30.6767,49.6716,187.9185,0.7105,0.0042,0.3646,Konak yönü
-466,Şirinyer Aktarma Merkezi – Konak,2,292,34.6288,36.3155,59.9906,216.0568,0.8378,0.2329,0.1027,Şirinyer Aktarma Merkezi yönü
-490,Tınaztepe – Üçyol,1,1167,19.1475,24.2483,25.1943,124.5294,0.9435,0.0171,0.0771,Üçyol yönü
-490,Tınaztepe – Üçyol,2,948,20.0768,24.6282,28.9896,121.0742,0.8584,0.0011,0.0981,Tınaztepe yönü
-498,Evka 3 Metro – Halkapınar Metro,1,363,31.2068,32.8797,41.2363,99.586,0.3981,0.0,0.0551,Halkapınar Metro yönü
-498,Evka 3 Metro – Halkapınar Metro,2,262,31.3892,31.2223,33.9926,51.5139,0.1395,0.0,0.0153,Evka 3 Metro yönü
+314,Evka 3 – Bornova Metro,1,313,44.3264,41.4773,48.3254,49.1436,0.1482,0.0,0.0,Bornova Metro yönü
+314,Evka 3 – Bornova Metro,2,229,44.0193,42.6986,46.4217,47.8359,0.0891,0.0,0.0,Evka 3 yönü
+322,Mustafa Kemal Mahallesi – Bostanlı İskele,1,99,34.6748,40.6568,47.6548,116.2114,0.4864,0.0,0.0505,Bostanlı İskele yönü
+322,Mustafa Kemal Mahallesi – Bostanlı İskele,2,105,35.7908,38.1454,44.63,44.7912,0.1218,0.0,0.0,Mustafa Kemal Mahallesi yönü
+330,Bostanlı İskele – Evka 3 Metro,1,1297,20.3662,30.4034,57.3778,246.5896,1.1654,0.0709,0.0517,Evka 3 Metro yönü
+330,Bostanlı İskele – Evka 3 Metro,2,1277,20.8045,28.2014,48.1947,129.0685,0.9225,0.0,0.1292,Bostanlı İskele yönü
+346,Evka 5 – Egekent Aktarma Merkezi,1,435,23.9262,24.6536,26.8645,120.9947,0.7564,0.0,0.1517,Egekent Aktarma Merkezi yönü
+346,Evka 5 – Egekent Aktarma Merkezi,2,372,23.8448,23.0464,29.7273,92.6738,0.4247,0.0027,0.086,Evka 5 yönü
+418,Şirinyer Aktarma Merkezi – Halkapınar Metro,1,524,33.2185,38.9919,53.6115,125.7095,0.5801,0.0,0.0477,Halkapınar Metro yönü
+418,Şirinyer Aktarma Merkezi – Halkapınar Metro,2,458,32.0246,38.8017,67.3986,192.8773,0.5912,0.0153,0.1354,Şirinyer Aktarma Merkezi yönü
+442,Atatürk Mahallesi – Bostanlı İskele,1,104,93.4051,95.3794,95.7563,181.2397,0.1313,0.0,0.0192,Bostanlı İskele yönü
+442,Atatürk Mahallesi – Bostanlı İskele,2,80,89.2999,87.7983,94.3626,94.9751,0.1493,0.025,0.0,Atatürk Mahallesi yönü
+466,Şirinyer Aktarma Merkezi – Konak,1,585,22.7082,34.454,70.5893,92.5877,0.6898,0.0051,0.1812,Konak yönü
+466,Şirinyer Aktarma Merkezi – Konak,2,369,34.2924,36.681,69.9096,215.7621,0.7869,0.1274,0.2791,Şirinyer Aktarma Merkezi yönü
+490,Tınaztepe – Üçyol,1,1418,19.6612,24.1355,26.8182,121.6519,0.8665,0.0233,0.0762,Üçyol yönü
+490,Tınaztepe – Üçyol,2,1264,20.0628,23.9121,26.413,120.0821,0.844,0.0166,0.0625,Tınaztepe yönü
+498,Evka 3 Metro – Halkapınar Metro,1,491,32.581,36.1563,58.9951,99.5343,0.3814,0.0407,0.0448,Halkapınar Metro yönü
+498,Evka 3 Metro – Halkapınar Metro,2,443,31.5133,31.8262,39.6852,43.6922,0.1862,0.0,0.009,Evka 3 Metro yönü
 522,Uzundere Toplu Konutları – Üçyol Metro,1,50,185.6618,135.8134,189.96,190.8524,0.4777,0.4,0.0,Üçyol Metro yönü
-522,Uzundere Toplu Konutları – Üçyol Metro,2,66,59.0772,102.6585,181.7745,182.965,0.5836,0.0,0.3636,Uzundere Toplu Konutları yönü
-602,Menemen Aktarma – İzmir Otogar,1,1712,34.401,37.5332,41.6914,206.4977,0.8256,0.0672,0.0491,İzmir Otogar yönü
-602,Menemen Aktarma – İzmir Otogar,2,1396,32.9471,37.4096,48.1352,168.4419,0.7323,0.0695,0.091,Menemen Aktarma yönü
-658,Toki – Menemen Aktarma Merkezi,1,860,21.7115,21.945,25.6686,27.9909,0.122,0.0,0.0,Menemen Aktarma Merkezi yönü
-658,Toki – Menemen Aktarma Merkezi,2,792,21.1731,22.979,28.3472,50.2726,0.275,0.0,0.0745,Toki yönü
+522,Uzundere Toplu Konutları – Üçyol Metro,2,66,59.0772,102.6585,181.7745,182.965,0.5836,0.1212,0.0303,Uzundere Toplu Konutları yönü
+602,Menemen Aktarma – İzmir Otogar,1,2029,35.9244,40.3968,45.9468,197.2744,0.7489,0.0488,0.0966,İzmir Otogar yönü
+602,Menemen Aktarma – İzmir Otogar,2,1769,33.6535,40.3828,74.3674,167.5973,0.6781,0.0548,0.1198,Menemen Aktarma yönü
+658,Toki – Menemen Aktarma Merkezi,1,1086,21.5782,23.0446,26.4012,42.2831,0.2482,0.0,0.0755,Menemen Aktarma Merkezi yönü
+658,Toki – Menemen Aktarma Merkezi,2,1022,21.1492,23.7384,34.6522,49.3619,0.3305,0.0,0.0998,Toki yönü
 690,Tınaztepe – Fahrettin Altay Aktarma Merkezi,1,66,58.7949,68.2012,152.1808,171.6527,0.697,0.2273,0.2121,Fahrettin Altay Aktarma Merkezi yönü
 690,Tınaztepe – Fahrettin Altay Aktarma Merkezi,2,22,59.2884,76.1396,121.2414,121.2506,0.4797,0.0909,0.3636,Tınaztepe yönü
-698,Asarlık Toplu Konutları – Ulukent Aktarma Merkezi 1,1,224,39.5436,39.8049,45.6784,48.5105,0.0947,0.0,0.0,Ulukent Aktarma Merkezi 1 yönü
+698,Asarlık Toplu Konutları – Ulukent Aktarma Merkezi 1,1,346,39.4606,39.8356,48.8766,71.9459,0.319,0.0983,0.0983,Ulukent Aktarma Merkezi 1 yönü
 698,Asarlık Toplu Konutları – Ulukent Aktarma Merkezi 1,2,168,39.8385,40.601,45.1895,46.7973,0.0799,0.0,0.0,Asarlık Toplu Konutları yönü
-714,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,1,952,28.2149,41.1076,57.6319,216.1593,0.953,0.0,0.2489,Torbalı Aktarma Merkezi yönü
-714,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,2,1094,28.5214,43.2367,55.2006,207.6818,0.9217,0.0,0.3355,Deü Meslek Yüksek Okulu yönü
-722,Yazıbaşı – Torbalı,1,319,44.0558,45.4369,50.3295,84.4429,0.1304,0.0,0.0125,Torbalı yönü
+714,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,1,1211,28.5849,40.1808,55.9877,209.1683,0.8778,0.0083,0.0768,Torbalı Aktarma Merkezi yönü
+714,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,2,1497,28.0825,38.8398,54.6235,206.7658,0.9022,0.0387,0.01,Deü Meslek Yüksek Okulu yönü
+722,Yazıbaşı – Torbalı,1,324,44.1677,45.4228,50.609,59.195,0.0862,0.0,0.0,Torbalı yönü
 722,Yazıbaşı – Torbalı,2,196,44.6921,44.6971,46.686,48.0073,0.0311,0.0,0.0,Yazıbaşı yönü
-770,Selçuk – Torbalı Aktarma Merkezi,2,150,62.3549,77.3635,184.9177,185.0292,0.5322,0.0,0.1267,Selçuk yönü
-778,Özdere – Ürkmez,1,364,67.4275,66.541,71.7446,74.3524,0.0667,0.0,0.0,Ürkmez yönü
-778,Özdere – Ürkmez,2,362,66.4944,65.9724,73.9103,78.4929,0.0967,0.0,0.0,Özdere yönü
-818,Esbaş Aktarma Merkezi – Şirinyer Aktarma Merkezi,1,655,25.4767,27.3868,35.9153,48.7207,0.2333,0.0,0.0458,Şirinyer Aktarma Merkezi yönü
-818,Esbaş Aktarma Merkezi – Şirinyer Aktarma Merkezi,2,674,23.5974,26.9611,34.9115,67.7356,0.4028,0.0,0.0682,Esbaş Aktarma Merkezi yönü
-866,Buca Toplu Konutları – Şirinyer Aktarma Merkezi,1,605,20.6248,24.7717,47.5344,72.6228,0.4969,0.0,0.2281,Şirinyer Aktarma Merkezi yönü
-866,Buca Toplu Konutları – Şirinyer Aktarma Merkezi,2,463,19.1006,24.3499,37.7756,69.7415,0.5346,0.0,0.1533,Buca Toplu Konutları yönü
-874,İzkent – Şirinyer Aktarma Merkezi,1,379,25.7811,29.0856,48.8241,51.8699,0.3574,0.0,0.1953,Şirinyer Aktarma Merkezi yönü
-874,İzkent – Şirinyer Aktarma Merkezi,2,273,28.0033,32.767,48.4811,52.6475,0.3599,0.0,0.2821,İzkent yönü
-882,İyte – Urla,1,282,45.1342,49.9505,78.0414,80.0133,0.2756,0.0,0.1809,Urla yönü
-882,İyte – Urla,2,242,46.3733,54.631,78.3752,162.6364,0.364,0.0,0.2149,İyte yönü
-986,Ürkmez – Seferihisar,1,842,25.7761,29.0382,48.8586,53.1143,0.3028,0.0,0.1105,Seferihisar yönü
-986,Ürkmez – Seferihisar,2,917,26.5746,30.3378,49.8733,71.4023,0.3625,0.0,0.2017,Ürkmez yönü
-19,Yeşilyurt – Konak,1,407,20.4301,28.8344,54.8695,131.0135,0.6442,0.0,0.2899,Konak yönü
-19,Yeşilyurt – Konak,2,321,41.7304,63.8007,145.6405,251.7541,1.0297,0.2648,0.3769,Yeşilyurt yönü
-27,Çamlık – Konak,1,1060,12.2674,22.3027,27.7932,254.6809,1.9496,0.1255,0.2151,Konak yönü
-27,Çamlık – Konak,2,183,46.5744,61.2347,167.8352,249.7901,1.1253,0.4262,0.2404,Çamlık yönü
-35,Ballıkuyu – Konak,1,641,18.8721,21.2213,38.5609,72.4938,0.5586,0.0,0.1217,Konak yönü
-35,Ballıkuyu – Konak,2,470,18.7349,22.8553,40.4327,81.4145,0.61,0.0106,0.1638,Ballıkuyu yönü
-59,Bornova Metro – Kemer Aktarma Merkezi,1,1791,20.8926,25.8318,49.4964,98.5047,0.7256,0.0798,0.2083,Kemer Aktarma Merkezi yönü
-59,Bornova Metro – Kemer Aktarma Merkezi,2,1799,18.4411,24.8076,47.0889,104.1488,0.7359,0.0389,0.2179,Bornova Metro yönü
-67,Pınarbaşı – Evka 3 Metro,1,1052,26.9692,30.6155,43.831,81.2646,0.4844,0.0285,0.1692,Evka 3 Metro yönü
-67,Pınarbaşı – Evka 3 Metro,2,1109,23.8805,28.2567,48.2461,64.9748,0.479,0.0775,0.2967,Pınarbaşı yönü
-147,Postacılar – Halkapınar Metro 2,1,806,26.6222,31.2626,43.6435,161.9589,0.8192,0.0012,0.1886,Halkapınar Metro 2 yönü
-147,Postacılar – Halkapınar Metro 2,2,655,27.8358,30.7807,42.6451,148.7435,0.6077,0.1115,0.1252,Postacılar yönü
-171,Tınaztepe – Konak,1,1872,18.0025,24.412,30.8521,160.3639,1.0976,0.0817,0.2436,Konak yönü
-171,Tınaztepe – Konak,2,1655,19.6117,22.991,31.2717,113.033,0.85,0.0713,0.1746,Tınaztepe yönü
-259,Yeşilova Mahallesi – Bornova Metro,1,47,23.3179,75.2714,254.1267,257.4274,1.2756,0.2128,0.383,Bornova Metro yönü
-267,Pınarbaşı – Bornova Metro,1,912,29.1164,37.9401,59.943,178.6762,0.85,0.0154,0.1612,Bornova Metro yönü
-267,Pınarbaşı – Bornova Metro,2,833,30.1263,35.1112,41.8234,245.9528,0.9067,0.0024,0.072,Pınarbaşı yönü
-435,Körfez Mahallesı – Bostanlı İskele,1,437,25.607,28.7336,39.2197,50.3309,0.2585,0.0,0.1167,Bostanlı İskele yönü
-435,Körfez Mahallesı – Bostanlı İskele,2,317,30.3754,31.3358,46.3237,51.6539,0.2962,0.0,0.1167,Körfez Mahallesı yönü
-443,Egekent – Bostanlı İskele,1,737,24.0785,27.9356,49.9032,51.8831,0.4539,0.0095,0.2402,Bostanlı İskele yönü
-443,Egekent – Bostanlı İskele,2,682,25.6733,29.5883,52.5769,69.4901,0.4446,0.0,0.1994,Egekent yönü
+770,Selçuk – Torbalı Aktarma Merkezi,2,214,63.4356,118.1954,214.8363,215.8071,0.605,0.0,0.0888,Selçuk yönü
+778,Özdere – Ürkmez,1,568,67.2065,66.6135,71.7298,73.3441,0.0615,0.0,0.0,Ürkmez yönü
+778,Özdere – Ürkmez,2,562,67.967,67.1306,74.432,77.1634,0.0873,0.0,0.0,Özdere yönü
+818,Esbaş Aktarma Merkezi – Şirinyer Aktarma Merkezi,1,905,25.2979,27.2038,35.6392,48.5485,0.2146,0.0,0.0309,Şirinyer Aktarma Merkezi yönü
+818,Esbaş Aktarma Merkezi – Şirinyer Aktarma Merkezi,2,895,24.3161,27.4826,35.0998,67.5734,0.3833,0.0,0.0827,Esbaş Aktarma Merkezi yönü
+866,Buca Toplu Konutları – Şirinyer Aktarma Merkezi,1,873,22.8303,30.5311,52.3336,72.5345,0.4975,0.0183,0.1707,Şirinyer Aktarma Merkezi yönü
+866,Buca Toplu Konutları – Şirinyer Aktarma Merkezi,2,647,22.9476,27.4587,56.6041,69.7084,0.5152,0.0,0.1777,Buca Toplu Konutları yönü
+874,İzkent – Şirinyer Aktarma Merkezi,1,630,27.0174,29.5979,49.0885,51.9433,0.3207,0.0,0.1683,Şirinyer Aktarma Merkezi yönü
+874,İzkent – Şirinyer Aktarma Merkezi,2,449,27.0193,31.4216,48.3818,55.4852,0.3298,0.0,0.1648,İzkent yönü
+882,İyte – Urla,1,451,46.1203,48.9352,77.5868,79.8157,0.2298,0.0,0.0,Urla yönü
+882,İyte – Urla,2,362,46.3095,51.8706,77.6697,147.0823,0.3289,0.0,0.0138,İyte yönü
+986,Ürkmez – Seferihisar,1,1365,25.8438,28.4338,39.9686,53.1799,0.3323,0.0234,0.1077,Seferihisar yönü
+986,Ürkmez – Seferihisar,2,1385,27.8763,31.8483,49.9223,54.3853,0.3403,0.0108,0.2058,Ürkmez yönü
+19,Yeşilyurt – Konak,1,588,21.7778,29.8532,47.665,69.9867,0.5665,0.0765,0.1003,Konak yönü
+19,Yeşilyurt – Konak,2,481,40.1634,53.9988,145.066,251.429,1.0463,0.2017,0.1871,Yeşilyurt yönü
+27,Çamlık – Konak,1,1678,12.9348,18.9831,22.2578,250.2986,1.843,0.1085,0.1305,Konak yönü
+27,Çamlık – Konak,2,183,46.5744,61.2347,167.8352,249.7901,1.1253,0.4262,0.1913,Çamlık yönü
+35,Ballıkuyu – Konak,1,882,18.797,20.1597,25.0124,72.4833,0.5126,0.0,0.1338,Konak yönü
+35,Ballıkuyu – Konak,2,603,18.8763,22.6372,39.912,81.3647,0.5692,0.0083,0.1741,Ballıkuyu yönü
+59,Bornova Metro – Kemer Aktarma Merkezi,1,2218,20.979,25.0913,41.4293,96.4757,0.6758,0.0699,0.1849,Kemer Aktarma Merkezi yönü
+59,Bornova Metro – Kemer Aktarma Merkezi,2,2236,19.4959,24.2086,40.413,91.78,0.6859,0.0407,0.119,Bornova Metro yönü
+67,Pınarbaşı – Evka 3 Metro,1,1345,27.0566,29.9933,43.5041,81.1648,0.4417,0.0,0.0914,Evka 3 Metro yönü
+67,Pınarbaşı – Evka 3 Metro,2,1370,25.6751,28.085,43.2878,63.9185,0.4359,0.0204,0.0964,Pınarbaşı yönü
+147,Postacılar – Halkapınar Metro 2,1,1037,26.7583,30.4441,42.7421,152.2011,0.7462,0.0,0.1456,Halkapınar Metro 2 yönü
+147,Postacılar – Halkapınar Metro 2,2,832,27.4528,30.0296,41.2093,143.5336,0.5538,0.0733,0.024,Postacılar yönü
+171,Tınaztepe – Konak,1,2187,18.5036,25.3654,36.998,155.6809,1.0037,0.1294,0.1289,Konak yönü
+171,Tınaztepe – Konak,2,1923,20.7398,24.7408,40.507,111.9355,0.788,0.0614,0.1248,Tınaztepe yönü
+259,Yeşilova Mahallesi – Bornova Metro,1,218,18.4992,31.14,69.5394,254.9772,1.747,0.2569,0.1376,Bornova Metro yönü
+267,Pınarbaşı – Bornova Metro,1,1166,30.5634,38.1082,59.5861,178.2598,0.7652,0.0206,0.1501,Bornova Metro yönü
+267,Pınarbaşı – Bornova Metro,2,1000,30.9374,36.4804,59.7936,245.7625,0.8194,0.004,0.159,Pınarbaşı yönü
+435,Körfez Mahallesı – Bostanlı İskele,1,523,25.978,30.4111,48.4718,52.3329,0.3061,0.0,0.1166,Bostanlı İskele yönü
+435,Körfez Mahallesı – Bostanlı İskele,2,401,30.1061,32.3237,50.0771,53.5934,0.3245,0.0,0.1895,Körfez Mahallesı yönü
+443,Egekent – Bostanlı İskele,1,977,24.6209,28.6557,50.7511,55.1295,0.4419,0.002,0.2395,Bostanlı İskele yönü
+443,Egekent – Bostanlı İskele,2,801,26.2426,30.6209,52.7766,69.2103,0.4488,0.0674,0.2434,Egekent yönü
 475,Tınaztepe Üniversitesi – Halkapınar Metro,1,120,21.3491,74.161,297.4662,299.2964,1.5148,0.0,0.2,Halkapınar Metro yönü
 475,Tınaztepe Üniversitesi – Halkapınar Metro,2,79,56.4856,98.5058,290.0361,290.6429,1.0389,0.0127,0.2405,Tınaztepe Üniversitesi yönü
 483,İzmir Ekonomi Üniversitesi – Üçkuyular İskele Ekspres,1,12,21.9655,83.8348,216.8388,219.2496,1.0275,0.0,0.4167,Üçkuyular İskele Ekspres yönü
-515,Tınaztepe – Evka 3 Metro,1,2221,20.9761,26.4145,44.7703,84.9189,0.5878,0.0077,0.2413,Evka 3 Metro yönü
-515,Tınaztepe – Evka 3 Metro,2,2141,21.0337,26.7295,41.0264,90.2434,0.591,0.0318,0.2335,Tınaztepe yönü
-523,Uzundere – Üçyol Metro,1,635,28.551,39.7743,50.9422,161.5226,0.8322,0.0,0.1969,Üçyol Metro yönü
-523,Uzundere – Üçyol Metro,2,529,33.5357,37.6768,55.342,124.5921,0.5585,0.0359,0.1947,Uzundere yönü
-547,Çiğli Aktarma Merkezi – Bostanlı İskele,1,345,39.7112,39.9336,45.5751,47.7734,0.0977,0.0,0.0,Bostanlı İskele yönü
-547,Çiğli Aktarma Merkezi – Bostanlı İskele,2,326,40.2588,40.3032,43.2954,46.7426,0.06,0.0,0.0,Çiğli Aktarma Merkezi yönü
-555,Otogar – Halkapınar Metro,1,379,15.5705,16.061,21.9238,26.8775,0.2761,0.0,0.058,Halkapınar Metro yönü
-555,Otogar – Halkapınar Metro,2,223,14.6975,18.7373,21.802,54.639,0.5565,0.0,0.0942,Otogar yönü
-579,Yeşilyurt – Üçyol Metro,1,436,19.4746,38.4652,93.4014,218.7246,1.2544,0.0,0.3303,Üçyol Metro yönü
-579,Yeşilyurt – Üçyol Metro,2,320,21.6641,40.9349,109.0924,145.1756,0.883,0.0062,0.3562,Yeşilyurt yönü
-587,Limontepe – Konak,1,955,17.4874,26.9706,68.819,156.0849,1.1028,0.0178,0.178,Konak yönü
-587,Limontepe – Konak,2,778,20.148,27.1035,53.8274,124.6435,0.8956,0.0823,0.1555,Limontepe yönü
-595,9 Eylül Mahallesı – Bostanlı İskele,1,148,51.3463,85.6661,205.8542,207.9963,0.7651,0.0,0.2365,Bostanlı İskele yönü
-595,9 Eylül Mahallesı – Bostanlı İskele,2,147,51.897,52.5589,53.7824,75.8087,0.114,0.0,0.0,9 Eylül Mahallesı yönü
-611,Çaylı – Ödemiş,1,975,35.8269,42.5222,52.6373,202.8614,0.6707,0.0359,0.0636,Ödemiş yönü
-611,Çaylı – Ödemiş,2,994,38.1814,47.2207,67.4563,138.9964,0.547,0.0,0.1137,Çaylı yönü
-619,Seyrek – Ulukent Aktarma Merkezi 2,1,121,20.6356,33.4073,64.4966,135.4408,0.8648,0.0,0.2066,Ulukent Aktarma Merkezi 2 yönü
+515,Tınaztepe – Evka 3 Metro,1,2753,21.5754,25.7566,43.8352,80.5009,0.549,0.0294,0.1733,Evka 3 Metro yönü
+515,Tınaztepe – Evka 3 Metro,2,2565,21.4542,26.5198,41.2629,86.718,0.5626,0.053,0.1805,Tınaztepe yönü
+523,Uzundere – Üçyol Metro,1,671,28.6218,40.2386,51.0045,194.7992,0.8569,0.0,0.1773,Üçyol Metro yönü
+523,Uzundere – Üçyol Metro,2,529,33.5357,37.6768,55.342,124.5921,0.5585,0.0491,0.1645,Uzundere yönü
+547,Çiğli Aktarma Merkezi – Bostanlı İskele,1,483,41.5392,41.4302,47.5591,50.8808,0.107,0.0,0.0,Bostanlı İskele yönü
+547,Çiğli Aktarma Merkezi – Bostanlı İskele,2,439,40.7835,41.5322,46.8055,49.3864,0.0795,0.0,0.0,Çiğli Aktarma Merkezi yönü
+555,Otogar – Halkapınar Metro,1,603,17.3082,16.5677,21.5554,26.9428,0.2834,0.0216,0.0663,Halkapınar Metro yönü
+555,Otogar – Halkapınar Metro,2,343,16.9435,18.8434,24.012,54.6179,0.4764,0.0,0.0875,Otogar yönü
+579,Yeşilyurt – Üçyol Metro,1,600,20.7585,36.7358,52.4931,218.4167,1.177,0.0217,0.2383,Üçyol Metro yönü
+579,Yeşilyurt – Üçyol Metro,2,449,23.0678,38.0608,61.764,145.0972,0.824,0.0334,0.2628,Yeşilyurt yönü
+587,Limontepe – Konak,1,1250,19.5364,25.4521,31.9742,155.3743,1.0274,0.0064,0.08,Konak yönü
+587,Limontepe – Konak,2,1073,20.0855,25.7488,46.7139,124.2513,0.8381,0.0503,0.1053,Limontepe yönü
+595,9 Eylül Mahallesı – Bostanlı İskele,1,279,50.5712,69.3462,202.1852,207.8023,0.7372,0.0,0.0072,Bostanlı İskele yönü
+595,9 Eylül Mahallesı – Bostanlı İskele,2,264,51.3914,51.295,54.3566,75.7709,0.1046,0.0,0.0,9 Eylül Mahallesı yönü
+611,Çaylı – Ödemiş,1,1420,35.7078,39.8219,50.2218,202.5268,0.6035,0.0246,0.0437,Ödemiş yönü
+611,Çaylı – Ödemiş,2,1428,37.6405,44.3309,55.8692,138.8969,0.5098,0.0154,0.063,Çaylı yönü
+619,Seyrek – Ulukent Aktarma Merkezi 2,1,121,20.6356,33.4073,64.4966,135.4408,0.8648,0.1322,0.157,Ulukent Aktarma Merkezi 2 yönü
 619,Seyrek – Ulukent Aktarma Merkezi 2,2,172,20.4834,30.831,64.4679,122.3366,0.8834,0.0523,0.2267,Seyrek yönü
-675,Seferihisar – Fahrettin Altay Aktarma Merkezi Ekspres,1,1628,18.8862,25.7737,26.3391,145.0678,1.1255,0.0141,0.0627,Fahrettin Altay Aktarma Merkezi Ekspres yönü
-675,Seferihisar – Fahrettin Altay Aktarma Merkezi Ekspres,2,1341,20.9717,26.9511,42.7166,132.4004,0.8105,0.0,0.1066,Seferihisar yönü
-691,Gaziemir – Lozan Meydan,1,1453,16.7233,22.4344,38.4964,140.08,1.0259,0.0592,0.1769,Lozan Meydan yönü
-691,Gaziemir – Lozan Meydan,2,1821,17.5008,22.8818,32.1361,135.5626,0.912,0.0516,0.1757,Gaziemir yönü
-699,Muhittin Erener – Kemer,1,418,30.6394,38.6902,58.8937,61.9539,0.3886,0.0,0.3493,Kemer yönü
-699,Muhittin Erener – Kemer,2,375,31.5182,44.3013,56.9578,255.2883,0.8392,0.0,0.3467,Muhittin Erener yönü
+675,Seferihisar – Fahrettin Altay Aktarma Merkezi Ekspres,1,2284,19.4626,24.5408,26.2856,144.8976,1.0036,0.0009,0.056,Fahrettin Altay Aktarma Merkezi Ekspres yönü
+675,Seferihisar – Fahrettin Altay Aktarma Merkezi Ekspres,2,1982,20.5562,24.7786,29.7034,132.1632,0.7422,0.0,0.0777,Seferihisar yönü
+691,Gaziemir – Lozan Meydan,1,1776,16.9272,22.6474,39.6742,132.3601,0.9641,0.0096,0.1408,Lozan Meydan yönü
+691,Gaziemir – Lozan Meydan,2,2358,17.4637,22.2661,32.7752,130.0909,0.8478,0.0534,0.1209,Gaziemir yönü
+699,Muhittin Erener – Kemer,1,700,31.9047,41.397,60.3036,70.1662,0.3738,0.0,0.3971,Kemer yönü
+699,Muhittin Erener – Kemer,2,624,32.1278,42.6745,62.6484,255.2711,0.7074,0.0,0.234,Muhittin Erener yönü
 707,Pancar Aktarma Merkezi – Menderes,1,99,60.7658,58.8431,61.2419,61.4682,0.053,0.0,0.0,Menderes yönü
-715,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,1,112,55.3771,55.2073,57.4716,58.9864,0.0347,0.0,0.0,Torbalı Aktarma Merkezi yönü
+715,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,1,166,55.7536,78.404,168.8133,171.0682,0.5876,0.1325,0.0,Torbalı Aktarma Merkezi yönü
 715,Deü Meslek Yüksek Okulu – Torbalı Aktarma Merkezi,2,122,53.6573,54.1842,56.0462,56.5401,0.0259,0.0,0.0,Deü Meslek Yüksek Okulu yönü
-747,Emiralem – Menemen Aktarma Merkezi,1,590,29.1765,29.6872,42.8376,59.527,0.2808,0.0,0.0966,Menemen Aktarma Merkezi yönü
-747,Emiralem – Menemen Aktarma Merkezi,2,452,31.245,33.1991,45.1765,61.9866,0.2815,0.0,0.0664,Emiralem yönü
-755,Süleymanlı – Menemen Aktarma Merkezi,1,136,45.3996,44.5832,46.6194,49.2497,0.0452,0.0,0.0,Menemen Aktarma Merkezi yönü
-755,Süleymanlı – Menemen Aktarma Merkezi,2,116,46.6223,47.0686,48.3775,51.0047,0.0229,0.0,0.0,Süleymanlı yönü
-795,Ödemiş-torbalı,1,1155,56.3982,54.1275,70.7277,106.4745,0.3596,0.1134,0.0433,Ödemiş-torbalı yönü
-795,Ödemiş-torbalı,2,1599,54.8849,58.1209,73.7609,120.0458,0.2447,0.0,0.0575,Ödemiş-torbalı yönü
-803,Kiraz – Ödemiş,1,1299,22.5808,22.8293,26.7026,30.2475,0.1692,0.0,0.0069,Ödemiş yönü
-803,Kiraz – Ödemiş,2,872,23.0779,22.2356,25.8775,27.5342,0.1602,0.0,0.0023,Kiraz yönü
-811,Engelliler Merkezi – Konak,2,37,125.0178,124.8511,125.8137,125.9265,0.0075,0.0,0.0,Engelliler Merkezi yönü
-827,Ulukent Aktarma Merkezi – Bostanlı İskele,1,944,29.973,34.1744,46.0252,75.7995,0.3884,0.0,0.1335,Bostanlı İskele yönü
-827,Ulukent Aktarma Merkezi – Bostanlı İskele,2,886,30.0051,33.7753,49.7024,65.0763,0.3256,0.0,0.1354,Ulukent Aktarma Merkezi yönü
-835,Bergama – Aliağa Aktarma Merkezi,1,1640,26.2129,28.9663,50.6163,77.8034,0.4528,0.0634,0.1512,Aliağa Aktarma Merkezi yönü
-835,Bergama – Aliağa Aktarma Merkezi,2,1376,30.5541,37.9558,78.206,82.9599,0.4914,0.0036,0.2965,Bergama yönü
-875,Evka 1 – Şirinyer Aktarma Merkezi,1,278,30.2487,36.6482,56.5904,59.4695,0.3488,0.0,0.3309,Şirinyer Aktarma Merkezi yönü
-875,Evka 1 – Şirinyer Aktarma Merkezi,2,250,36.8032,44.1879,68.8198,69.6585,0.3652,0.0,0.3,Evka 1 yönü
-883,İyte – Fahrettin Altay Aktarma Merkezi Ekspres,1,136,70.817,71.5108,74.8281,76.701,0.0344,0.0,0.0,Fahrettin Altay Aktarma Merkezi Ekspres yönü
-883,İyte – Fahrettin Altay Aktarma Merkezi Ekspres,2,56,70.9064,72.8081,80.4406,81.2674,0.0698,0.0,0.0,İyte yönü
-891,Evka 7 – Gaziemir Semt Garajı,1,292,21.4127,29.5791,39.5244,117.5277,0.616,0.0,0.3288,Gaziemir Semt Garajı yönü
-891,Evka 7 – Gaziemir Semt Garajı,2,162,22.4354,26.2899,40.3057,98.6533,0.5349,0.0,0.142,Evka 7 yönü
-963,Evka 3 Metro – Alsancak Gar,1,428,22.9552,22.6487,40.4687,49.8089,0.4769,0.1168,0.1238,Alsancak Gar yönü
-963,Evka 3 Metro – Alsancak Gar,2,499,15.883,22.7189,41.8324,54.3637,0.5238,0.01,0.4449,Evka 3 Metro yönü
-971,Narbel – Fahrettin Altay Aktarma Merkezi,1,937,20.2027,21.7439,28.1293,46.3429,0.3471,0.0,0.0683,Fahrettin Altay Aktarma Merkezi yönü
-971,Narbel – Fahrettin Altay Aktarma Merkezi,2,842,19.9089,22.0383,30.7028,49.6073,0.4367,0.0036,0.1485,Narbel yönü
-987,Ürkmez – Fahrettin Altay Aktarma Merkezi,1,1066,67.0775,69.7233,81.2508,123.5036,0.308,0.0,0.0947,Fahrettin Altay Aktarma Merkezi yönü
-987,Ürkmez – Fahrettin Altay Aktarma Merkezi,2,803,63.9891,83.0054,166.3875,171.6673,0.4938,0.0,0.213,Ürkmez yönü
-20,Kooperatif Evleri – Konak,1,506,19.434,35.6195,63.1891,189.8181,1.0759,0.0573,0.3893,Konak yönü
-20,Kooperatif Evleri – Konak,2,437,25.0779,40.0196,91.5158,200.1142,1.2366,0.1487,0.2952,Kooperatif Evleri yönü
-36,Şirinyer Aktarma Merkezi – Konak,1,151,40.18,42.1587,42.2195,111.0057,0.3798,0.0,0.0132,Konak yönü
-36,Şirinyer Aktarma Merkezi – Konak,2,90,40.0839,40.4738,42.1751,46.6175,0.1083,0.0,0.0111,Şirinyer Aktarma Merkezi yönü
-44,Mersinpınar – Gümrük,1,921,14.8737,21.4147,30.5838,163.6045,1.2467,0.0174,0.2052,Gümrük yönü
-44,Mersinpınar – Gümrük,2,575,15.8786,20.9575,28.1239,162.6806,1.2151,0.04,0.1913,Mersinpınar yönü
-60,Pınarbaşı – Kemer Aktarma Merkezi,1,866,26.8569,35.6779,77.2856,124.9853,0.6661,0.0,0.164,Kemer Aktarma Merkezi yönü
-60,Pınarbaşı – Kemer Aktarma Merkezi,2,913,26.7322,33.1385,49.8046,103.6886,0.576,0.0,0.1687,Pınarbaşı yönü
-84,Salih Omurtak – Üçyol Metro,1,299,30.4935,50.3343,113.1513,271.9605,1.2857,0.0569,0.107,Üçyol Metro yönü
-84,Salih Omurtak – Üçyol Metro,2,255,31.1562,50.7593,137.1067,141.3484,0.7958,0.0,0.2745,Salih Omurtak yönü
-92,Fuar İzmir – Üçyol Metro,1,271,37.6373,58.8354,178.0285,273.4375,0.9979,0.0,0.203,Üçyol Metro yönü
-92,Fuar İzmir – Üçyol Metro,2,234,39.0841,39.9305,53.3691,73.4522,0.2364,0.0,0.0256,Fuar İzmir yönü
-108,Eserkent – Üçyol Metro,1,127,34.2626,43.213,121.8191,156.1314,0.7912,0.0945,0.126,Üçyol Metro yönü
+747,Emiralem – Menemen Aktarma Merkezi,1,968,29.3887,29.8074,36.3485,59.5339,0.251,0.0,0.0238,Menemen Aktarma Merkezi yönü
+747,Emiralem – Menemen Aktarma Merkezi,2,676,30.6444,32.3088,43.1565,61.5977,0.2459,0.0,0.0355,Emiralem yönü
+755,Süleymanlı – Menemen Aktarma Merkezi,1,174,45.3996,44.6888,47.1003,49.0553,0.0467,0.0,0.0,Menemen Aktarma Merkezi yönü
+755,Süleymanlı – Menemen Aktarma Merkezi,2,106,46.578,47.0145,48.2452,51.1687,0.0225,0.0,0.0,Süleymanlı yönü
+795,Ödemiş-torbalı,1,1619,59.6069,61.3019,106.5523,108.5472,0.3908,0.1248,0.126,Ödemiş-torbalı yönü
+795,Ödemiş-torbalı,2,1812,54.4328,60.9481,86.4245,126.6501,0.3533,0.0,0.074,Ödemiş-torbalı yönü
+803,Kiraz – Ödemiş,1,1995,23.9441,23.746,28.8549,30.8187,0.1655,0.0,0.0065,Ödemiş yönü
+803,Kiraz – Ödemiş,2,1411,23.7924,24.234,30.8763,41.2348,0.2419,0.0,0.0503,Kiraz yönü
+811,Engelliler Merkezi – Konak,1,6,181.8247,136.4296,182.886,182.9999,0.5216,0.3333,0.0,Konak yönü
+811,Engelliler Merkezi – Konak,2,94,124.5728,112.5566,129.065,177.7996,0.2632,0.2128,0.0,Engelliler Merkezi yönü
+827,Ulukent Aktarma Merkezi – Bostanlı İskele,1,1282,30.0166,33.1397,45.6985,74.4719,0.3682,0.0,0.0803,Bostanlı İskele yönü
+827,Ulukent Aktarma Merkezi – Bostanlı İskele,2,1241,30.4181,32.9248,45.9042,65.1878,0.3264,0.0,0.0137,Ulukent Aktarma Merkezi yönü
+835,Bergama – Aliağa Aktarma Merkezi,1,2333,25.9398,28.2249,47.3755,66.5273,0.4055,0.0446,0.1089,Aliağa Aktarma Merkezi yönü
+835,Bergama – Aliağa Aktarma Merkezi,2,2031,28.0173,34.7477,56.5215,81.6059,0.474,0.0025,0.2078,Bergama yönü
+875,Evka 1 – Şirinyer Aktarma Merkezi,1,349,29.4101,34.2385,56.0526,59.541,0.3703,0.0,0.235,Şirinyer Aktarma Merkezi yönü
+875,Evka 1 – Şirinyer Aktarma Merkezi,2,348,35.9975,44.9789,69.276,112.7351,0.4528,0.1466,0.2213,Evka 1 yönü
+883,İyte – Fahrettin Altay Aktarma Merkezi Ekspres,1,210,70.8736,71.6629,75.4039,76.5806,0.0335,0.0,0.0,Fahrettin Altay Aktarma Merkezi Ekspres yönü
+883,İyte – Fahrettin Altay Aktarma Merkezi Ekspres,2,77,70.1507,71.9172,79.8404,81.2636,0.0643,0.0,0.0,İyte yönü
+891,Evka 7 – Gaziemir Semt Garajı,1,421,33.7553,31.4299,39.262,108.1266,0.4591,0.0,0.133,Gaziemir Semt Garajı yönü
+891,Evka 7 – Gaziemir Semt Garajı,2,214,25.2118,30.9843,40.378,104.3679,0.584,0.0,0.1308,Evka 7 yönü
+963,Evka 3 Metro – Alsancak Gar,1,654,16.7286,20.77,33.5297,49.8135,0.4835,0.0,0.237,Alsancak Gar yönü
+963,Evka 3 Metro – Alsancak Gar,2,743,15.17,20.694,38.3713,53.9997,0.5299,0.0054,0.2732,Evka 3 Metro yönü
+971,Narbel – Fahrettin Altay Aktarma Merkezi,1,1230,20.8896,23.5569,42.5644,60.8368,0.4182,0.0,0.1512,Fahrettin Altay Aktarma Merkezi yönü
+971,Narbel – Fahrettin Altay Aktarma Merkezi,2,1107,21.0075,23.2266,44.0192,57.595,0.4536,0.0027,0.1346,Narbel yönü
+987,Ürkmez – Fahrettin Altay Aktarma Merkezi,1,1510,67.3056,70.9581,86.1603,122.9069,0.2518,0.0,0.0629,Fahrettin Altay Aktarma Merkezi yönü
+987,Ürkmez – Fahrettin Altay Aktarma Merkezi,2,1227,67.3456,79.3179,163.058,171.4631,0.4253,0.0,0.0293,Ürkmez yönü
+20,Kooperatif Evleri – Konak,1,744,23.3398,34.8045,55.858,179.6235,0.9459,0.1452,0.1022,Konak yönü
+20,Kooperatif Evleri – Konak,2,562,31.4068,39.9642,53.8208,200.0982,1.0904,0.2171,0.1423,Kooperatif Evleri yönü
+36,Şirinyer Aktarma Merkezi – Konak,1,238,40.788,42.0435,43.8721,46.0175,0.3059,0.0,0.0084,Konak yönü
+36,Şirinyer Aktarma Merkezi – Konak,2,147,40.1696,40.4529,42.3799,43.5239,0.0881,0.0,0.0068,Şirinyer Aktarma Merkezi yönü
+44,Mersinpınar – Gümrük,1,1207,15.844,20.3159,28.7243,162.8924,1.1543,0.0,0.1268,Gümrük yönü
+44,Mersinpınar – Gümrük,2,758,16.3062,20.1988,27.358,161.465,1.1117,0.0092,0.1359,Mersinpınar yönü
+60,Pınarbaşı – Kemer Aktarma Merkezi,1,1275,26.9427,33.1397,49.4763,117.16,0.6143,0.0259,0.0196,Kemer Aktarma Merkezi yönü
+60,Pınarbaşı – Kemer Aktarma Merkezi,2,1268,26.7853,31.2945,44.3022,102.8891,0.5315,0.0047,0.0718,Pınarbaşı yönü
+84,Salih Omurtak – Üçyol Metro,1,429,38.8438,47.6818,42.0524,271.8445,1.1409,0.0676,0.0047,Üçyol Metro yönü
+84,Salih Omurtak – Üçyol Metro,2,346,36.7124,50.6207,99.3113,160.9186,0.7372,0.0202,0.0925,Salih Omurtak yönü
+92,Fuar İzmir – Üçyol Metro,1,435,38.3374,51.7944,61.9799,263.6292,0.9116,0.0,0.0828,Üçyol Metro yönü
+92,Fuar İzmir – Üçyol Metro,2,343,39.377,40.0971,53.0354,72.9409,0.2007,0.0,0.0175,Fuar İzmir yönü
+108,Eserkent – Üçyol Metro,1,143,34.4302,68.3047,265.7351,269.1026,1.1406,0.0839,0.2238,Üçyol Metro yönü
 108,Eserkent – Üçyol Metro,2,142,33.8354,36.845,52.1888,144.3336,0.7072,0.0986,0.1408,Eserkent yönü
-124,Ali Fuat Erden – Üçyol Metro,1,188,44.5804,44.9408,49.053,49.999,0.0626,0.0,0.0,Üçyol Metro yönü
-124,Ali Fuat Erden – Üçyol Metro,2,155,45.5955,50.1465,48.0014,199.7753,0.5544,0.0,0.0323,Ali Fuat Erden yönü
-140,Örnekköy – Halkapınar Metro 2,1,359,35.5861,38.4865,40.7465,96.6325,0.3395,0.0,0.0613,Halkapınar Metro 2 yönü
-140,Örnekköy – Halkapınar Metro 2,2,389,35.1514,39.2082,46.2691,111.7304,0.3991,0.0,0.0925,Örnekköy yönü
-148,Onur Mahallesi – Halkapınar Metro 2,1,560,26.6475,28.2667,33.3225,160.9184,0.724,0.0,0.0232,Halkapınar Metro 2 yönü
-148,Onur Mahallesi – Halkapınar Metro 2,2,382,29.0242,34.9349,36.1622,185.8433,0.9278,0.0524,0.0812,Onur Mahallesi yönü
-196,Nafiz Gürman – Karşıyaka İskele,1,60,90.7738,66.2466,92.1821,160.5553,0.6285,0.4333,0.0667,Karşıyaka İskele yönü
-196,Nafiz Gürman – Karşıyaka İskele,2,43,91.69,81.9898,165.6406,178.4521,0.6205,0.2326,0.1163,Nafiz Gürman yönü
-268,Doğanlar – Bornova Metro,1,1406,10.0533,13.4692,20.7316,75.7761,0.8602,0.0448,0.2752,Bornova Metro yönü
-268,Doğanlar – Bornova Metro,2,1552,10.1088,14.8639,18.7911,163.5715,1.516,0.0174,0.1914,Doğanlar yönü
-284,Evka 1 – Konak,1,1352,22.0969,25.775,37.0753,126.7508,0.5743,0.0251,0.1701,Konak yönü
-284,Evka 1 – Konak,2,1037,23.6253,27.228,37.2721,97.3467,0.5459,0.0,0.1572,Evka 1 yönü
-428,Egekent 2 – Bostanlı İskele,1,1530,21.2673,24.1213,26.0724,97.1933,0.586,0.0,0.081,Bostanlı İskele yönü
-428,Egekent 2 – Bostanlı İskele,2,1521,21.6673,24.9017,43.5994,78.9957,0.5194,0.0184,0.1525,Egekent 2 yönü
+124,Ali Fuat Erden – Üçyol Metro,1,306,44.8294,45.0441,48.0468,49.9848,0.0516,0.0,0.0,Üçyol Metro yönü
+124,Ali Fuat Erden – Üçyol Metro,2,285,45.8354,47.8475,47.9971,153.7867,0.433,0.0,0.0175,Ali Fuat Erden yönü
+140,Örnekköy – Halkapınar Metro 2,1,464,36.753,38.8086,41.0084,96.6322,0.297,0.0,0.0474,Halkapınar Metro 2 yönü
+140,Örnekköy – Halkapınar Metro 2,2,521,35.8384,39.3634,43.9012,110.7812,0.3448,0.0211,0.0384,Örnekköy yönü
+148,Onur Mahallesi – Halkapınar Metro 2,1,771,28.091,28.7164,33.966,160.6478,0.5661,0.0,0.0636,Halkapınar Metro 2 yönü
+148,Onur Mahallesi – Halkapınar Metro 2,2,575,29.0215,33.0564,35.4903,185.4918,0.8042,0.0209,0.0539,Onur Mahallesi yönü
+196,Nafiz Gürman – Karşıyaka İskele,1,87,34.3084,56.4349,91.4926,160.5437,0.6686,0.2874,0.0575,Karşıyaka İskele yönü
+196,Nafiz Gürman – Karşıyaka İskele,2,41,91.7783,82.5962,177.3039,178.4532,0.6274,0.439,0.122,Nafiz Gürman yönü
+268,Doğanlar – Bornova Metro,1,1607,9.9506,12.7286,20.5043,75.7247,0.8306,0.0442,0.2209,Bornova Metro yönü
+268,Doğanlar – Bornova Metro,2,1834,10.1505,13.9083,18.5915,163.5387,1.4417,0.0251,0.1472,Doğanlar yönü
+284,Evka 1 – Konak,1,1826,21.8759,25.7275,37.3565,84.4377,0.5245,0.0153,0.1807,Konak yönü
+284,Evka 1 – Konak,2,1418,22.7554,26.626,39.1129,97.172,0.5179,0.0,0.177,Evka 1 yönü
+428,Egekent 2 – Bostanlı İskele,1,1973,22.7387,24.3082,27.6256,89.3623,0.5211,0.0,0.0664,Bostanlı İskele yönü
+428,Egekent 2 – Bostanlı İskele,2,1951,22.266,24.9818,40.7229,78.8163,0.4766,0.0374,0.1194,Egekent 2 yönü
 476,Tınaztepe – Şirinyer Aktarma Merkezi,1,241,71.0806,71.9527,74.2875,75.1334,0.1775,0.0,0.0083,Şirinyer Aktarma Merkezi yönü
 476,Tınaztepe – Şirinyer Aktarma Merkezi,2,341,67.9602,83.2716,75.0436,297.9028,0.6601,0.0,0.085,Tınaztepe yönü
-484,Yeşilbağlar – Konak,1,738,23.4451,29.0779,32.9314,161.8592,0.9317,0.0488,0.0854,Konak yönü
-484,Yeşilbağlar – Konak,2,879,23.3925,27.7306,48.2279,119.1309,0.7288,0.0944,0.1968,Yeşilbağlar yönü
-508,Menderes – Konak,1,656,38.8007,52.6842,77.9144,172.9031,0.5834,0.032,0.3216,Konak yönü
-508,Menderes – Konak,2,959,45.9333,47.6634,74.0441,149.4107,0.6528,0.1502,0.147,Menderes yönü
+484,Yeşilbağlar – Konak,1,844,23.6753,32.4761,82.6192,137.0393,0.9158,0.0498,0.1363,Konak yönü
+484,Yeşilbağlar – Konak,2,1088,24.701,28.4376,54.5117,116.2494,0.6967,0.0432,0.2243,Yeşilbağlar yönü
+508,Menderes – Konak,1,766,45.7876,55.9434,95.1293,172.5452,0.5504,0.0927,0.1097,Konak yönü
+508,Menderes – Konak,2,1123,41.5484,50.2605,121.9716,141.3569,0.6682,0.1327,0.2467,Menderes yönü
 516,Yenitepe Evleri – Gaziemir Semt Garajı,1,24,30.1832,37.1766,73.4835,90.7816,0.5617,0.0,0.125,Gaziemir Semt Garajı yönü
 516,Yenitepe Evleri – Gaziemir Semt Garajı,2,28,145.0398,122.617,153.2268,194.5044,0.4382,0.2143,0.0,Yenitepe Evleri yönü
-524,Cennetçeşme – Üçyol Metro,1,1053,28.1853,34.8388,54.6495,212.1961,0.8772,0.0076,0.2032,Üçyol Metro yönü
-524,Cennetçeşme – Üçyol Metro,2,1007,27.8347,38.9317,61.6989,215.2951,0.8523,0.0,0.2423,Cennetçeşme yönü
-532,Bayraklı Şehir Hastanesi – Bostanlı İskele,1,3158,27.9617,32.0238,51.4613,86.8119,0.5776,0.1444,0.2616,Bostanlı İskele yönü
-532,Bayraklı Şehir Hastanesi – Bostanlı İskele,2,3448,26.1411,30.7544,49.8068,78.998,0.4968,0.1148,0.328,Bayraklı Şehir Hastanesi yönü
-556,Çamlık – Üçyol Metro,1,332,25.67,33.3073,81.5161,87.7782,0.6224,0.0,0.1506,Üçyol Metro yönü
+524,Cennetçeşme – Üçyol Metro,1,1268,28.8676,37.0993,61.4949,212.0504,0.7934,0.0039,0.2153,Üçyol Metro yönü
+524,Cennetçeşme – Üçyol Metro,2,1174,29.2814,40.0935,62.9407,215.2909,0.7824,0.0264,0.1073,Cennetçeşme yönü
+532,Bayraklı Şehir Hastanesi – Bostanlı İskele,1,3251,28.911,32.3889,51.447,86.7123,0.5672,0.1273,0.1793,Bostanlı İskele yönü
+532,Bayraklı Şehir Hastanesi – Bostanlı İskele,2,3571,26.8261,31.2399,49.6499,78.995,0.4878,0.1585,0.1159,Bayraklı Şehir Hastanesi yönü
+556,Çamlık – Üçyol Metro,1,373,25.9283,37.3129,81.2138,89.2689,0.6575,0.0322,0.0161,Üçyol Metro yönü
 556,Çamlık – Üçyol Metro,2,236,30.2358,31.4749,38.084,53.2483,0.2265,0.0,0.0593,Çamlık yönü
-564,Ayakkabıcılar Sitesi – Halkapınar Metro,1,1204,12.2565,17.1115,29.8084,113.8828,1.0,0.0872,0.2857,Halkapınar Metro yönü
-564,Ayakkabıcılar Sitesi – Halkapınar Metro,2,963,13.7014,18.8667,31.5455,100.9142,0.82,0.0083,0.2503,Ayakkabıcılar Sitesi yönü
-588,Yeni Çamlık – Konak,1,1167,19.566,24.8599,31.6648,149.5143,0.9131,0.0,0.1714,Konak yönü
-588,Yeni Çamlık – Konak,2,951,20.2363,26.9276,36.6522,117.0101,0.7878,0.0095,0.1987,Yeni Çamlık yönü
+564,Ayakkabıcılar Sitesi – Halkapınar Metro,1,1628,12.7937,16.8678,29.5184,113.7945,0.9262,0.0197,0.1204,Halkapınar Metro yönü
+564,Ayakkabıcılar Sitesi – Halkapınar Metro,2,1305,13.551,17.689,30.9799,100.8053,0.7654,0.0452,0.0943,Ayakkabıcılar Sitesi yönü
+588,Yeni Çamlık – Konak,1,1524,20.1419,24.0151,30.7081,132.8889,0.8336,0.0249,0.0295,Konak yönü
+588,Yeni Çamlık – Konak,2,1224,20.9114,25.6476,33.3131,116.6604,0.7385,0.0645,0.0482,Yeni Çamlık yönü
 596,Katıp Çelebı Ünıversıtesı – Egekent Aktarma Merkezi,2,24,14.522,14.605,15.3162,15.3821,0.0468,0.0,0.0,Katıp Çelebı Ünıversıtesı yönü
-660,Yeni Foça – İzmir Otogar,1,1660,45.3905,49.8392,66.6353,106.7496,0.2557,0.0,0.0904,İzmir Otogar yönü
-660,Yeni Foça – İzmir Otogar,2,1702,46.0632,44.3282,63.4404,74.2239,0.3272,0.0811,0.0617,Yeni Foça yönü
-676,Tınaztepe – Şirinyer Aktarma Merkezi,1,562,28.8951,38.0687,73.6845,135.138,0.6905,0.089,0.2829,Şirinyer Aktarma Merkezi yönü
-676,Tınaztepe – Şirinyer Aktarma Merkezi,2,502,29.6193,42.9274,81.4395,214.979,0.8468,0.012,0.2888,Tınaztepe yönü
-684,Urla – Fahrettin Altay Aktarma Merkezi Ekspres,1,270,34.7991,46.822,73.4435,144.2794,0.6093,0.0,0.2185,Fahrettin Altay Aktarma Merkezi Ekspres yönü
-684,Urla – Fahrettin Altay Aktarma Merkezi Ekspres,2,145,35.6853,37.6706,63.1129,64.4239,0.331,0.0,0.1586,Urla yönü
-732,Seferihisar – Urla,1,158,93.187,92.7133,96.7693,97.4237,0.0348,0.0,0.0,Urla yönü
-748,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi,1,927,19.3343,19.1457,24.1195,36.8529,0.2314,0.0291,0.0129,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi yönü
-748,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi,2,1561,19.5113,23.9359,22.7568,112.6084,0.9054,0.0,0.0583,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi yönü
+660,Yeni Foça – İzmir Otogar,1,2274,48.1998,50.0751,59.8952,106.7578,0.2372,0.0013,0.0906,İzmir Otogar yönü
+660,Yeni Foça – İzmir Otogar,2,2204,47.5883,45.968,59.2588,74.3151,0.304,0.0594,0.0041,Yeni Foça yönü
+676,Tınaztepe – Şirinyer Aktarma Merkezi,1,885,28.0592,34.8353,61.7857,134.5135,0.6453,0.0554,0.2633,Şirinyer Aktarma Merkezi yönü
+676,Tınaztepe – Şirinyer Aktarma Merkezi,2,813,27.3809,38.0853,61.5123,214.9011,0.8002,0.0098,0.3014,Tınaztepe yönü
+684,Urla – Fahrettin Altay Aktarma Merkezi Ekspres,1,367,35.4002,46.636,71.0355,144.1803,0.5519,0.0,0.2425,Fahrettin Altay Aktarma Merkezi Ekspres yönü
+684,Urla – Fahrettin Altay Aktarma Merkezi Ekspres,2,237,36.2713,40.6259,64.5397,70.3794,0.3622,0.0,0.1941,Urla yönü
+732,Seferihisar – Urla,1,112,92.9599,92.2128,96.9723,97.4768,0.0375,0.0,0.0,Urla yönü
+748,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi,1,1380,19.5482,19.5379,24.2736,37.016,0.218,0.0167,0.013,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi yönü
+748,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi,2,2217,19.939,22.9391,23.2296,112.2672,0.7995,0.0,0.0433,Ulukent Aktarma Merkezi 1- Menemen Aktarma Merkezi yönü
 756,Kozbeyli – Menemen Aktarma,1,267,71.7659,74.4936,81.8947,82.8313,0.0877,0.0,0.0,Menemen Aktarma yönü
-756,Kozbeyli – Menemen Aktarma,2,446,68.3797,72.6196,91.6575,93.3571,0.1551,0.0,0.0,Kozbeyli yönü
-804,Dereköy – Cumaovası Aktarma Merkezı,1,217,30.1867,30.7062,32.5171,35.1587,0.144,0.0,0.0046,Cumaovası Aktarma Merkezı yönü
-804,Dereköy – Cumaovası Aktarma Merkezı,2,200,29.9499,30.184,32.3694,33.9704,0.06,0.0,0.0,Dereköy yönü
-820,Harmandalı – Bostanlı İskele,1,804,23.515,26.7934,37.6331,62.3377,0.4308,0.0,0.1692,Bostanlı İskele yönü
-820,Harmandalı – Bostanlı İskele,2,713,29.0673,31.0242,49.4139,59.4058,0.3981,0.0238,0.1683,Harmandalı yönü
-828,Sarnıç – Yeni Çamlık,1,1226,35.7747,40.6073,69.4781,88.9207,0.4361,0.0277,0.1729,Yeni Çamlık yönü
-828,Sarnıç – Yeni Çamlık,2,1293,35.2543,39.1075,67.9363,111.7381,0.5312,0.0464,0.1145,Sarnıç yönü
-836,Kınık – Bergama,1,102,58.3316,61.7696,65.1059,112.0267,0.184,0.0,0.0392,Bergama yönü
-836,Kınık – Bergama,2,266,66.6891,83.3272,113.1357,175.0472,0.4252,0.0,0.2895,Kınık yönü
-868,Menemen Plastik İhtisas Organize Sanayi – Atatürk Mahallesi – Menemen Aktarma Merkezi,1,244,42.6096,42.5121,52.3377,91.6342,0.2643,0.0,0.0123,Atatürk Mahallesi - Menemen Aktarma Merkezi yönü
-868,Menemen Plastik İhtisas Organize Sanayi – Atatürk Mahallesi – Menemen Aktarma Merkezi,2,226,41.0371,41.9006,49.0905,49.6697,0.0819,0.0,0.0,Menemen Plastik İhtisas Organize Sanayi yönü
+756,Kozbeyli – Menemen Aktarma,2,488,68.8698,72.6656,91.4205,93.3549,0.1482,0.0,0.0,Kozbeyli yönü
+804,Dereköy – Cumaovası Aktarma Merkezı,1,341,30.1292,30.4475,32.5491,35.2118,0.123,0.0,0.0029,Cumaovası Aktarma Merkezı yönü
+804,Dereköy – Cumaovası Aktarma Merkezı,2,309,30.3596,30.0877,32.1543,33.4232,0.0595,0.0,0.0,Dereköy yönü
+820,Harmandalı – Bostanlı İskele,1,1111,25.4013,28.6991,50.4903,61.5202,0.429,0.0,0.2124,Bostanlı İskele yönü
+820,Harmandalı – Bostanlı İskele,2,945,28.4433,32.4688,55.9311,95.2421,0.4845,0.0,0.2899,Harmandalı yönü
+828,Sarnıç – Yeni Çamlık,1,1480,36.0182,42.8869,85.8832,106.4117,0.4958,0.0149,0.1209,Yeni Çamlık yönü
+828,Sarnıç – Yeni Çamlık,2,1661,35.3047,38.5024,45.6925,111.6473,0.4774,0.0,0.0909,Sarnıç yönü
+836,Kınık – Bergama,1,357,61.6331,67.2421,112.0509,118.8019,0.2643,0.0,0.1092,Bergama yönü
+836,Kınık – Bergama,2,457,62.6281,75.2346,111.218,174.915,0.4099,0.0,0.0853,Kınık yönü
+868,Menemen Plastik İhtisas Organize Sanayi – Atatürk Mahallesi – Menemen Aktarma Merkezi,1,417,44.8115,43.6353,51.8199,52.5652,0.1996,0.0,0.0072,Atatürk Mahallesi - Menemen Aktarma Merkezi yönü
+868,Menemen Plastik İhtisas Organize Sanayi – Atatürk Mahallesi – Menemen Aktarma Merkezi,2,370,43.1822,43.7898,49.5913,51.3858,0.0879,0.0,0.0,Menemen Plastik İhtisas Organize Sanayi yönü
 876,Şirinkapı – Şirinyer Aktarma Merkezi,1,39,34.1734,34.4003,36.5239,37.3933,0.0457,0.0,0.0,Şirinyer Aktarma Merkezi yönü
-988,Kemalpaşa – Evka 3 Metro,1,305,55.8921,69.0105,136.4618,138.5143,0.6762,0.3279,0.4262,Evka 3 Metro yönü
-988,Kemalpaşa – Evka 3 Metro,2,300,37.0437,38.7964,76.3786,78.897,0.5238,0.0433,0.1933,Kemalpaşa yönü
-5,Narlıdere – Üçkuyular İskele,1,518,37.6614,40.5095,66.3719,80.7598,0.4539,0.0676,0.1583,Üçkuyular İskele yönü
-5,Narlıdere – Üçkuyular İskele,2,527,33.1613,40.4128,67.6466,75.2494,0.4619,0.0,0.2353,Narlıdere yönü
+988,Kemalpaşa – Evka 3 Metro,1,332,58.9885,73.2454,136.4808,243.7583,0.6982,0.1536,0.0392,Evka 3 Metro yönü
+988,Kemalpaşa – Evka 3 Metro,2,402,39.6427,60.7838,108.5569,204.6997,0.7753,0.0323,0.2065,Kemalpaşa yönü
+5,Narlıdere – Üçkuyular İskele,1,651,37.5522,41.3508,66.2733,80.7409,0.4299,0.0568,0.1137,Üçkuyular İskele yönü
+5,Narlıdere – Üçkuyular İskele,2,660,33.3622,41.4084,62.2317,74.8549,0.411,0.0576,0.2348,Narlıdere yönü
 21,Halil Rıfat Paşa – Konak,1,68,19.859,44.4456,156.9063,217.5176,1.3495,0.0,0.2206,Konak yönü
-29,Kadriye Mahallesi – Konak,1,250,20.6528,28.7901,73.1076,194.4549,1.1678,0.192,0.164,Konak yönü
-29,Kadriye Mahallesi – Konak,2,125,20.9944,29.3987,66.7892,83.7953,0.7501,0.088,0.176,Kadriye Mahallesi yönü
-45,Gültepe – Gümrük,1,602,17.1593,24.7426,31.6654,177.3217,1.1945,0.0116,0.2774,Gümrük yönü
-45,Gültepe – Gümrük,2,327,17.7766,23.4585,35.8491,162.65,0.8949,0.0092,0.2722,Gültepe yönü
-53,Mtk Altındağ – Halkapınar Metro,1,1299,18.9101,23.8497,37.0372,159.729,0.9241,0.0339,0.2263,Halkapınar Metro yönü
-53,Mtk Altındağ – Halkapınar Metro,2,913,19.693,24.461,36.8956,172.4321,0.8931,0.0033,0.1632,Mtk Altındağ yönü
-77,Nafiz Gürman – Halkapınar Metro 2,1,860,31.6763,34.5384,60.0444,92.8546,0.4143,0.0209,0.107,Halkapınar Metro 2 yönü
-77,Nafiz Gürman – Halkapınar Metro 2,2,683,32.0218,35.2963,39.0989,81.1272,0.3593,0.0,0.0996,Nafiz Gürman yönü
-117,Kavaklıdere – Kemer Aktarma Merkezi,1,619,36.6681,36.6204,44.9646,81.6568,0.3668,0.1228,0.0937,Kemer Aktarma Merkezi yönü
-117,Kavaklıdere – Kemer Aktarma Merkezi,2,728,35.1385,34.5511,51.8842,147.1568,0.5112,0.044,0.0426,Kavaklıdere yönü
-125,Mustafa Kemal Mahallesi – Halkapınar Metro 2,1,1075,24.5585,34.5632,75.3322,174.6465,0.7699,0.0,0.2028,Halkapınar Metro 2 yönü
-125,Mustafa Kemal Mahallesi – Halkapınar Metro 2,2,1195,24.3628,35.8059,77.7329,176.4304,0.8735,0.0042,0.1849,Mustafa Kemal Mahallesi yönü
+29,Kadriye Mahallesi – Konak,1,224,20.7141,28.7073,73.1369,121.5447,1.096,0.0714,0.1562,Konak yönü
+29,Kadriye Mahallesi – Konak,2,133,20.7569,28.5042,66.7321,83.7788,0.7601,0.0677,0.2406,Kadriye Mahallesi yönü
+45,Gültepe – Gümrük,1,801,17.5187,23.0586,31.0608,164.3391,1.1187,0.0,0.0911,Gümrük yönü
+45,Gültepe – Gümrük,2,472,17.9668,22.2693,35.5851,115.7375,0.8026,0.0191,0.1504,Gültepe yönü
+53,Mtk Altındağ – Halkapınar Metro,1,1659,18.6589,22.6346,35.0774,158.264,0.8709,0.0211,0.135,Halkapınar Metro yönü
+53,Mtk Altındağ – Halkapınar Metro,2,1154,19.7246,23.3988,31.9628,107.6935,0.8383,0.0173,0.13,Mtk Altındağ yönü
+77,Nafiz Gürman – Halkapınar Metro 2,1,1008,32.3426,36.8932,62.1595,73.2732,0.4171,0.0179,0.1399,Halkapınar Metro 2 yönü
+77,Nafiz Gürman – Halkapınar Metro 2,2,877,31.8966,37.2013,63.5153,81.1231,0.3921,0.0,0.1471,Nafiz Gürman yönü
+117,Kavaklıdere – Kemer Aktarma Merkezi,1,901,39.3331,37.6909,43.294,81.1024,0.2987,0.0022,0.0455,Kemer Aktarma Merkezi yönü
+117,Kavaklıdere – Kemer Aktarma Merkezi,2,982,37.3948,36.574,49.4311,118.1855,0.4296,0.0326,0.0937,Kavaklıdere yönü
+125,Mustafa Kemal Mahallesi – Halkapınar Metro 2,1,1418,24.8205,32.5812,56.3478,174.5565,0.7247,0.0,0.165,Halkapınar Metro 2 yönü
+125,Mustafa Kemal Mahallesi – Halkapınar Metro 2,2,1577,24.9745,33.4315,73.1629,176.2003,0.8267,0.0076,0.1205,Mustafa Kemal Mahallesi yönü
 149,Kaklıç – Çiğli Aktarma Merkezi,1,74,50.7562,76.0028,149.9387,157.8687,0.6114,0.0,0.2703,Çiğli Aktarma Merkezi yönü
-149,Kaklıç – Çiğli Aktarma Merkezi,2,92,50.3256,74.9629,185.8916,186.4522,0.738,0.0,0.1957,Kaklıç yönü
-157,Aktepe Mahallesi – Konak,1,437,42.7762,48.263,47.6839,187.8137,0.513,0.0,0.0481,Konak yönü
-157,Aktepe Mahallesi – Konak,2,410,43.9646,44.5668,55.4829,95.7254,0.3858,0.0585,0.0927,Aktepe Mahallesi yönü
-197,Nafiz Gürman – Karşıyaka,1,406,29.6022,36.4022,59.2539,132.2514,0.6587,0.0,0.197,Karşıyaka yönü
-197,Nafiz Gürman – Karşıyaka,2,391,29.7298,35.1353,51.5085,116.6852,0.5909,0.0,0.1381,Nafiz Gürman yönü
-221,Şemikler – Bostanlı İskele,1,19,163.852,171.85,165.8412,284.3762,0.1949,0.0,0.0526,Bostanlı İskele yönü
+149,Kaklıç – Çiğli Aktarma Merkezi,2,98,50.3116,73.4176,185.8612,186.4426,0.7348,0.0,0.1837,Kaklıç yönü
+157,Aktepe Mahallesi – Konak,1,605,42.8669,46.9262,48.1466,187.6857,0.4548,0.0,0.0347,Konak yönü
+157,Aktepe Mahallesi – Konak,2,488,44.1159,44.7974,49.6568,98.958,0.356,0.0492,0.0512,Aktepe Mahallesi yönü
+197,Nafiz Gürman – Karşıyaka,1,524,29.9547,38.7866,60.3572,116.6175,0.589,0.084,0.0153,Karşıyaka yönü
+197,Nafiz Gürman – Karşıyaka,2,531,30.029,37.8629,59.4383,116.4017,0.4964,0.0,0.0942,Nafiz Gürman yönü
+221,Şemikler – Bostanlı İskele,1,17,164.3658,172.8693,166.1933,287.2329,0.2046,0.0,0.0588,Bostanlı İskele yönü
 221,Şemikler – Bostanlı İskele,2,40,33.8987,34.0852,33.9771,78.0624,0.343,0.0,0.025,Şemikler yönü
-229,Yakakent Mahallesi – Bostanlı İskele,1,518,32.0001,43.5679,44.9686,198.7011,0.8461,0.0058,0.0792,Bostanlı İskele yönü
-229,Yakakent Mahallesi – Bostanlı İskele,2,596,31.0716,37.0095,55.9048,161.1025,0.6426,0.0403,0.1527,Yakakent Mahallesi yönü
+229,Yakakent Mahallesi – Bostanlı İskele,1,719,35.1449,41.517,44.2916,198.3475,0.7578,0.0125,0.0083,Bostanlı İskele yönü
+229,Yakakent Mahallesi – Bostanlı İskele,2,876,32.5494,36.9282,55.3287,149.7588,0.5529,0.0811,0.0616,Yakakent Mahallesi yönü
 253,Halkapınar Metro 2 – Konak,1,31,12.1377,58.167,297.6614,303.5806,1.8553,0.0,0.1613,Konak yönü
-253,Halkapınar Metro 2 – Konak,2,334,13.1377,26.9051,81.7527,169.9095,1.3119,0.0,0.2186,Halkapınar Metro 2 yönü
-277,Otogar – Tınaztepe,1,745,38.1713,50.6937,78.888,244.7316,0.7229,0.0,0.2067,Tınaztepe yönü
-277,Otogar – Tınaztepe,2,659,38.5534,44.9996,89.0829,91.4058,0.4505,0.0,0.1745,Otogar yönü
-285,Evka 1 – Konak,1,1160,27.6575,34.207,51.0082,122.2224,0.5916,0.019,0.3293,Konak yönü
-285,Evka 1 – Konak,2,892,26.4194,33.124,50.276,98.3379,0.5447,0.0,0.3105,Evka 1 yönü
-317,Kavaklıdere – Evka 3 Metro,1,1191,21.0624,28.6977,38.3993,164.5538,0.9594,0.0353,0.2662,Evka 3 Metro yönü
-317,Kavaklıdere – Evka 3 Metro,2,985,21.6693,30.6656,42.3482,182.3405,0.92,0.0041,0.3259,Kavaklıdere yönü
-429,Güzeltepe – Bostanlı İskele,1,462,27.4163,28.7223,31.9829,51.5204,0.1775,0.0,0.0173,Bostanlı İskele yönü
-429,Güzeltepe – Bostanlı İskele,2,463,29.7096,36.9529,56.3799,118.3918,0.6772,0.0,0.1274,Güzeltepe yönü
-445,Evka 2 – Bostanlı İskele,1,608,25.3534,28.5052,45.3335,46.1921,0.3807,0.0214,0.2763,Bostanlı İskele yönü
-445,Evka 2 – Bostanlı İskele,2,492,33.3072,35.5877,50.7313,82.4325,0.3766,0.0549,0.1057,Evka 2 yönü
-477,Nafiz Gürman – Halkapınar Metro2,1,575,18.1629,19.4333,21.1669,105.4866,0.5252,0.0,0.0226,Halkapınar Metro2 yönü
-477,Nafiz Gürman – Halkapınar Metro2,2,537,19.5875,25.7385,28.9033,155.2803,1.018,0.0,0.095,Nafiz Gürman yönü
-485,Gaziemir İlçe Terminali – Konak,1,40,55.7466,56.0767,57.1511,57.1567,0.0113,0.0,0.0,Konak yönü
-485,Gaziemir İlçe Terminali – Konak,2,47,56.156,55.9859,56.9128,57.801,0.0148,0.0,0.0,Gaziemir İlçe Terminali yönü
-517,Uzundere Toplu Konutları – Fahrettin Altay,1,232,57.3754,82.5545,123.7459,246.8441,0.7012,0.125,0.3491,Fahrettin Altay yönü
-517,Uzundere Toplu Konutları – Fahrettin Altay,2,220,64.7288,81.8517,121.5213,208.4426,0.5008,0.0,0.2818,Uzundere Toplu Konutları yönü
-533,Bayraklı Şehir Hastanesi – Bornova Metro,1,1155,13.7925,15.0956,22.8145,63.7151,0.7348,0.1437,0.1974,Bornova Metro yönü
-533,Bayraklı Şehir Hastanesi – Bornova Metro,2,342,11.1767,14.5167,27.9152,67.4963,0.8444,0.2018,0.3363,Bayraklı Şehir Hastanesi yönü
-557,Bayraklı Toplu Konutlar – Bayraklı İzban,1,150,34.9338,33.6387,41.9859,54.5423,0.2311,0.0133,0.04,Bayraklı İzban yönü
-565,Evka 4 – Bornova Metro,1,1242,10.8757,14.8452,29.7344,95.6846,1.0138,0.0781,0.215,Bornova Metro yönü
-565,Evka 4 – Bornova Metro,2,1020,11.6591,16.0525,28.6192,97.2056,0.9507,0.1127,0.2843,Evka 4 yönü
-701,Torbalı – Tekeli,1,2084,34.3848,44.348,64.8592,250.3806,0.891,0.0513,0.2068,Tekeli yönü
-701,Torbalı – Tekeli,2,2319,33.7029,47.671,102.5902,212.6893,0.8727,0.072,0.2432,Torbalı yönü
-749,Ulukent Aktarma Merkezi 1 – Menemen Aktarma Merkezi,1,1082,31.2162,33.0902,39.3966,59.5399,0.2586,0.0009,0.0776,Menemen Aktarma Merkezi yönü
-749,Ulukent Aktarma Merkezi 1 – Menemen Aktarma Merkezi,2,1132,30.0025,33.2286,46.1982,66.5865,0.338,0.0,0.1475,Ulukent Aktarma Merkezi 1 yönü
-757,Maltepe – Ulukent Aktarma Merkezi 2,1,1344,23.116,24.2293,28.3483,52.0998,0.3055,0.0,0.0662,Ulukent Aktarma Merkezi 2 yönü
-757,Maltepe – Ulukent Aktarma Merkezi 2,2,1236,23.2049,25.092,46.6149,49.6031,0.3423,0.0,0.1076,Maltepe yönü
-805,Çamlıkule – Şirinyer Aktarma Merkezi,1,555,21.24,23.5081,24.7363,89.4761,0.6148,0.0613,0.0486,Şirinyer Aktarma Merkezi yönü
-805,Çamlıkule – Şirinyer Aktarma Merkezi,2,402,22.7289,29.0696,45.1547,89.1272,0.6996,0.0,0.1343,Çamlıkule yönü
-821,Mavişehir Aktarma Merkezi – Bostanlı İskele,1,78,25.1359,25.3634,29.3738,29.4326,0.1179,0.0,0.0,Bostanlı İskele yönü
+253,Halkapınar Metro 2 – Konak,2,404,13.8501,36.2162,83.1184,216.1605,1.4137,0.0817,0.146,Halkapınar Metro 2 yönü
+277,Otogar – Tınaztepe,1,966,46.859,51.9472,78.4732,244.6333,0.6211,0.0,0.1263,Tınaztepe yönü
+277,Otogar – Tınaztepe,2,880,50.8104,47.8268,70.8679,91.2813,0.3876,0.0,0.1375,Otogar yönü
+285,Evka 1 – Konak,1,1398,30.9523,37.73,54.1666,122.1403,0.5589,0.0079,0.2225,Konak yönü
+285,Evka 1 – Konak,2,1025,28.6449,36.941,58.0469,98.3349,0.5492,0.1112,0.1366,Evka 1 yönü
+317,Kavaklıdere – Evka 3 Metro,1,1557,20.7374,26.3095,37.5427,163.8243,0.8925,0.0289,0.0328,Evka 3 Metro yönü
+317,Kavaklıdere – Evka 3 Metro,2,1355,20.9025,27.8485,40.5392,169.3452,0.8796,0.0768,0.0502,Kavaklıdere yönü
+429,Güzeltepe – Bostanlı İskele,1,650,28.8016,29.1678,33.7403,42.7065,0.1552,0.0,0.0092,Bostanlı İskele yönü
+429,Güzeltepe – Bostanlı İskele,2,632,30.5139,35.6525,51.7483,118.3402,0.6112,0.0,0.1123,Güzeltepe yönü
+445,Evka 2 – Bostanlı İskele,1,820,29.4878,29.4171,45.2198,58.1479,0.3498,0.0,0.0768,Bostanlı İskele yönü
+445,Evka 2 – Bostanlı İskele,2,668,32.5568,34.4426,45.4548,82.0605,0.3503,0.003,0.0419,Evka 2 yönü
+477,Nafiz Gürman – Halkapınar Metro2,1,851,19.4388,19.5642,21.4334,43.2846,0.4317,0.0,0.0153,Halkapınar Metro2 yönü
+477,Nafiz Gürman – Halkapınar Metro2,2,767,19.6161,23.2387,23.9946,155.1377,0.9182,0.0026,0.0443,Nafiz Gürman yönü
+485,Gaziemir İlçe Terminali – Konak,1,42,55.7532,56.0613,57.1509,57.1567,0.0111,0.0,0.0,Konak yönü
+485,Gaziemir İlçe Terminali – Konak,2,80,56.6892,59.0753,63.7109,64.1359,0.0638,0.0,0.0,Gaziemir İlçe Terminali yönü
+517,Uzundere Toplu Konutları – Fahrettin Altay,1,250,64.0191,85.2138,123.7026,246.8289,0.6639,0.0,0.404,Fahrettin Altay yönü
+517,Uzundere Toplu Konutları – Fahrettin Altay,2,291,67.7564,92.3564,130.5217,208.3763,0.4643,0.0,0.0653,Uzundere Toplu Konutları yönü
+533,Bayraklı Şehir Hastanesi – Bornova Metro,1,1166,13.9417,15.2464,22.8321,64.3349,0.7406,0.1252,0.1552,Bornova Metro yönü
+533,Bayraklı Şehir Hastanesi – Bornova Metro,2,346,11.3504,15.376,28.4839,71.6776,1.1003,0.1908,0.2659,Bayraklı Şehir Hastanesi yönü
+557,Bayraklı Toplu Konutlar – Bayraklı İzban,1,315,34.1465,32.3361,39.7903,53.554,0.2351,0.019,0.0127,Bayraklı İzban yönü
+565,Evka 4 – Bornova Metro,1,1556,10.6305,15.047,30.6998,94.9361,0.9453,0.0334,0.2442,Bornova Metro yönü
+565,Evka 4 – Bornova Metro,2,1283,11.5498,15.6731,28.4558,93.8798,0.9034,0.0959,0.2097,Evka 4 yönü
+701,Torbalı – Tekeli,1,3126,34.6845,42.253,65.6929,248.8445,0.7887,0.0317,0.1424,Tekeli yönü
+701,Torbalı – Tekeli,2,2990,33.924,46.5962,77.7769,212.4676,0.807,0.0502,0.2512,Torbalı yönü
+749,Ulukent Aktarma Merkezi 1 – Menemen Aktarma Merkezi,1,1490,30.8697,33.6086,57.9029,62.4732,0.2891,0.0007,0.1034,Menemen Aktarma Merkezi yönü
+749,Ulukent Aktarma Merkezi 1 – Menemen Aktarma Merkezi,2,1507,30.0432,34.7446,63.3907,66.5199,0.3683,0.0,0.148,Ulukent Aktarma Merkezi 1 yönü
+757,Maltepe – Ulukent Aktarma Merkezi 2,1,1511,23.1165,25.9469,30.9423,76.6919,0.4666,0.0,0.0927,Ulukent Aktarma Merkezi 2 yönü
+757,Maltepe – Ulukent Aktarma Merkezi 2,2,1482,23.5775,27.7807,47.9488,74.1974,0.4631,0.0,0.1707,Maltepe yönü
+805,Çamlıkule – Şirinyer Aktarma Merkezi,1,739,22.1069,25.6629,32.5563,89.2767,0.585,0.0379,0.0609,Şirinyer Aktarma Merkezi yönü
+805,Çamlıkule – Şirinyer Aktarma Merkezi,2,490,22.683,28.5773,47.7458,89.0709,0.6227,0.0653,0.1531,Çamlıkule yönü
+821,Mavişehir Aktarma Merkezi – Bostanlı İskele,1,76,25.103,25.3267,29.3759,29.4329,0.1193,0.0,0.0,Bostanlı İskele yönü
 821,Mavişehir Aktarma Merkezi – Bostanlı İskele,2,56,29.0444,47.0444,144.442,144.9784,0.8641,0.0,0.25,Mavişehir Aktarma Merkezi yönü
-829,Ürkmez-cumaovası Aktarma,1,116,67.3452,67.1159,67.805,68.4657,0.0112,0.0,0.0,Ürkmez-cumaovası Aktarma yönü
-829,Ürkmez-cumaovası Aktarma,2,312,80.4331,94.1434,131.9671,137.067,0.2821,0.0,0.3269,Ürkmez-cumaovası Aktarma yönü
-837,Dikili – Aliağa Aktarma Merkezi,1,645,52.1704,50.2257,61.4387,64.5007,0.2026,0.0,0.0093,Aliağa Aktarma Merkezi yönü
-837,Dikili – Aliağa Aktarma Merkezi,2,737,47.012,46.6582,56.8612,60.0871,0.1744,0.0,0.0014,Dikili yönü
+829,Ürkmez-cumaovası Aktarma,1,181,67.7396,166.1695,343.6631,345.3312,0.7986,0.0,0.0,Ürkmez-cumaovası Aktarma yönü
+829,Ürkmez-cumaovası Aktarma,2,348,80.4659,103.513,132.1165,275.1823,0.4781,0.0,0.0,Ürkmez-cumaovası Aktarma yönü
+837,Dikili – Aliağa Aktarma Merkezi,1,1033,51.4473,50.3697,59.6417,64.5007,0.1694,0.0,0.0097,Aliağa Aktarma Merkezi yönü
+837,Dikili – Aliağa Aktarma Merkezi,2,1185,47.8638,47.9154,57.4046,90.9487,0.205,0.0,0.0194,Dikili yönü
 853,Egekent Aktarma Merkezi – Karşıyaka İskele,1,123,44.6096,47.5507,64.5353,64.7954,0.239,0.0,0.0,Karşıyaka İskele yönü
-853,Egekent Aktarma Merkezi – Karşıyaka İskele,2,190,44.1048,50.7531,62.7797,63.911,0.206,0.0,0.0,Egekent Aktarma Merkezi yönü
-877,Uzundere Toplu Konutları – Gaziemir Semt Garajı,1,179,56.128,59.1197,66.1794,67.2821,0.0845,0.0,0.0,Gaziemir Semt Garajı yönü
+853,Egekent Aktarma Merkezi – Karşıyaka İskele,2,192,51.312,52.1283,62.815,75.1194,0.326,0.0,0.0104,Egekent Aktarma Merkezi yönü
+877,Uzundere Toplu Konutları – Gaziemir Semt Garajı,1,216,61.352,98.4713,288.8564,289.792,0.8822,0.0,0.0,Gaziemir Semt Garajı yönü
 949,Çambel – Evka 3 Metro,1,50,72.2869,70.6888,73.6308,73.8936,0.0439,0.0,0.0,Evka 3 Metro yönü
 981,Balıklıova – Fahrettin Altay Aktarma Merkezi,1,116,102.3547,102.6885,106.1208,107.2688,0.0184,0.0,0.0,Fahrettin Altay Aktarma Merkezi yönü
 981,Balıklıova – Fahrettin Altay Aktarma Merkezi,2,270,140.9992,126.5023,145.5439,151.2494,0.2053,0.0,0.0,Balıklıova yönü
-6,Arıkent – Fahrettin Altay Aktarma Merkezi,1,617,38.1844,37.4344,46.9373,49.7617,0.1807,0.0,0.0,Fahrettin Altay Aktarma Merkezi yönü
-6,Arıkent – Fahrettin Altay Aktarma Merkezi,2,575,32.9946,36.1235,47.6909,49.6307,0.2259,0.0,0.0122,Arıkent yönü
-30,Kaynak – Konak,1,326,17.2135,22.6795,30.967,134.1609,1.0663,0.0552,0.1656,Konak yönü
-30,Kaynak – Konak,2,330,18.8479,23.5943,34.5445,140.6299,0.9711,0.0364,0.1939,Kaynak yönü
-46,Çobançeşme – Gümrük,1,1037,17.6938,23.1404,35.8055,162.4794,1.1142,0.1041,0.1716,Gümrük yönü
-46,Çobançeşme – Gümrük,2,675,17.7899,21.4938,35.2439,108.0337,0.9048,0.1556,0.1807,Çobançeşme yönü
-78,Yamanlar – Halkapınar Metro 2,1,661,24.6653,36.0492,62.531,138.7281,0.7727,0.0136,0.3056,Halkapınar Metro 2 yönü
-78,Yamanlar – Halkapınar Metro 2,2,485,22.3329,31.7594,50.7924,135.4978,0.898,0.0124,0.1567,Yamanlar yönü
-102,Alpaslan Mahallesi – Halkapınar Metro,1,108,36.2951,40.6977,47.0353,105.3599,0.2606,0.0,0.0185,Halkapınar Metro yönü
-102,Alpaslan Mahallesi – Halkapınar Metro,2,110,38.8353,46.8574,48.7017,142.5557,0.6038,0.0,0.0455,Alpaslan Mahallesi yönü
-126,Cumhuriyet Mahallesi – Karşıyaka,1,408,39.6667,50.5392,46.5134,278.4568,0.9126,0.0,0.0809,Karşıyaka yönü
-126,Cumhuriyet Mahallesi – Karşıyaka,2,382,38.2192,44.3293,45.0136,276.1547,0.708,0.0,0.055,Cumhuriyet Mahallesi yönü
-174,Kırklar – Adatepe,1,82,59.176,59.0401,59.9031,60.1848,0.0314,0.0,0.0,Adatepe yönü
-174,Kırklar – Adatepe,2,110,61.5898,60.0644,65.1925,66.6417,0.0668,0.0,0.0,Kırklar yönü
-222,Şemikler – Karşıyaka İskele,1,284,33.8164,40.4535,45.7657,107.4774,0.5591,0.0,0.081,Karşıyaka İskele yönü
-222,Şemikler – Karşıyaka İskele,2,310,33.963,34.9413,37.0886,40.9676,0.3975,0.0,0.0097,Şemikler yönü
-302,Otogar – Konak,1,766,17.1415,19.3001,23.312,100.8494,0.6651,0.0091,0.0875,Konak yönü
-302,Otogar – Konak,2,619,17.2307,21.2642,37.4229,100.5824,0.6342,0.0468,0.1745,Otogar yönü
-326,Mustafa Kemal Mahallesi – Karşıyaka,1,632,42.9266,45.8412,54.7394,159.8039,0.5698,0.0,0.0522,Karşıyaka yönü
-326,Mustafa Kemal Mahallesi – Karşıyaka,2,634,44.5592,50.3868,55.3324,287.8993,0.7703,0.0,0.0252,Mustafa Kemal Mahallesi yönü
-342,Egekent – Çiğli Aktarma Merkezi,1,466,20.5225,32.0848,44.4985,139.2148,0.9672,0.0,0.2017,Çiğli Aktarma Merkezi yönü
-342,Egekent – Çiğli Aktarma Merkezi,2,263,22.4754,24.8437,37.8656,68.4062,0.3906,0.0,0.1863,Egekent yönü
-374,İzkent – Konak,1,804,33.0098,38.5679,71.8126,94.4834,0.4836,0.0261,0.2127,Konak yönü
-374,İzkent – Konak,2,588,34.7766,39.3614,71.9291,115.6721,0.6483,0.1224,0.2823,İzkent yönü
+6,Arıkent – Fahrettin Altay Aktarma Merkezi,1,791,38.736,38.0328,46.7519,49.8018,0.1899,0.0,0.0013,Fahrettin Altay Aktarma Merkezi yönü
+6,Arıkent – Fahrettin Altay Aktarma Merkezi,2,705,38.7924,37.0488,47.312,49.2589,0.2066,0.0,0.0014,Arıkent yönü
+30,Kaynak – Konak,1,376,17.5748,22.9028,34.9073,134.1547,1.0036,0.0532,0.25,Konak yönü
+30,Kaynak – Konak,2,420,18.8702,23.2264,32.4243,140.4618,0.8838,0.0262,0.1952,Kaynak yönü
+46,Çobançeşme – Gümrük,1,1322,19.588,22.613,34.6706,161.68,1.013,0.0151,0.1558,Gümrük yönü
+46,Çobançeşme – Gümrük,2,833,19.2068,21.9753,34.673,106.8166,0.8044,0.0564,0.2113,Çobançeşme yönü
+78,Yamanlar – Halkapınar Metro 2,1,911,24.4858,33.2876,61.2042,138.3582,0.7365,0.0768,0.1756,Halkapınar Metro 2 yönü
+78,Yamanlar – Halkapınar Metro 2,2,750,22.5821,29.4257,45.3714,134.9906,0.8553,0.0573,0.0813,Yamanlar yönü
+102,Alpaslan Mahallesi – Halkapınar Metro,1,116,36.2951,40.6228,46.9294,100.409,0.2551,0.0,0.0172,Halkapınar Metro yönü
+102,Alpaslan Mahallesi – Halkapınar Metro,2,106,38.8353,47.0657,48.5937,142.5603,0.6117,0.0,0.0472,Alpaslan Mahallesi yönü
+126,Cumhuriyet Mahallesi – Karşıyaka,1,548,37.2816,46.6692,45.9783,278.346,0.8642,0.0,0.0602,Karşıyaka yönü
+126,Cumhuriyet Mahallesi – Karşıyaka,2,499,38.1788,42.4514,44.8951,126.9154,0.6527,0.0,0.0421,Cumhuriyet Mahallesi yönü
+174,Kırklar – Adatepe,1,275,60.4311,60.4545,62.4029,64.0594,0.03,0.0,0.0,Adatepe yönü
+174,Kırklar – Adatepe,2,286,62.0018,63.893,69.6395,122.8519,0.2134,0.0,0.042,Kırklar yönü
+222,Şemikler – Karşıyaka İskele,1,338,34.6881,40.5622,43.3468,175.4483,0.6046,0.0,0.068,Karşıyaka İskele yönü
+222,Şemikler – Karşıyaka İskele,2,412,34.0595,35.1769,38.8943,41.0692,0.3477,0.0,0.0073,Şemikler yönü
+302,Otogar – Konak,1,1125,17.0229,18.7564,23.7831,99.3835,0.5854,0.0071,0.048,Konak yönü
+302,Otogar – Konak,2,873,17.2301,20.1917,36.3812,51.4984,0.595,0.1042,0.0619,Otogar yönü
+326,Mustafa Kemal Mahallesi – Karşıyaka,1,774,44.0425,47.9618,56.0852,156.9038,0.5338,0.0,0.053,Karşıyaka yönü
+326,Mustafa Kemal Mahallesi – Karşıyaka,2,783,46.4426,51.5988,58.3582,287.5105,0.6797,0.0,0.0204,Mustafa Kemal Mahallesi yönü
+342,Egekent – Çiğli Aktarma Merkezi,1,678,20.4384,29.0194,39.5618,138.8385,0.9085,0.0,0.1298,Çiğli Aktarma Merkezi yönü
+342,Egekent – Çiğli Aktarma Merkezi,2,427,21.0259,22.9164,37.6101,47.1649,0.366,0.0,0.1218,Egekent yönü
+374,İzkent – Konak,1,857,33.4696,40.3899,76.1263,94.4453,0.4958,0.042,0.1365,Konak yönü
+374,İzkent – Konak,2,608,35.0738,40.001,73.0224,119.9128,0.6559,0.1184,0.3076,İzkent yönü
 390,Tınaztepe – Bornova Metro,1,80,31.9259,38.9391,71.4509,73.8906,0.4667,0.15,0.25,Bornova Metro yönü
-390,Tınaztepe – Bornova Metro,2,29,28.5619,36.3771,74.9467,156.963,1.0551,0.3793,0.2759,Tınaztepe yönü
-430,Yakakent Mahallesi – Bostanlı İskele,1,231,56.9941,62.7025,75.5232,76.8412,0.1586,0.0,0.0,Bostanlı İskele yönü
-430,Yakakent Mahallesi – Bostanlı İskele,2,452,61.4828,59.5852,73.4567,108.433,0.2289,0.0,0.0133,Yakakent Mahallesi yönü
-446,Evka 5 – Bostanlı İskele,1,6947,21.8242,23.8147,31.1137,71.4892,0.6678,0.0178,0.0908,Bostanlı İskele yönü
-446,Evka 5 – Bostanlı İskele,2,6981,22.6833,24.7063,38.0964,72.7626,0.4924,0.0666,0.1243,Evka 5 yönü
-470,Tınaztepe – Lozan Meydanı,1,1190,17.2183,22.0111,31.1932,188.6988,0.9282,0.0193,0.1521,Lozan Meydanı yönü
-470,Tınaztepe – Lozan Meydanı,2,1186,18.2098,21.5594,33.5514,48.4914,0.7161,0.0455,0.2133,Tınaztepe yönü
-502,Cengizhan – Halkapınar Metro,1,1925,13.2514,16.1256,25.823,73.944,0.8706,0.0369,0.1818,Halkapınar Metro yönü
-502,Cengizhan – Halkapınar Metro,2,1643,12.6587,17.8203,28.541,116.0718,1.0257,0.0371,0.2179,Cengizhan yönü
-510,Gaziemir – Balçova,1,1145,15.4615,22.4467,43.8398,79.1192,0.7272,0.062,0.359,Balçova yönü
-510,Gaziemir – Balçova,2,1872,16.0259,21.7199,39.5521,76.2178,0.8204,0.0887,0.3056,Gaziemir yönü
-534,Bayraklı Şehir Hastanesi – Halkapınar Metro,1,994,36.659,37.194,50.2134,70.8256,0.2602,0.0,0.0624,Halkapınar Metro yönü
-534,Bayraklı Şehir Hastanesi – Halkapınar Metro,2,910,35.4446,36.8166,44.4414,71.3772,0.2408,0.0,0.0637,Bayraklı Şehir Hastanesi yönü
-550,Günaltay – Konak,1,1015,14.5685,16.0025,23.1267,24.5373,0.3936,0.0296,0.2966,Konak yönü
-550,Günaltay – Konak,2,734,20.9602,19.6711,26.8902,37.0101,0.3405,0.1662,0.0163,Günaltay yönü
-558,Bayraklı Toplu Konutları – Bornova Metro Ekspres,1,325,15.505,17.1032,25.3257,28.7762,0.278,0.0,0.1169,Bornova Metro Ekspres yönü
-558,Bayraklı Toplu Konutları – Bornova Metro Ekspres,2,119,15.6465,20.6229,31.3131,57.1305,0.5563,0.0,0.2353,Bayraklı Toplu Konutları yönü
-598,Bayraklı Toplu Konutları – Bayraklı İzban,1,663,23.4758,32.4878,59.6225,228.1362,1.0485,0.3243,0.3906,Bayraklı İzban yönü
-662,Cengizhan – Kemer,1,474,25.634,30.6654,39.6261,49.5229,0.2682,0.0,0.2025,Kemer yönü
-662,Cengizhan – Kemer,2,445,26.4036,29.6556,37.7076,54.7595,0.2773,0.0,0.0697,Cengizhan yönü
-750,Yeni Foça – Ulukent Aktarma Merkezi 2,1,1498,42.9255,45.6347,72.2963,74.3806,0.2497,0.0,0.1075,Ulukent Aktarma Merkezi 2 yönü
-750,Yeni Foça – Ulukent Aktarma Merkezi 2,2,1334,39.9752,55.9667,103.7516,126.3528,0.5546,0.0,0.3058,Yeni Foça yönü
-798,Tire-torbalı Aktarma Merkezi,1,317,74.1552,69.8715,86.2119,87.2829,0.1514,0.0,0.0,Tire-torbalı Aktarma Merkezi yönü
-798,Tire-torbalı Aktarma Merkezi,2,769,61.5329,63.9966,83.7887,85.1842,0.1648,0.0,0.0013,Tire-torbalı Aktarma Merkezi yönü
-806,Kiraz – Otogar,1,410,136.1814,135.568,141.4202,247.3937,0.1143,0.0,0.0122,Otogar yönü
-838,Şirinyer Aktarma Merkezi – Konak,1,1027,14.7277,15.8345,26.1146,37.4552,0.4095,0.0234,0.1237,Konak yönü
-838,Şirinyer Aktarma Merkezi – Konak,2,910,13.6712,16.2254,26.6993,52.566,0.4913,0.0,0.1593,Şirinyer Aktarma Merkezi yönü
-878,Tınaztepe – Şirinyer Aktarma Merkezi,1,357,34.9736,31.8915,45.0055,47.7309,0.3065,0.0,0.0,Şirinyer Aktarma Merkezi yönü
-878,Tınaztepe – Şirinyer Aktarma Merkezi,2,295,26.8065,31.3788,41.7486,48.6204,0.3775,0.0,0.2814,Tınaztepe yönü
-966,Ulucak – Evka 3 Metro,1,471,28.12,33.1142,47.9285,52.798,0.2918,0.0,0.2951,Evka 3 Metro yönü
-966,Ulucak – Evka 3 Metro,2,463,28.4989,32.9202,45.6753,62.0591,0.323,0.0,0.1231,Ulucak yönü
-7,Sahilevleri – Fahrettin Altay Aktarma Merkezi,1,535,43.1283,43.3153,70.0893,76.8021,0.3738,0.0374,0.1813,Fahrettin Altay Aktarma Merkezi yönü
-7,Sahilevleri – Fahrettin Altay Aktarma Merkezi,2,501,35.6653,39.6382,67.7496,73.9211,0.3358,0.0,0.1238,Sahilevleri yönü
-15,İnönü – Konak,1,80,35.1944,35.2953,40.6884,41.8074,0.0748,0.0,0.0,Konak yönü
-15,İnönü – Konak,2,86,34.6913,34.8087,36.6653,37.5475,0.0438,0.0,0.0,İnönü yönü
-23,Uzundere – Konak,1,935,21.2585,31.0426,48.6853,202.7074,1.1255,0.093,0.2706,Konak yönü
-23,Uzundere – Konak,2,757,21.5162,31.0691,56.9467,196.5387,1.1086,0.1466,0.2351,Uzundere yönü
-39,İsmetpaşa Mahallesi – Gümrük,1,129,30.7852,32.1029,35.3515,38.5433,0.0857,0.0,0.0,Gümrük yönü
-39,İsmetpaşa Mahallesi – Gümrük,2,105,36.8249,46.3831,92.7687,172.9368,0.8508,0.0,0.1333,İsmetpaşa Mahallesi yönü
-111,Naldöken – Evka 3 Metro,1,454,18.1876,21.986,26.9537,76.3304,0.766,0.0,0.0991,Evka 3 Metro yönü
-111,Naldöken – Evka 3 Metro,2,517,19.1023,24.8445,33.8818,138.484,0.9409,0.0,0.1257,Naldöken yönü
-119,Altındağ – Bornova Metro,1,83,49.1572,51.5027,53.64,91.9354,0.2318,0.0,0.0723,Bornova Metro yönü
+390,Tınaztepe – Bornova Metro,2,29,28.5619,36.3771,74.9467,156.963,1.0551,0.0,0.4828,Tınaztepe yönü
+430,Yakakent Mahallesi – Bostanlı İskele,1,372,55.5046,57.2418,75.4572,76.6713,0.1764,0.0,0.0,Bostanlı İskele yönü
+430,Yakakent Mahallesi – Bostanlı İskele,2,653,58.1164,55.3286,72.7669,76.8616,0.251,0.0,0.0061,Yakakent Mahallesi yönü
+446,Evka 5 – Bostanlı İskele,1,7181,22.0621,24.1281,31.8644,71.7303,0.6589,0.0064,0.1037,Bostanlı İskele yönü
+446,Evka 5 – Bostanlı İskele,2,6935,22.8605,24.8561,39.9948,71.8813,0.4805,0.0552,0.1416,Evka 5 yönü
+470,Tınaztepe – Lozan Meydanı,1,1490,17.3494,23.1045,33.9207,67.1721,0.8679,0.0255,0.1691,Lozan Meydanı yönü
+470,Tınaztepe – Lozan Meydanı,2,1478,18.735,23.0899,34.4111,77.9913,0.7619,0.0419,0.2395,Tınaztepe yönü
+502,Cengizhan – Halkapınar Metro,1,2347,13.6273,16.0752,25.7994,72.6966,0.8007,0.0328,0.1432,Halkapınar Metro yönü
+502,Cengizhan – Halkapınar Metro,2,1918,13.3577,17.9414,29.4965,115.587,0.9513,0.0313,0.1741,Cengizhan yönü
+510,Gaziemir – Balçova,1,1485,15.4961,22.0138,41.9526,78.996,0.6951,0.1064,0.2902,Balçova yönü
+510,Gaziemir – Balçova,2,2300,15.8968,21.0802,34.6838,75.8775,0.7848,0.0635,0.3113,Gaziemir yönü
+534,Bayraklı Şehir Hastanesi – Halkapınar Metro,1,956,36.6284,37.1406,50.2131,70.5807,0.2595,0.0,0.0565,Halkapınar Metro yönü
+534,Bayraklı Şehir Hastanesi – Halkapınar Metro,2,910,35.4446,36.8166,44.4414,71.3772,0.2408,0.0,0.0615,Bayraklı Şehir Hastanesi yönü
+550,Günaltay – Konak,1,1240,20.8146,17.2334,23.5802,27.0793,0.3666,0.0,0.0911,Konak yönü
+550,Günaltay – Konak,2,884,21.6363,20.1668,26.2698,29.9884,0.2888,0.0,0.112,Günaltay yönü
+558,Bayraklı Toplu Konutları – Bornova Metro Ekspres,1,445,15.8399,17.6382,26.9896,30.5381,0.2828,0.0,0.0719,Bornova Metro Ekspres yönü
+558,Bayraklı Toplu Konutları – Bornova Metro Ekspres,2,209,17.2045,22.5107,42.6353,57.1334,0.571,0.0048,0.2775,Bayraklı Toplu Konutları yönü
+598,Bayraklı Toplu Konutları – Bayraklı İzban,1,955,19.6411,27.7078,55.6227,143.1284,1.0917,0.2827,0.2147,Bayraklı İzban yönü
+662,Cengizhan – Kemer,1,760,36.7578,33.1152,41.6112,49.8279,0.2734,0.0,0.0553,Kemer yönü
+662,Cengizhan – Kemer,2,650,35.2474,34.0046,43.3505,88.4093,0.3342,0.0,0.0431,Cengizhan yönü
+750,Yeni Foça – Ulukent Aktarma Merkezi 2,1,1928,43.9412,48.691,73.6217,79.18,0.2701,0.0,0.1385,Ulukent Aktarma Merkezi 2 yönü
+750,Yeni Foça – Ulukent Aktarma Merkezi 2,2,1698,40.8446,55.3398,101.0293,126.346,0.5339,0.0,0.2061,Yeni Foça yönü
+798,Tire-torbalı Aktarma Merkezi,1,696,60.4654,62.8942,75.8787,87.1055,0.171,0.0,0.0,Tire-torbalı Aktarma Merkezi yönü
+798,Tire-torbalı Aktarma Merkezi,2,1029,62.3006,66.1496,83.8029,120.0774,0.1994,0.0,0.0292,Tire-torbalı Aktarma Merkezi yönü
+806,Kiraz – Otogar,1,626,130.7734,131.5863,141.1637,141.9599,0.0518,0.0,0.0,Otogar yönü
+838,Şirinyer Aktarma Merkezi – Konak,1,1468,14.3649,15.15,19.6535,35.7856,0.3914,0.017,0.094,Konak yönü
+838,Şirinyer Aktarma Merkezi – Konak,2,1308,13.3669,15.1937,24.0655,37.6791,0.4686,0.0031,0.1353,Şirinyer Aktarma Merkezi yönü
+878,Tınaztepe – Şirinyer Aktarma Merkezi,1,607,24.9699,28.4728,42.9736,47.775,0.3685,0.0544,0.1104,Şirinyer Aktarma Merkezi yönü
+878,Tınaztepe – Şirinyer Aktarma Merkezi,2,456,26.0787,28.6635,41.1912,48.4197,0.3676,0.0022,0.0526,Tınaztepe yönü
+966,Ulucak – Evka 3 Metro,1,684,27.6838,31.053,47.0682,52.6269,0.271,0.0,0.0614,Evka 3 Metro yönü
+966,Ulucak – Evka 3 Metro,2,699,28.0858,31.0297,41.8332,61.0556,0.2972,0.0,0.0844,Ulucak yönü
+982,İyte – Fahrettin Altay Aktarma Merkezi,2,112,91.2538,91.4365,92.4143,93.1869,0.0072,0.0,0.0,İyte yönü
+7,Sahilevleri – Fahrettin Altay Aktarma Merkezi,1,527,43.1927,43.3293,70.0795,76.8029,0.3724,0.0361,0.093,Fahrettin Altay Aktarma Merkezi yönü
+7,Sahilevleri – Fahrettin Altay Aktarma Merkezi,2,501,35.6653,39.6382,67.7496,73.9211,0.3358,0.0,0.0439,Sahilevleri yönü
+15,İnönü – Konak,1,112,34.172,33.8717,37.6283,41.7696,0.0969,0.0,0.0,Konak yönü
+15,İnönü – Konak,2,110,34.4095,33.8295,36.6511,37.5037,0.0779,0.0,0.0,İnönü yönü
+23,Uzundere – Konak,1,1122,25.1355,33.0768,62.1153,202.6978,0.994,0.0677,0.2371,Konak yönü
+23,Uzundere – Konak,2,834,23.5088,33.2062,67.858,196.5092,1.0198,0.1343,0.1559,Uzundere yönü
+39,İsmetpaşa Mahallesi – Gümrük,1,300,33.8716,36.7955,38.1233,106.2917,0.6012,0.0,0.0233,Gümrük yönü
+39,İsmetpaşa Mahallesi – Gümrük,2,203,34.2293,38.9979,40.8025,172.6606,0.6164,0.0,0.0542,İsmetpaşa Mahallesi yönü
+111,Naldöken – Evka 3 Metro,1,612,17.9371,20.9348,26.0306,75.2676,0.7026,0.0,0.0408,Evka 3 Metro yönü
+111,Naldöken – Evka 3 Metro,2,655,18.4569,23.0976,26.999,137.8162,0.9106,0.0061,0.0489,Naldöken yönü
+119,Altındağ – Bornova Metro,1,89,49.2692,65.161,91.876,254.7564,0.8037,0.0,0.1348,Bornova Metro yönü
 119,Altındağ – Bornova Metro,2,297,47.8888,50.1534,56.4068,221.7898,0.4697,0.0,0.0303,Altındağ yönü
-135,Doğançay – Karşıyaka,1,428,29.3903,33.6212,41.3452,116.4481,0.4884,0.0,0.0701,Karşıyaka yönü
-135,Doğançay – Karşıyaka,2,422,28.8123,36.2064,49.0451,252.3359,0.9809,0.0,0.1801,Doğançay yönü
+135,Doğançay – Karşıyaka,1,513,31.6083,34.7886,42.7192,116.4369,0.4392,0.0,0.0702,Karşıyaka yönü
+135,Doğançay – Karşıyaka,2,464,30.3886,36.5228,48.6446,252.3359,0.9277,0.0,0.2134,Doğançay yönü
 175,Dağkızılca – Adatepe,1,123,51.0765,58.4677,105.3179,105.4493,0.3343,0.0,0.1463,Adatepe yönü
-247,Evka 6 – Çiğli Aktarma Merkezi,1,407,39.2928,37.5793,42.1455,58.2732,0.1945,0.0418,0.0,Çiğli Aktarma Merkezi yönü
-247,Evka 6 – Çiğli Aktarma Merkezi,2,346,39.2486,42.8348,44.4712,215.4123,0.7089,0.0,0.0289,Evka 6 yönü
-295,Harmandalı – Egekent Aktarma Merkezi,1,683,28.3902,27.1431,32.6589,72.5085,0.3592,0.0,0.0293,Egekent Aktarma Merkezi yönü
-295,Harmandalı – Egekent Aktarma Merkezi,2,500,28.2117,27.0686,34.7695,37.5705,0.2076,0.002,0.0,Harmandalı yönü
-311,İnciraltı – Fahrettin Altay,1,156,25.9277,34.5168,31.1975,213.9352,1.0553,0.0,0.0897,Fahrettin Altay yönü
-311,İnciraltı – Fahrettin Altay,2,234,29.8823,32.0189,45.748,50.5554,0.3408,0.0,0.1838,İnciraltı yönü
-335,Doğançay – Halkapınar Metro 2,1,287,41.1919,57.3441,50.7881,279.6867,0.9887,0.0,0.0976,Halkapınar Metro 2 yönü
-335,Doğançay – Halkapınar Metro 2,2,217,43.9728,54.2425,109.2572,130.6496,0.5332,0.0,0.1659,Doğançay yönü
+247,Evka 6 – Çiğli Aktarma Merkezi,1,579,39.5576,38.501,42.4959,58.2909,0.2138,0.0328,0.0035,Çiğli Aktarma Merkezi yönü
+247,Evka 6 – Çiğli Aktarma Merkezi,2,486,40.0089,42.2911,44.9162,215.3769,0.6071,0.0,0.0206,Evka 6 yönü
+295,Harmandalı – Egekent Aktarma Merkezi,1,839,28.8887,27.6423,32.5572,72.3747,0.3148,0.0,0.0667,Egekent Aktarma Merkezi yönü
+295,Harmandalı – Egekent Aktarma Merkezi,2,649,28.8639,27.9843,35.7063,37.556,0.1918,0.0,0.0169,Harmandalı yönü
+311,İnciraltı – Fahrettin Altay,1,266,28.125,40.5518,65.6772,213.6408,0.8183,0.0865,0.0677,Fahrettin Altay yönü
+311,İnciraltı – Fahrettin Altay,2,352,37.0355,36.6993,48.834,70.2755,0.3579,0.0,0.1023,İnciraltı yönü
+335,Doğançay – Halkapınar Metro 2,1,420,41.3522,52.9324,48.4417,279.6756,0.9057,0.0,0.0762,Halkapınar Metro 2 yönü
+335,Doğançay – Halkapınar Metro 2,2,338,43.6548,49.0845,105.4867,130.6082,0.5024,0.0,0.0444,Doğançay yönü
 423,Şirinevler – Bostanlı İskele,1,19,79.263,78.8464,79.4054,79.4187,0.0093,0.0,0.0,Bostanlı İskele yönü
-447,Evka 6 – Bostanlı İskele,1,152,38.1678,40.0019,42.0304,108.2073,0.3566,0.0,0.0395,Bostanlı İskele yönü
-447,Evka 6 – Bostanlı İskele,2,195,37.8472,39.4608,46.6679,47.334,0.1055,0.0,0.0,Evka 6 yönü
-471,Tınaztepe – Konak,1,232,39.045,49.6803,74.6394,250.1932,0.6364,0.0,0.2414,Konak yönü
-471,Tınaztepe – Konak,2,140,37.0432,48.5481,46.2682,223.6683,0.925,0.0,0.1,Tınaztepe yönü
-487,Demirköprü – Karşıyaka,1,191,35.6979,53.2818,103.1162,240.5206,0.825,0.0,0.1832,Karşıyaka yönü
-487,Demirköprü – Karşıyaka,2,168,35.5946,46.3078,73.0124,171.3125,0.6623,0.0,0.1726,Demirköprü yönü
-535,Bayraklı Şehir Hastanesi – Egekent Aktarma Merkezi,1,87,55.5435,55.2227,56.5678,57.2283,0.02,0.0,0.0,Egekent Aktarma Merkezi yönü
-535,Bayraklı Şehir Hastanesi – Egekent Aktarma Merkezi,2,160,54.8097,54.1329,56.2184,57.9135,0.0382,0.0,0.0,Bayraklı Şehir Hastanesi yönü
-543,Bostanlı İskele – Halkapınar Metro,1,393,26.155,31.0938,38.1443,70.0768,0.4073,0.0,0.0992,Halkapınar Metro yönü
-543,Bostanlı İskele – Halkapınar Metro,2,405,25.841,32.4887,41.5466,72.3076,0.4175,0.0,0.2198,Bostanlı İskele yönü
-551,Narlıdere – Fahrettin Altay,1,431,32.5351,36.3945,59.7529,60.968,0.3116,0.0,0.181,Fahrettin Altay yönü
-551,Narlıdere – Fahrettin Altay,2,287,31.1238,35.6401,59.9145,61.1924,0.3063,0.0,0.1568,Narlıdere yönü
-559,Bayraklı Toplu Konutları – Evka 3 Metro,1,410,39.8523,44.4847,74.8531,81.7351,0.2914,0.0,0.1171,Evka 3 Metro yönü
-559,Bayraklı Toplu Konutları – Evka 3 Metro,2,336,38.6621,40.8789,45.9179,85.1498,0.347,0.0,0.0923,Bayraklı Toplu Konutları yönü
-575,Maliyeciler Mahallesi – Üçyol Metro,1,30,82.7158,82.394,83.2435,83.4406,0.0137,0.0,0.0,Üçyol Metro yönü
-599,Muhittin Erener – Halkapınar Metro,1,2171,12.8476,17.1428,22.9131,121.3731,1.2333,0.0673,0.1469,Halkapınar Metro yönü
-599,Muhittin Erener – Halkapınar Metro,2,1822,13.9593,18.8063,28.1206,164.527,1.1898,0.0604,0.174,Muhittin Erener yönü
-671,Şirinyer Aktarma Merkezi – Fahrettin Altay Aktarma Merkezi,1,1187,20.2812,25.2359,38.5072,131.2064,0.6362,0.0345,0.2527,Fahrettin Altay Aktarma Merkezi yönü
-671,Şirinyer Aktarma Merkezi – Fahrettin Altay Aktarma Merkezi,2,1086,20.3022,24.6519,41.8395,130.7253,0.6794,0.0939,0.2615,Şirinyer Aktarma Merkezi yönü
-695,Ulukent Koop – Egekent Aktarma Merkezi,1,134,30.0672,34.2191,31.9644,100.597,0.4903,0.0,0.0597,Egekent Aktarma Merkezi yönü
+447,Evka 6 – Bostanlı İskele,1,278,38.6978,41.2489,44.1515,108.2,0.295,0.0,0.0432,Bostanlı İskele yönü
+447,Evka 6 – Bostanlı İskele,2,241,38.8099,39.6306,46.1513,47.2693,0.0962,0.0,0.0,Evka 6 yönü
+471,Tınaztepe – Konak,1,232,39.045,49.6803,74.6394,250.1932,0.6364,0.0,0.1293,Konak yönü
+471,Tınaztepe – Konak,2,148,37.3567,48.7724,64.8675,223.6498,0.8974,0.0,0.1216,Tınaztepe yönü
+487,Demirköprü – Karşıyaka,1,289,35.5003,47.1418,103.0399,239.6081,0.7791,0.0,0.0381,Karşıyaka yönü
+487,Demirköprü – Karşıyaka,2,264,35.7039,42.3527,71.3543,171.2911,0.5906,0.0,0.0303,Demirköprü yönü
+535,Bayraklı Şehir Hastanesi – Egekent Aktarma Merkezi,1,174,55.2127,55.3949,57.8745,60.7786,0.0351,0.0,0.0,Egekent Aktarma Merkezi yönü
+535,Bayraklı Şehir Hastanesi – Egekent Aktarma Merkezi,2,280,55.2658,55.0647,57.8879,61.0965,0.0433,0.0,0.0,Bayraklı Şehir Hastanesi yönü
+543,Bostanlı İskele – Halkapınar Metro,1,555,28.0349,32.3702,39.6781,70.0479,0.3412,0.0,0.0144,Halkapınar Metro yönü
+543,Bostanlı İskele – Halkapınar Metro,2,551,30.2114,32.8199,41.325,72.2653,0.3574,0.0145,0.0218,Bostanlı İskele yönü
+551,Narlıdere – Fahrettin Altay,1,672,33.3612,35.9995,58.9298,60.9613,0.2557,0.0,0.1161,Fahrettin Altay yönü
+551,Narlıdere – Fahrettin Altay,2,483,33.4137,35.8829,43.0164,60.7566,0.247,0.0,0.0932,Narlıdere yönü
+559,Bayraklı Toplu Konutları – Evka 3 Metro,1,645,40.7956,43.5006,48.6906,81.5476,0.2442,0.0,0.0744,Evka 3 Metro yönü
+559,Bayraklı Toplu Konutları – Evka 3 Metro,2,484,40.5863,42.8403,47.8745,94.4004,0.33,0.0,0.0868,Bayraklı Toplu Konutları yönü
+575,Maliyeciler Mahallesi – Üçyol Metro,1,39,82.6916,82.4608,83.2204,83.44,0.0121,0.0,0.0,Üçyol Metro yönü
+575,Maliyeciler Mahallesi – Üçyol Metro,2,26,182.5809,196.2348,272.0837,272.456,0.1685,0.0,0.0,Maliyeciler Mahallesi yönü
+599,Muhittin Erener – Halkapınar Metro,1,2822,13.1258,16.4492,21.8286,119.668,1.1451,0.0276,0.1212,Halkapınar Metro yönü
+599,Muhittin Erener – Halkapınar Metro,2,2321,13.9631,17.7765,23.9794,157.222,1.124,0.0289,0.0866,Muhittin Erener yönü
+671,Şirinyer Aktarma Merkezi – Fahrettin Altay Aktarma Merkezi,1,1610,19.9274,23.9735,37.9898,131.2005,0.6063,0.0311,0.0783,Fahrettin Altay Aktarma Merkezi yönü
+671,Şirinyer Aktarma Merkezi – Fahrettin Altay Aktarma Merkezi,2,1478,19.8298,23.7404,41.0361,50.6649,0.6324,0.046,0.0853,Şirinyer Aktarma Merkezi yönü
+695,Ulukent Koop – Egekent Aktarma Merkezi,1,136,30.0875,35.1977,32.1217,100.7237,0.5254,0.0,0.0735,Egekent Aktarma Merkezi yönü
 695,Ulukent Koop – Egekent Aktarma Merkezi,2,214,30.0738,30.4648,47.7245,51.6482,0.3111,0.0935,0.1355,Ulukent Koop yönü
 743,Tire – Selçuk,1,108,129.7584,129.1166,131.6643,132.3546,0.017,0.0,0.0,Selçuk yönü
 743,Tire – Selçuk,2,113,58.1387,57.5361,58.8321,59.0458,0.0246,0.0,0.0,Tire yönü
-751,Sasalı – Çiğli Aktarma Merkezi,1,473,30.4542,32.3944,40.0566,42.3636,0.1851,0.0,0.0042,Çiğli Aktarma Merkezi yönü
-751,Sasalı – Çiğli Aktarma Merkezi,2,442,31.6283,33.2558,40.5636,43.6069,0.1631,0.0,0.0023,Sasalı yönü
-767,Halilbeyli – Kemalpaşa,1,1296,40.1756,42.4058,80.5649,83.6898,0.3956,0.0355,0.1042,Kemalpaşa yönü
-767,Halilbeyli – Kemalpaşa,2,709,41.3897,46.2564,77.6612,83.107,0.3062,0.0,0.1425,Halilbeyli yönü
-775,Özdere – Cumaovası Aktarma Merkezi,1,3058,34.7883,35.8378,42.909,55.3843,0.1885,0.0,0.0288,Cumaovası Aktarma Merkezi yönü
-775,Özdere – Cumaovası Aktarma Merkezi,2,2723,32.924,32.9529,40.084,67.7444,0.3752,0.0768,0.0848,Özdere yönü
+751,Sasalı – Çiğli Aktarma Merkezi,1,556,31.1487,33.9016,40.6318,67.8523,0.2726,0.0,0.0522,Çiğli Aktarma Merkezi yönü
+751,Sasalı – Çiğli Aktarma Merkezi,2,493,31.8336,36.2746,43.422,75.6591,0.3276,0.0,0.0892,Sasalı yönü
+767,Halilbeyli – Kemalpaşa,1,1779,40.312,42.414,49.1073,83.4827,0.3454,0.0259,0.0798,Kemalpaşa yönü
+767,Halilbeyli – Kemalpaşa,2,1123,41.3459,44.6323,54.2832,83.0731,0.2634,0.0,0.0036,Halilbeyli yönü
+775,Özdere – Cumaovası Aktarma Merkezi,1,4017,34.1561,34.8626,42.6729,54.9521,0.1789,0.0,0.0212,Cumaovası Aktarma Merkezi yönü
+775,Özdere – Cumaovası Aktarma Merkezi,2,3558,33.1152,34.5122,53.8044,67.6488,0.3552,0.0579,0.1043,Özdere yönü
 823,Üçyol – Gaziemir Semt Garajı,1,137,42.8889,44.971,46.7301,107.1286,0.2636,0.0,0.0146,Gaziemir Semt Garajı yönü
-823,Üçyol – Gaziemir Semt Garajı,2,114,45.2237,45.386,48.3081,48.9465,0.0372,0.0,0.0,Üçyol yönü
-839,Dikili Devlet Hastanesi – Dikili İlçe Garajı,1,8,120.266,120.02,120.5427,120.5612,0.0068,0.0,0.0,Dikili İlçe Garajı yönü
-847,Postacılar Mahallesi – Karşıyaka İskele,1,400,34.8272,32.3742,40.2939,49.3801,0.2321,0.005,0.0,Karşıyaka İskele yönü
-847,Postacılar Mahallesi – Karşıyaka İskele,2,396,34.8366,33.7488,44.0351,49.0962,0.2416,0.0025,0.0,Postacılar Mahallesi yönü
-871,İşçievleri – Şirinyer Aktarma Merkezi,1,138,29.9918,31.3998,34.3819,89.7448,0.3347,0.0,0.029,Şirinyer Aktarma Merkezi yönü
-871,İşçievleri – Şirinyer Aktarma Merkezi,2,80,30.3771,33.891,35.7379,88.2692,0.4293,0.0,0.0625,İşçievleri yönü
-879,Fahrettin Altay – Gaziemir Semt Garajı,1,2157,20.2369,20.9809,30.1285,46.9944,0.4072,0.0839,0.096,Gaziemir Semt Garajı yönü
-879,Fahrettin Altay – Gaziemir Semt Garajı,2,1736,17.9632,21.3276,36.4598,46.3911,0.5016,0.0196,0.2707,Fahrettin Altay yönü
-887,Sarnıç Aktarma Merkezi – Konak,1,508,35.1934,36.0127,69.2051,75.6254,0.4635,0.0413,0.1378,Konak yönü
-887,Sarnıç Aktarma Merkezi – Konak,2,581,38.2372,38.8931,71.6053,77.6615,0.4477,0.1033,0.1274,Sarnıç Aktarma Merkezi yönü
-935,Aliağa Osb – Aliağa Aktarma Merkezi,1,36,78.192,78.2763,79.8088,80.3535,0.0138,0.0,0.0,Aliağa Aktarma Merkezi yönü
-935,Aliağa Osb – Aliağa Aktarma Merkezi,2,156,76.2928,66.9364,81.5674,82.602,0.235,0.0,0.0,Aliağa Osb yönü
+823,Üçyol – Gaziemir Semt Garajı,2,116,45.2364,48.5568,48.4441,202.2401,0.4963,0.0,0.0172,Üçyol yönü
+839,Dikili Devlet Hastanesi – Dikili İlçe Garajı,2,15,130.3971,104.2422,132.7669,133.1279,0.3311,0.4,0.0,Dikili Devlet Hastanesi yönü
+847,Postacılar Mahallesi – Karşıyaka İskele,1,532,34.9371,33.516,46.7997,49.702,0.2627,0.0075,0.1316,Karşıyaka İskele yönü
+847,Postacılar Mahallesi – Karşıyaka İskele,2,538,34.7509,34.2012,48.4794,51.6642,0.2796,0.039,0.0,Postacılar Mahallesi yönü
+871,İşçievleri – Şirinyer Aktarma Merkezi,1,228,30.3091,31.4741,35.8701,89.2194,0.3264,0.0,0.0263,Şirinyer Aktarma Merkezi yönü
+871,İşçievleri – Şirinyer Aktarma Merkezi,2,128,29.6324,32.4579,35.7059,88.2474,0.3595,0.0,0.0391,İşçievleri yönü
+879,Fahrettin Altay – Gaziemir Semt Garajı,1,2956,18.1704,19.9537,29.7693,46.824,0.4491,0.0643,0.1231,Gaziemir Semt Garajı yönü
+879,Fahrettin Altay – Gaziemir Semt Garajı,2,2300,16.3363,20.7698,36.5289,54.7228,0.563,0.0243,0.2265,Fahrettin Altay yönü
+887,Sarnıç Aktarma Merkezi – Konak,1,693,39.2284,38.0289,67.1547,89.8687,0.4295,0.0433,0.1732,Konak yönü
+887,Sarnıç Aktarma Merkezi – Konak,2,764,38.9618,39.1659,49.4853,77.2208,0.3888,0.0366,0.1348,Sarnıç Aktarma Merkezi yönü
+935,Aliağa Osb – Aliağa Aktarma Merkezi,1,102,77.3133,90.046,163.9121,164.4535,0.4666,0.0,0.2353,Aliağa Aktarma Merkezi yönü
+935,Aliağa Osb – Aliağa Aktarma Merkezi,2,236,80.2179,87.9948,149.6696,150.8638,0.4387,0.0,0.4661,Aliağa Osb yönü
 967,Armutlu – Kemalpaşa,1,26,137.1692,137.2019,137.4597,137.5284,0.0013,0.0,0.0,Kemalpaşa yönü
-975,Seferihisar – Fahrettin Altay Aktarma Merkezi,1,5117,16.7068,17.2627,26.4891,40.8236,0.4439,0.0866,0.1147,Fahrettin Altay Aktarma Merkezi yönü
-975,Seferihisar – Fahrettin Altay Aktarma Merkezi,2,5092,15.9,18.4815,28.7611,40.1264,0.4468,0.0277,0.2463,Seferihisar yönü
-983,Bademler – Fahrettin Altay Aktarma Merkezi,1,239,87.9964,88.0899,90.1691,90.6689,0.0191,0.0,0.0,Fahrettin Altay Aktarma Merkezi yönü
-983,Bademler – Fahrettin Altay Aktarma Merkezi,2,458,83.3285,91.1037,169.7643,172.5988,0.3447,0.0,0.1288,Bademler yönü
+975,Seferihisar – Fahrettin Altay Aktarma Merkezi,1,6255,17.2738,18.4592,27.6148,49.4201,0.4806,0.0443,0.1289,Fahrettin Altay Aktarma Merkezi yönü
+975,Seferihisar – Fahrettin Altay Aktarma Merkezi,2,6167,17.472,19.5754,31.725,41.2611,0.445,0.0454,0.1592,Seferihisar yönü
+983,Bademler – Fahrettin Altay Aktarma Merkezi,1,448,87.0054,87.3679,90.3936,91.7471,0.0261,0.0,0.0,Fahrettin Altay Aktarma Merkezi yönü
+983,Bademler – Fahrettin Altay Aktarma Merkezi,2,624,84.8012,90.8259,93.2178,172.5161,0.2964,0.0,0.0946,Bademler yönü
