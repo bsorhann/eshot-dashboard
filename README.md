@@ -1,5 +1,7 @@
 # İzmir Bus Regularity
 
+**English** · [Türkçe](README.tr.md)
+
 **How regularly do İzmir's buses actually arrive?** This project collects the live position of every ESHOT bus from İzmir Metropolitan Municipality's open data API, around the clock, and measures how long passengers really wait at each stop, how often buses bunch together, and which lines, stops and hours are the least reliable.
 
 **Live dashboard (Turkish):** https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app
@@ -37,13 +39,15 @@ flowchart LR
 
 **Timetables change during the day.** Buses are planned to run less often in the evening and at night. Comparing every wait with the line's all-day typical wait therefore labelled planned evening gaps as "long waits". Each wait is now compared with the typical wait of the same line **in the same time band** (night, morning peak, daytime, evening peak, evening). For one of the hospital lines, this lowered the long-wait share from 29% to 20%.
 
+**Single-bus lines need to be measured too.** At first I measured headways between two consecutive *different buses*. That skipped every line run by a single bus and, more importantly, hid the long gaps that appear when one of a line's few buses goes out of service. Measuring between two consecutive *different trips* instead raised the number of measured lines from 291 to 384 and revealed hidden long waits on several low-frequency lines.
+
 **Route ends are unreliable.** Buses wait and turn around at the terminus, so passages there are often missed and create fake long gaps. Stops with clearly fewer detected passages than the rest of the route are excluded automatically.
 
 ## Metrics
 
 | Metric | Definition |
 | --- | --- |
-| Typical wait | Median time between two consecutive buses at a stop |
+| Typical wait | Median time between two consecutive trips at a stop |
 | Long wait | Share of gaps longer than 1.5× the typical wait in the same time band |
 | Bunching | Share of gaps shorter than 0.5× the typical wait in the same time band (two buses arrive almost together) |
 
@@ -79,6 +83,7 @@ streamlit run app.py
 - Planned timetables are not available as open data, so regularity is measured against each line's own typical wait, not against the schedule.
 - Weekday and weekend timetables are not separated yet.
 - With ~60 requests per minute, the busiest hours can have more active lines than can be polled every 5 minutes. Some lines are then sampled every 6–8 minutes, which the analysis tolerates.
+- Rural and village lines with only a few trips a day can usually not be measured.
 
 ## Data and license
 
