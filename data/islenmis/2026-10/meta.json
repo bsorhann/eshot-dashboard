@@ -1,6 +1,6 @@
 {
   "ay": "2026-10",
-  "guncelleme_utc": "2026-10-31T10:43:09+00:00",
+  "guncelleme_utc": "2026-10-31T10:58:57+00:00",
   "ilk_olcum_utc": "2026-10-27T12:00:27+00:00",
   "son_olcum_utc": "2026-10-31T10:34:28+00:00",
   "gun_sayisi": 5,
@@ -8,6 +8,6 @@
   "gps_kayit": 299989,
   "canli_konum": 155996,
   "hayalet_orani": 0.48,
-  "aralik_olcumu": 506466,
-  "hat_sayisi": 291
+  "aralik_olcumu": 548050,
+  "hat_sayisi": 384
 }
