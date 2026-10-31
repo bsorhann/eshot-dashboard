@@ -5,6 +5,7 @@ Veriyi data/islenmis/ klasöründen okur; bu klasörü her gece analiz iş akı�
 Yerelde çalıştırmak için:  streamlit run app.py
 """
 
+import glob
 import json
 import os
 
@@ -74,6 +75,37 @@ def tarih(iso):
     return f"{t.day} {AY_ADLARI[t.month - 1]} {t:%H:%M}"
 
 
+REF_HAT_DESENI = os.path.join("data", "ref", "eshot-otobus-hat-listesi__*.csv")
+
+
+def surum_ref():
+    import glob
+    dosyalar = glob.glob(REF_HAT_DESENI)
+    return os.path.getmtime(dosyalar[0]) if dosyalar else 0
+
+
+@st.cache_data
+def hat_listesini_yukle(surum_anahtari):
+    """ESHOT'un resmi hat listesi (ölçülemeyen hatları göstermek için)."""
+    import glob
+    dosyalar = glob.glob(REF_HAT_DESENI)
+    if not dosyalar:
+        return pd.DataFrame(columns=["hat_id", "hat_adi"])
+    h = pd.read_csv(dosyalar[0], sep=";").drop_duplicates("HAT_NO")
+    adlar = h.HAT_ADI.astype(str).str.split(r"\s*-\s*", regex=True).map(
+        lambda p: " – ".join(tr_baslik(x) for x in p if x))
+    return pd.DataFrame({"hat_id": h.HAT_NO.astype(int).values, "hat_adi": adlar.values})
+
+
+def tr_baslik(metin):
+    kelimeler = []
+    for k in str(metin).strip().split():
+        kucuk = k.replace("I", "ı").replace("İ", "i").lower()
+        ilk = {"i": "İ", "ı": "I"}.get(kucuk[:1], kucuk[:1].upper())
+        kelimeler.append(ilk + kucuk[1:])
+    return " ".join(kelimeler)
+
+
 def kadraj_zoom(d, genislik_px=600, yukseklik_px=400):
     """Güzergahın tamamı haritaya sığacak yakınlaştırma seviyesi (Web Mercator yaklaşımı)."""
     import math
@@ -83,6 +115,25 @@ def kadraj_zoom(d, genislik_px=600, yukseklik_px=400):
     zoom = min(math.log2(360 * genislik_px / 512 / lon_aralik),
                math.log2(360 * yukseklik_px / 512 / lat_aralik)) - 0.3  # kenarlarda pay
     return max(8.0, min(15.0, zoom))
+
+
+def tr_baslik(metin):
+    """'BOSTANLI İSKELE' -> 'Bostanlı İskele' (Türkçe I/İ kurallarıyla)."""
+    kelimeler = []
+    for k in str(metin).strip().split():
+        kucuk = k.replace("I", "ı").replace("İ", "i").lower()
+        kelimeler.append({"i": "İ", "ı": "I"}.get(kucuk[:1], kucuk[:1].upper()) + kucuk[1:])
+    return " ".join(kelimeler)
+
+
+@st.cache_data
+def hat_listesi_yukle():
+    dosyalar = glob.glob(os.path.join("data", "ref", "eshot-otobus-hat-listesi__*.csv"))
+    if not dosyalar:
+        return None
+    h = pd.read_csv(dosyalar[0], sep=";")[["HAT_NO", "HAT_ADI"]].drop_duplicates("HAT_NO")
+    h["HAT_ADI"] = h.HAT_ADI.map(lambda a: " – ".join(tr_baslik(p) for p in str(a).split("-")))
+    return h
 
 
 def ay_adi(ay):
@@ -132,6 +183,85 @@ st.caption(
 if not secim["tamamlandi"] and secim["gun_sayisi"] < MIN_GUN_BU_AY:
     st.warning(f"{ay_adi(ay)} için şimdilik yalnızca {secim['gun_sayisi']} günlük veri var. "
                "Sonuçlar veri biriktikçe oturacak.")
+
+# ---------------------------------------------------------------- sonuçları nasıl okumalı
+
+tum_hat_listesi = hat_listesini_yukle(surum_ref())
+olculen = set(ozet.hat_id)
+olculemeyen = tum_hat_listesi[~tum_hat_listesi.hat_id.isin(olculen)].sort_values("hat_id")
+with st.expander(f"Sonuçları nasıl okumalı? (ESHOT'un {len(tum_hat_listesi)} hattından "
+                 f"{len(olculen & set(tum_hat_listesi.hat_id))}'i bu ay ölçüldü)"):
+    st.markdown(f"""
+**Neden {len(tum_hat_listesi)} hattın hepsi yok?** Toplayıcı tüm hatları düzenli olarak soruyor. Bir hattın
+ölçülebilmesi için aynı durağa art arda en az iki sefer gelmesi gerekiyor. Ölçülemeyen
+{len(olculemeyen)} hattın çoğu günde yalnızca birkaç sefer yapan ilçe ve köy hatları (Bayındır, Bergama,
+Ödemiş, Seferihisar gibi). Bazıları ise yalnızca belirli günlerde, saatlerde ya da dönemlerde
+çalışan hatlar (okul, mesai, sezon). Veri biriktikçe bu sayı azalır.
+
+**Tek otobüslü hatlar.** Bazı hatlarda tek otobüs gidip geliyor. Bu hatlarda bekleme süresi, otobüsün
+tam bir turu kadar uzun olabilir; bu yolcunun gerçekte yaşadığı beklemedir.
+
+**"Uzun bekleme" neye göre?** Her bekleme, aynı hattın aynı saat dilimindeki tipik beklemesiyle
+karşılaştırılıyor. Bu yüzden akşam ve gecenin planlı olarak seyrek seferleri "uzun" sayılmıyor.
+Yani bu ölçü bir hattın sık mı seyrek mi olduğunu değil, **ne kadar öngörülebilir** olduğunu gösterir.
+Uzun bekleme oranı %0 olan bir hat seyrek olabilir, ama tarifesine sadıktır.
+
+**Sanayi ve vardiya hatları.** Organize sanayi bölgesi gibi vardiya saatlerine göre çalışan hatlarda
+seferler gün içinde bilerek düzensiz planlanır. Bu hatların yüksek oranları kötü hizmetten değil,
+tarife yapısından kaynaklanabilir.
+
+**Bir otobüs seferden çekilince.** İki otobüslü bir hatta otobüslerden biri seferden çekildiğinde
+(mola, arıza), aynı otobüs art arda gelir ve bekleme iki katına çıkar. Bu beklemeler de sayılıyor.
+
+**Az ölçümlü satırlar.** Tablodaki "Ölçüm" sütunu düşük olan satırlar şansa bağlı olabilir.
+Öne çıkanlar ve sıralama grafiği bu yüzden yalnızca en az {MIN_OLCUM_HAT} ölçümü olan hat-yönleri içeriyor.
+""")
+    if len(olculemeyen):
+        st.markdown(f"**Bu ay ölçülemeyen {len(olculemeyen)} hat**")
+        st.dataframe(olculemeyen, hide_index=True, width="stretch", height=240,
+                     column_config={"hat_id": st.column_config.NumberColumn("Hat", format="%d"),
+                                    "hat_adi": "Hat adı"})
+
+# ---------------------------------------------------------------- kapsam ve okuma notları
+
+tum_hatlar = hat_listesi_yukle()
+olculen = ozet.hat_id.nunique()
+toplam_hat = len(tum_hatlar) if tum_hatlar is not None else 446
+with st.expander(f"Kaç hat ölçülüyor ve sonuçları nasıl okumalı? "
+                 f"({ay_adi(ay)}: {toplam_hat} hattın {olculen}'i)"):
+    st.markdown(f"""
+**Neden {toplam_hat} hattın hepsi değil?** Toplayıcı ESHOT'un listesindeki {toplam_hat} hattın hepsini
+düzenli olarak soruyor. Bir hattın ölçülebilmesi için ise aynı durağa **en az iki ayrı seferin**
+geldiğinin görülmesi gerekiyor. Ölçülemeyen {toplam_hat - olculen} hattın çoğu:
+
+- **İlçe ve köy hatları** (Bayındır, Bergama, Ödemiş, Seferihisar, Urla köyleri gibi): günde
+  yalnızca birkaç sefer var; iki sefer arası çoğu zaman veri toplanmayan gece saatlerine denk geliyor.
+- **Belirli gün ve saatlerde çalışan hatlar** (mesai, okul, ekspres): toplama süresince hiç
+  çalışmamış ya da çok az çalışmış olabilirler.
+- Ayın ilk günlerinde veri az olduğu için ölçülen hat sayısı ay ilerledikçe artar.
+
+**Sonuçları okurken:**
+
+- **Oranlar her hattın kendi temposuna göre.** "Uzun bekleme", hattın aynı saat dilimindeki tipik
+  beklemesinin 1,5 katını aşan bekleyişler. 10 dakikada bir gelen hatla saatte bir gelen hat bu
+  sayede adil biçimde karşılaştırılabiliyor.
+- **Az otobüslü hatlar.** Tek ya da iki otobüsle çalışan bir hatta otobüslerden biri mola verdiğinde
+  ya da seferden çekildiğinde bekleme ikiye katlanır. Bu, yolcunun gerçekten yaşadığı bir bekleme
+  olduğu için hesaba katılıyor ve bu hatlarda uzun bekleme oranı yüksek çıkabiliyor.
+- **Sanayi ve vardiya hatları** (ör. OSB hatları) vardiya saatlerine göre planlandığı için
+  aralıkları doğal olarak düzensiz; yüksek oranları her zaman kötü hizmet anlamına gelmez.
+- **Ölçüm sayısına bakın.** Az ölçümlü hatlarda sonuçlar şansa bağlı olabilir. Bu yüzden öne
+  çıkanlar ve sıralama yalnızca en az {MIN_OLCUM_HAT} ölçümü olan hat-yönleri içeriyor.
+- **Ham verinin yaklaşık yarısı ayıklanıyor.** API, otobüslerin canlı konumunun yanında garaj,
+  aktarma merkezi ya da benzinlikte kalmış eski konumlarını da döndürüyor; bunlar analizden
+  önce temizleniyor.
+""")
+    if tum_hatlar is not None:
+        eksik = tum_hatlar[~tum_hatlar.HAT_NO.isin(ozet.hat_id)].sort_values("HAT_NO")
+        if len(eksik):
+            st.markdown(f"**Bu ay ölçülemeyen {len(eksik)} hat:**")
+            st.dataframe(eksik.rename(columns={"HAT_NO": "Hat", "HAT_ADI": "Hat adı"}),
+                         hide_index=True, width="stretch", height=240)
 
 # ---------------------------------------------------------------- ayın öne çıkanları
 
@@ -296,18 +426,16 @@ else:
     d["medyan_metin"] = d.medyan_dk.round().astype(int).astype(str) + " dk"
     sol, sag = st.columns([3, 2])
     with sol:
-        # Tek renk, büyüklük = uzun bekleme oranı. Renk koyulaştırmak koyu haritada
-        # en önemli noktaları kaybettiriyordu; büyüklük iki temada da okunur.
-        enk, enb = d.uzun_bekleme_orani.min(), d.uzun_bekleme_orani.max()
-        oran = ((d.uzun_bekleme_orani - enk) / (enb - enk if enb > enk else 1)).clip(0, 1)
-        # Yarıçap metre cinsinden; ekranda 4-16 piksel arasında tutulur. (radius_units="pixels"
-        # kullanılmadı: pydeck metni "pixels" adlı bir değişken sanıp noktaları dev boyutta çiziyordu.)
-        d["yaricap_m"] = 40 + 160 * oran
+        # Tek renk; nokta ALANI mutlak uzun bekleme oranıyla orantılı (hatlar arasında karşılaştırılabilir).
+        # Eskiden boyut hattın kendi en düşük/en yüksek durağına göre ölçekleniyordu; %20 ile %25
+        # arasındaki küçük fark en küçükten en büyük noktaya uzanıyor ve yanıltıyordu.
+        d["yaricap_px"] = 3 + 9 * (d.uzun_bekleme_orani.clip(0, 0.5) / 0.5) ** 0.5
         katman = pdk.Layer(
             "ScatterplotLayer", data=d, get_position="[BOYLAM, ENLEM]",
-            get_fill_color=[42, 120, 214, 230], get_line_color=[255, 255, 255],
-            line_width_min_pixels=1.5, stroked=True, get_radius="yaricap_m",
-            radius_min_pixels=4, radius_max_pixels=16, pickable=True)
+            get_fill_color=[42, 120, 214, 210], get_line_color=[255, 255, 255],
+            line_width_min_pixels=1, stroked=True, get_radius="yaricap_px",
+            radius_units="'pixels'",  # tırnak şart: yoksa pydeck "pixels"i değişken sanıyor
+            pickable=True)
         st.pydeck_chart(pdk.Deck(
             layers=[katman],
             initial_view_state=pdk.ViewState(
@@ -318,7 +446,8 @@ else:
                              "Uzun bekleme: {oran_metin}"},
             map_style=None,
         ), height=420)
-        st.caption("Nokta büyüdükçe o durakta uzun bekleme daha sık.")
+        st.caption("Nokta büyüdükçe o durakta uzun bekleme daha sık: en küçük nokta %0, "
+                   "en büyük nokta %50 ve üzeri. Ölçek tüm hatlarda aynı.")
     with sag:
         st.markdown("**Durak sırasına göre uzun bekleme**")
         st.altair_chart(
