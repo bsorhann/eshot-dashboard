@@ -1,0 +1,27 @@
+name: Dashboard uyanik tut
+
+# Streamlit Community Cloud ziyaret edilmeyen uygulamalari uyutuyor. Bu is 6 saatte bir
+# sayfayi acar, uyuyorsa uyandirir; boylece linke tiklayan kisi bekleme ekrani gormez.
+on:
+  schedule:
+    - cron: "41 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  uyandir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Sayfayi ac ve gerekirse uyandir
+        run: python uyanik_tut.py https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app
