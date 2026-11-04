@@ -4,7 +4,7 @@
 
 **How regularly do İzmir's buses actually arrive?** This project collects the live position of every ESHOT bus from İzmir Metropolitan Municipality's open data API, around the clock, and measures how long passengers really wait at each stop, how often buses bunch together, and which lines, stops and hours are the least reliable.
 
-**Live dashboard (Turkish):** https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app
+**Live dashboard:** https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app/?lang=en (English) · https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app (Türkçe)
 
 - **All 446 ESHOT lines**, every active line sampled about every 5 minutes, 24/7
 - **Fully automated and free to run:** collection, storage, nightly analysis and the dashboard all run on GitHub Actions and Streamlit Community Cloud
