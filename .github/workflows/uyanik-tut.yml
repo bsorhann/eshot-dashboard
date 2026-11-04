@@ -18,10 +18,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Sunucuda kurulu Chrome kullanilir; tarayici indirme adimi yok.
       - name: Playwright
-        run: |
-          pip install playwright
-          python -m playwright install --with-deps chromium
+        run: pip install playwright
 
       - name: Sayfayi ac ve gerekirse uyandir
         run: python uyanik_tut.py https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app
