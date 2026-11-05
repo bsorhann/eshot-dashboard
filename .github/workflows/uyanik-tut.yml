@@ -23,4 +23,4 @@ jobs:
         run: pip install playwright
 
       - name: Sayfayi ac ve gerekirse uyandir
-        run: python uyanik_tut.py https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app
+        run: python uyanik_tut.py https://eshot-dashboard.streamlit.app
