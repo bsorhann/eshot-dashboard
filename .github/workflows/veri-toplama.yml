@@ -1,7 +1,10 @@
 name: Veri toplama
 
-# Saatte bir tetiklenir. Ayni anda yalnizca bir is calisir; calisan is bitince
-# siradaki hemen baslar. Her iste toplayici ~5,5 saat kesintisiz calisir:
+# Zincirleme calisir: her is, toplayici 10 dakika sorunsuz calistiktan sonra bir sonraki
+# isi kendisi siraya koyar; o is bu bittigi anda baslar, boylece veri araliksiz toplanir.
+# GitHub'in zamanlayicisi (saatte bir) yalnizca zincir koparsa yedek olarak devreye girer.
+# Zinciri durdurmak icin: Actions > Veri toplama > ... > Disable workflow.
+# Ayni anda yalnizca bir is calisir. Her iste toplayici ~5,5 saat calisir:
 # Izmir API'sinin istek sinirina (dakikada ~60) uyarak otobusu olan hatlari 5 dakikada,
 # bos donen hatlari 30 dakikada bir sorar. Saatlik dosyalar git gecmisine degil,
 # gunluk bir Release'e yuklenir (depoyu sisirmemek icin): etiket "veri-YYYY-MM-DD".
@@ -12,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  actions: write     # bir sonraki isi siraya koymak icin
 
 concurrency:
   group: veri-toplama
@@ -59,9 +63,17 @@ jobs:
           # Toplayici 330 dk calisir; is 350 dk ile sinirli, son yuklemeye zaman kalir.
           python collector.py --tum-hatlar --planlayici --donen-klasor cikti --sure 330 &
           PID=$!
+          BASLANGIC=$(date +%s); SIRADAKI=0
           while kill -0 "$PID" 2> /dev/null; do
             sleep 60
             yukle
+            # Toplayici 10 dk ayakta kaldiysa bir sonraki isi siraya koy (hemen cokerse
+            # sonsuz hizli dongu olmasin diye bekleniyor).
+            if [ "$SIRADAKI" = 0 ] && [ $(( $(date +%s) - BASLANGIC )) -ge 600 ]; then
+              gh workflow run veri-toplama.yml --ref "$GITHUB_REF_NAME" \
+                && echo "Sonraki is siraya kondu" || echo "Sonraki is siraya konamadi (yedek: zamanlayici)"
+              SIRADAKI=1
+            fi
           done
           wait "$PID" || echo "Toplayici hata ile bitti"
           yukle
