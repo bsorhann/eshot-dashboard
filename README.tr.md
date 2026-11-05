@@ -4,7 +4,7 @@
 
 **İzmir'de otobüsler gerçekte ne kadar düzenli geliyor?** Bu proje, İzmir Büyükşehir Belediyesi'nin açık veri API'sinden ESHOT otobüslerinin canlı konumlarını günün her saati topluyor. Yolcuların her durakta gerçekte ne kadar beklediğini, otobüslerin ne sıklıkla üst üste geldiğini ve hangi hat, durak ve saatlerin en az güvenilir olduğunu ölçüyor.
 
-**Canlı dashboard:** https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app (Türkçe) · https://eshot-dashboard-vl3mbvk4e7zbeq8dyqga2c.streamlit.app/?lang=en (English)
+**Canlı dashboard:** https://eshot-dashboard.streamlit.app (Türkçe) · https://eshot-dashboard.streamlit.app/?lang=en (English)
 
 - **ESHOT'un 446 hattının tamamı:** çalışan her hat yaklaşık 5 dakikada bir, 7/24 sorgulanıyor
 - **Tamamen otomatik ve ücretsiz:** veri toplama, depolama, gecelik analiz ve dashboard GitHub Actions ile Streamlit Community Cloud üzerinde çalışıyor
