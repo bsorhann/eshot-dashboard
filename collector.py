@@ -238,9 +238,22 @@ def bir_tur(yazici, hatlar, paralel=1):
 #     sorunsuz geçen her 20 saniyede biraz artırır) -> gerçek sınırın hemen altında gezinir;
 #   - otobüsü olan hatları AKTIF_ARALIK_SN'de, boş dönenleri BOS_ARALIK_SN'de bir sorar;
 #   - her dakika hız, hata ve kapsama özetini log'a yazar.
+#
+# Gece modu (yerel saatle GECE_BASLANGIC-GECE_BITIS): seferlerin neredeyse hepsi durur ve API'nin
+# döndürdüğü kayıtların çoğu garajda bekleyen otobüslerin donmuş konumlarıdır. Bu saatlerde:
+#   - otobüsü son GECE_HAREKET_PENCERE_SN içinde gerçekten yer değiştirmiş hatlar 5 dakikada bir,
+#   - geçmiş veride gece seferi olan hatlar ("gece hatları") 10 dakikada bir,
+#   - diğer hatlar saatte bir sorulur.
+# Gündüz davranışı değişmez.
 
 AKTIF_ARALIK_SN = 300
 BOS_ARALIK_SN = 1800
+GECE_BASLANGIC, GECE_BITIS = 1, 5          # yerel saat (Europe/Istanbul), [başlangıç, bitiş)
+GECE_HAT_ARALIK_SN = 600
+GECE_DIGER_ARALIK_SN = 3600
+GECE_HAREKET_PENCERE_SN = 1200              # son 20 dk içinde hareket eden otobüs varsa hat "canlı"
+GECE_HAT_SAATLERI = (1, 2, 3, 4)            # gece hattı listesi bu yerel saatlerdeki ölçümlerden çıkar
+SAATLIK_DESENI = os.path.join("data", "islenmis", "*", "saatlik.csv")
 SINIR_TEKRAR_SN = 45        # sınıra takılan hat bu kadar sonra yeniden denenir
 HATA_TEKRAR_SN = 120
 
@@ -285,8 +298,59 @@ def _sinir_hatasi_mi(kod, hata):
     return kod == 429 or (hata is not None and "rate limit" in str(hata).lower())
 
 
+def _yerel(t):
+    from zoneinfo import ZoneInfo
+    return datetime.fromtimestamp(t, ZoneInfo("Europe/Istanbul"))
+
+
+def gece_mi(t=None):
+    return GECE_BASLANGIC <= _yerel(t or time.time()).hour < GECE_BITIS
+
+
+def gece_bitisine_kalan(t):
+    """Gece modunun bitişine (yerel GECE_BITIS:00) kaç saniye kaldığı."""
+    y = _yerel(t)
+    return (y.replace(hour=GECE_BITIS, minute=0, second=0, microsecond=0) - y).total_seconds()
+
+
+def gece_hatlari(desen=SAATLIK_DESENI):
+    """Geçmiş analizlerde gece saatlerinde ölçümü olan hatlar (yoksa boş küme)."""
+    hatlar = set()
+    for yol in glob.glob(desen):
+        try:
+            with open(yol, encoding="utf-8", newline="") as f:
+                for r in csv.DictReader(f):
+                    if int(r["saat"]) in GECE_HAT_SAATLERI and int(float(r["olcum"])) > 0:
+                        hatlar.add(int(r["hat_id"]))
+        except (OSError, KeyError, ValueError):
+            continue
+    return hatlar
+
+
+def sonraki_aralik(t, satirlar, gece_hatti, son_hareket):
+    """Bir hattın ne kadar sonra yeniden sorulacağı."""
+    if not gece_mi(t):
+        return AKTIF_ARALIK_SN if satirlar else BOS_ARALIK_SN
+    if t - son_hareket <= GECE_HAREKET_PENCERE_SN:
+        return AKTIF_ARALIK_SN
+    aralik = GECE_HAT_ARALIK_SN if gece_hatti else GECE_DIGER_ARALIK_SN
+    # Sabah ilk seferleri kaçırmamak için hiçbir hat gece bitiminden sonraya ertelenmez.
+    return min(aralik, max(60, gece_bitisine_kalan(t)))
+
+
+def hareket_var_mi(onceki, simdiki):
+    """Önceki sorguya göre konumu değişen (garajda donmuş olmayan) bir otobüs var mı?"""
+    return any(k not in onceki for k in simdiki)
+
+
 def planlayici(yazici, hatlar, bitis, baslangic_hizi=0.8, isci=4):
     import heapq
+
+    gece_listesi = gece_hatlari()
+    log.info("Gece modu %02d:00-%02d:00 (yerel) | gece hattı: %d", GECE_BASLANGIC, GECE_BITIS,
+             len(gece_listesi))
+    son_konumlar = {}              # hat -> {(otobus, x, y)} son başarılı yanıttaki konumlar
+    son_hareket = {}               # hat -> en son gerçek hareket görülen zaman
 
     sinirlayici = HizSinirlayici(baslangic_hizi)
     simdi = time.time()
@@ -308,8 +372,9 @@ def planlayici(yazici, hatlar, bitis, baslangic_hizi=0.8, isci=4):
         t = time.time()
         aktifler = [h for h, a in aktif.items() if a]
         guncel = sum(1 for h in aktifler if t - son_basari.get(h, 0) <= AKTIF_ARALIK_SN + 90)
-        log.info("Hız %.2f istek/sn | son dk: %d istek, %d başarılı, %d sınır, %d hata, %d satır | "
+        log.info("%sHız %.2f istek/sn | son dk: %d istek, %d başarılı, %d sınır, %d hata, %d satır | "
                  "aktif hat %d, güncel %d (%%%d) | yanıt alınan hat %d/%d",
+                 "[gece] " if gece_mi(t) else "",
                  sinirlayici.hiz, sayac["istek"], sayac["basari"], sayac["sinir"], sayac["hata"],
                  sayac["satir"], len(aktifler), guncel, 100 * guncel / max(1, len(aktifler)),
                  len(son_basari), len(hatlar))
@@ -350,7 +415,13 @@ def planlayici(yazici, hatlar, bitis, baslangic_hizi=0.8, isci=4):
                 sayac["satir"] += len(satirlar)
                 aktif[hat] = bool(satirlar)
                 son_basari[hat] = t
-                heapq.heappush(sira, (t + (AKTIF_ARALIK_SN if satirlar else BOS_ARALIK_SN), hat))
+                konumlar = {(r[2], r[4], r[5]) for r in satirlar if r[4] is not None and r[5] is not None}
+                # İlk yanıtta karşılaştıracak bir şey yok; hat bir kez "hareketli" sayılır ve 5 dk sonra sınanır.
+                if hareket_var_mi(son_konumlar.get(hat, set()), konumlar):
+                    son_hareket[hat] = t
+                son_konumlar[hat] = konumlar
+                heapq.heappush(sira, (t + sonraki_aralik(t, satirlar, hat in gece_listesi,
+                                                         son_hareket.get(hat, 0)), hat))
             if time.time() - son_yazma >= 30 and tampon:
                 yazici.yaz(tampon, [])
                 tampon, son_yazma = [], time.time()

@@ -21,7 +21,7 @@ flowchart LR
     E --> F[Streamlit dashboard]
 ```
 
-1. **Collect.** `collector.py` asks the API for the positions of every bus on each line. Lines with buses on the road are polled every 5 minutes, empty lines every 30 minutes.
+1. **Collect.** `collector.py` asks the API for the positions of every bus on each line. Lines with buses on the road are polled every 5 minutes, empty lines every 30 minutes. Between 01:00 and 05:00 local time, when most buses are parked, only lines whose buses are actually moving are polled every 5 minutes; known night lines are checked every 10 minutes and all other lines hourly. Each collection run queues the next one, so collection continues without gaps.
 2. **Store.** Raw data is uploaded hourly to a daily GitHub Release instead of the git history, so the repository stays small.
 3. **Clean.** Ghost records are removed (see below).
 4. **Map-match.** Each position is projected onto the official route geometry and converted into "metres from the start of the route".

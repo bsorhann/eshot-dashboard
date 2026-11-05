@@ -21,7 +21,7 @@ flowchart LR
     E --> F[Streamlit dashboard]
 ```
 
-1. **Toplama.** `collector.py`, her hattaki otobüslerin konumlarını API'den çekiyor. Yolda otobüsü olan hatlar 5 dakikada bir, boş hatlar 30 dakikada bir sorgulanıyor.
+1. **Toplama.** `collector.py`, her hattaki otobüslerin konumlarını API'den çekiyor. Yolda otobüsü olan hatlar 5 dakikada bir, boş hatlar 30 dakikada bir sorgulanıyor. Otobüslerin çoğunun garajda olduğu 01:00-05:00 arasında (yerel saat) yalnızca otobüsü gerçekten hareket eden hatlar 5 dakikada bir sorgulanıyor; bilinen gece hatları 10 dakikada bir, diğer hatlar saatte bir kontrol ediliyor. Her toplama işi bir sonrakini kendisi sıraya koyduğu için toplama kesintisiz sürüyor.
 2. **Depolama.** Ham veri git geçmişine değil, her gün için açılan bir GitHub Release'e saatlik dosyalar halinde yükleniyor. Böylece depo küçük kalıyor.
 3. **Temizlik.** Hayalet kayıtlar ayıklanıyor (aşağıda).
 4. **Güzergaha oturtma.** Her konum, hattın resmi güzergahı üzerine izdüşürülüp "güzergah başından kaç metre" bilgisine çevriliyor.
