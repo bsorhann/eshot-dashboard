@@ -1,13 +1,13 @@
 {
   "ay": "2026-11",
-  "guncelleme_utc": "2026-11-15T09:32:30+00:00",
+  "guncelleme_utc": "2026-11-16T09:52:16+00:00",
   "ilk_olcum_utc": "2026-11-01T00:36:47+00:00",
-  "son_olcum_utc": "2026-11-15T09:07:34+00:00",
-  "gun_sayisi": 15,
-  "ham_kayit": 3718647,
-  "gps_kayit": 3527761,
-  "canli_konum": 1984952,
+  "son_olcum_utc": "2026-11-16T09:11:40+00:00",
+  "gun_sayisi": 16,
+  "ham_kayit": 3972412,
+  "gps_kayit": 3769051,
+  "canli_konum": 2120962,
   "hayalet_orani": 0.437,
-  "aralik_olcumu": 11681739,
+  "aralik_olcumu": 12487057,
   "hat_sayisi": 426
 }
