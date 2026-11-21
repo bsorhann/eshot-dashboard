@@ -23,6 +23,7 @@ MIN_OLCUM_SAAT = 50   # bundan az ölçümü olan saatler gösterilmez
 MIN_OLCUM_HAT = 200   # sıralamaya girmek için gereken en az ölçüm (az veriyle sıralama yanıltır)
 SIRALAMA_N = 15       # karşılaştırma grafiğinde gösterilen hat-yön sayısı
 MIN_MEDYAN_DK = 3     # tipik beklemesi bundan kısa hat-yönler gerçekçi değil (veri/güzergah sorunu); yarışmaz
+MAX_MEDYAN_DK = 60    # öne çıkanlarda: günde birkaç seferlik hatlar (ör. 8 saatte bir) "en dakik" seçilmesin
 
 # ---------------------------------------------------------------- dil
 
@@ -234,8 +235,9 @@ with st.expander(m(f"Sonuçları nasıl okumalı? (ESHOT'un {n_tum} hattından {
 **Tek otobüslü hatlar.** Bazı hatlarda tek otobüs gidip geliyor. Bu hatlarda bekleme süresi, otobüsün
 tam bir turu kadar uzun olabilir; bu yolcunun gerçekte yaşadığı beklemedir.
 
-**"Uzun bekleme" neye göre?** Her bekleme, aynı hattın aynı saat dilimindeki tipik beklemesiyle
-karşılaştırılıyor. Bu yüzden akşam ve gecenin planlı olarak seyrek seferleri "uzun" sayılmıyor.
+**"Uzun bekleme" neye göre?** Her bekleme, aynı hattın aynı gün tipindeki (hafta içi, cumartesi, pazar)
+ve aynı saat dilimindeki tipik beklemesiyle karşılaştırılıyor. Bu yüzden akşamın, gecenin ve pazar
+gününün planlı olarak seyrek seferleri "uzun" sayılmıyor.
 Yani bu ölçü bir hattın sık mı seyrek mi olduğunu değil, **ne kadar öngörülebilir** olduğunu gösterir.
 Uzun bekleme oranı %0 olan bir hat seyrek olabilir, ama tarifesine sadıktır.
 
@@ -261,8 +263,9 @@ lines). The number goes down as data accumulates.
 **Single-bus lines.** Some lines are served by one bus going back and forth. The wait there can be as
 long as a full round trip; that is the wait passengers actually experience.
 
-**"Long wait" compared to what?** Every wait is compared with the typical wait of the same line in the
-same time band. Planned sparse service in the evening and at night is therefore not counted as "long".
+**"Long wait" compared to what?** Every wait is compared with the typical wait of the same line on the
+same day type (weekday, Saturday, Sunday) and in the same time band. Planned sparse service in the
+evening, at night and on Sundays is therefore not counted as "long".
 In other words, this measure shows how **predictable** a line is, not how frequent. A line with a 0%
 long-wait share may run rarely, but it sticks to its rhythm.
 
@@ -291,7 +294,7 @@ Line, stop and place names are kept in Turkish, as they appear on the buses and 
 
 # ---------------------------------------------------------------- ayın öne çıkanları
 
-aday = ozet[(ozet.olcum >= MIN_OLCUM_HAT) & (ozet.medyan_dk >= MIN_MEDYAN_DK)]
+aday = ozet[(ozet.olcum >= MIN_OLCUM_HAT) & ozet.medyan_dk.between(MIN_MEDYAN_DK, MAX_MEDYAN_DK)]
 if len(aday) >= 3:
     st.subheader(m(f"{ay_adi(ay)}: öne çıkanlar", f"{ay_adi(ay)}: highlights")
                  + ("" if secim["tamamlandi"] else m(" (şimdilik)", " (so far)")))
@@ -317,11 +320,11 @@ if len(aday) >= 3:
             st.markdown(f"### {int(r.hat_id)} · {r.yon_adi}")
             st.markdown(f"{r.hat_adi}  \n{cumle(r)}. "
                         + m(f"Tipik bekleme {r.medyan_dk:.0f} dk.", f"Typical wait {r.medyan_dk:.0f} min."))
-    st.caption(m(f"Yalnızca en az {MIN_OLCUM_HAT} ölçümü olan ve tipik beklemesi en az {MIN_MEDYAN_DK} dk "
-                 "olan hat-yönler yarışıyor. Oranlar her hattın kendi tipik beklemesine göre hesaplandığı "
+    st.caption(m(f"Yalnızca en az {MIN_OLCUM_HAT} ölçümü olan ve tipik beklemesi {MIN_MEDYAN_DK}-{MAX_MEDYAN_DK} dk "
+                 "arasında olan hat-yönler yarışıyor. Oranlar her hattın kendi tipik beklemesine göre hesaplandığı "
                  "için seyrek ve sık hatlar adil biçimde karşılaştırılıyor.",
-                 f"Only line-directions with at least {MIN_OLCUM_HAT} measurements and a typical wait of at "
-                 f"least {MIN_MEDYAN_DK} min compete. Shares are calculated against each line's own typical "
+                 f"Only line-directions with at least {MIN_OLCUM_HAT} measurements and a typical wait of "
+                 f"{MIN_MEDYAN_DK}–{MAX_MEDYAN_DK} min compete. Shares are calculated against each line's own typical "
                  "wait, so frequent and infrequent lines are compared fairly."))
 
 st.divider()
@@ -354,14 +357,14 @@ k1.metric(m("Tipik bekleme", "Typical wait"), f"{secili.medyan_dk:.0f} {DK}",
 k2.metric(m("10 beklemeden 9'u en fazla", "9 in 10 waits are at most"), f"{secili.p90_dk:.0f} {DK}",
           help=m("Aralıkların %90'ı bu süreden kısa.", "90% of gaps are shorter than this."))
 k3.metric(m("Uzun bekleme", "Long waits"), yuzde(secili.uzun_bekleme_orani),
-          help=m("Hattın aynı saat dilimindeki tipik beklemesinin 1,5 katından uzun süren "
+          help=m("Hattın aynı gün tipi ve saat dilimindeki tipik beklemesinin 1,5 katından uzun süren "
                  "aralıkların oranı. Planlı seyrek saatler (gece, akşam) haksız yere cezalandırılmaz.",
-                 "Share of gaps longer than 1.5× the line's typical wait in the same time band. "
+                 "Share of gaps longer than 1.5× the line's typical wait on the same day type and in the same time band. "
                  "Planned sparse hours (night, evening) are not penalised."))
 k4.metric(m("Üst üste gelme (yığılma)", "Bunching"), yuzde(secili.yigilma_orani),
-          help=m("Aynı saat dilimindeki tipik beklemenin yarısından kısa aralıkların oranı: iki otobüs neredeyse "
+          help=m("Aynı gün tipi ve saat dilimindeki tipik beklemenin yarısından kısa aralıkların oranı: iki otobüs neredeyse "
                  "birlikte geliyor, ardından genelde uzun bir boşluk oluşuyor.",
-                 "Share of gaps shorter than half the typical wait in the same time band: two buses arrive "
+                 "Share of gaps shorter than half the typical wait on the same day type and time band: two buses arrive "
                  "almost together, usually followed by a long gap."))
 st.markdown(m(
     f"**{hat} numaralı hatta, {yon_adi.replace(' yönü', '')} yönünde** durakta "
@@ -375,10 +378,10 @@ st.divider()
 # ---------------------------------------------------------------- hat karşılaştırması
 
 st.subheader(m(f"En düzensiz {SIRALAMA_N} hat-yön", f"The {SIRALAMA_N} least regular line-directions"))
-st.caption(m(f"Uzun bekleme oranı: aynı saat dilimindeki tipik beklemenin 1,5 katını aşan bekleyişlerin payı. "
+st.caption(m(f"Uzun bekleme oranı: aynı gün tipi ve saat dilimindeki tipik beklemenin 1,5 katını aşan bekleyişlerin payı. "
              f"Yalnızca en az {MIN_OLCUM_HAT} ölçümü olan hat-yönler sıralandı. Seçtiğin hat listede yoksa "
              "en alta eklenir.",
-             f"Long-wait share: the share of waits longer than 1.5× the typical wait in the same time band. "
+             f"Long-wait share: the share of waits longer than 1.5× the typical wait on the same day type and in the same time band. "
              f"Only line-directions with at least {MIN_OLCUM_HAT} measurements are ranked. If your selected "
              "line is not in the list, it is added at the bottom."))
 k = ozet.assign(
@@ -577,15 +580,17 @@ with st.expander(m("Bu ölçümler nasıl yapıldı?", "How were these measured?
    toplanamayan dönemlere (gece, kesinti) denk gelen aralıklar ve hat uçlarındaki güvenilmez
    duraklar hesaba katılmıyor.
 
-**Tanımlar:** *Tipik bekleme* = aralıkların medyanı. *Uzun bekleme* = hattın **aynı saat
-dilimindeki** tipik beklemesinin 1,5 katından uzun. *Yığılma* = aynı dilimdeki tipik beklemenin
+**Tanımlar:** *Tipik bekleme* = aralıkların medyanı. *Uzun bekleme* = hattın **aynı gün tipi
+(hafta içi, cumartesi, pazar) ve aynı saat dilimindeki** tipik beklemesinin 1,5 katından uzun. *Yığılma* = aynı dilimdeki tipik beklemenin
 yarısından kısa (otobüsler üst üste geliyor). Saat dilimleri: gece (00-06), sabah zirvesi (06-10),
-gün içi (10-16), akşam zirvesi (16-20), akşam (20-24). Böylece akşam ve gecenin planlı olarak
-seyrek seferleri "uzun bekleme" sayılmıyor; ölçü tarifeden değil, düzensizlikten etkileniyor.
+gün içi (10-16), akşam zirvesi (16-20), akşam (20-24). Böylece akşamın, gecenin ve pazar gününün
+planlı olarak seyrek seferleri "uzun bekleme" sayılmıyor; ölçü tarifeden değil, düzensizlikten etkileniyor.
+Pazar günleri tipik bekleme hafta içinden ortalama %22 daha uzun; bu ayrım yapılmadan pazar günlerinin
+uzun bekleme oranı olduğundan iki kat yüksek çıkıyordu.
 
 **Sınırlar:** Tarifedeki planlanan sefer aralıkları açık veride bulunmadığı için ölçümler
-planlanana değil, hattın kendi tipik değerine göre yapılıyor. Hafta içi ve hafta sonu
-tarifeleri henüz ayrılmıyor.
+planlanana değil, hattın kendi tipik değerine göre yapılıyor. Resmi tatiller henüz ayrı bir
+gün tipi olarak ele alınmıyor.
 
 Kaynak: [İzmir Büyükşehir Belediyesi Açık Veri Portalı](https://acikveri.bizizmir.com) ·
 İzmir Metropolitan Municipality Open Data License · Son güncelleme: {tarih(meta['guncelleme_utc'])}
@@ -605,13 +610,14 @@ Kaynak: [İzmir Büyükşehir Belediyesi Açık Veri Portalı](https://acikveri.
    periods without data (night, outages) and unreliable stops at the ends of a route are excluded.
 
 **Definitions:** *Typical wait* = median of the gaps. *Long wait* = longer than 1.5× the line's typical
-wait **in the same time band**. *Bunching* = shorter than half the typical wait in the same band (buses
+wait **on the same day type (weekday, Saturday, Sunday) and in the same time band**. *Bunching* = shorter than half the typical wait in the same band (buses
 arrive together). Time bands: night (00–06), morning peak (06–10), daytime (10–16), evening peak (16–20),
-evening (20–24). Planned sparse service in the evening and at night therefore does not count as a
-long wait; the measure reflects irregularity, not the timetable.
+evening (20–24). Planned sparse service in the evening, at night and on Sundays therefore does not
+count as a long wait; the measure reflects irregularity, not the timetable. Typical waits are 22% longer
+on Sundays than on weekdays on average; without this split, Sunday long-wait shares came out twice as high.
 
 **Limitations:** Planned headways are not available as open data, so measurements are made against
-each line's own typical value, not the timetable. Weekday and weekend timetables are not separated yet.
+each line's own typical value, not the timetable. Public holidays are not treated as a separate day type yet.
 
 Source: [İzmir Metropolitan Municipality Open Data Portal](https://acikveri.bizizmir.com) ·
 İzmir Metropolitan Municipality Open Data License · Last updated: {tarih(meta['guncelleme_utc'])}

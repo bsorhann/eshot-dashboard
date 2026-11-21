@@ -39,6 +39,8 @@ flowchart LR
 
 **Timetables change during the day.** Buses are planned to run less often in the evening and at night. Comparing every wait with the line's all-day typical wait therefore labelled planned evening gaps as "long waits". Each wait is now compared with the typical wait of the same line **in the same time band** (night, morning peak, daytime, evening peak, evening). For one of the hospital lines, this lowered the long-wait share from 29% to 20%.
 
+**Sundays run on a different timetable.** Comparing two weeks of data, the typical wait on a Sunday is 22% longer than on a weekday for the median line-direction, and more than 1.5× longer for 30% of them. With a single reference, Sunday long-wait shares came out at 30% instead of 15%. The reference is therefore also split by day type (weekday, Saturday, Sunday).
+
 **Single-bus lines need to be measured too.** At first I measured headways between two consecutive *different buses*. That skipped every line run by a single bus and, more importantly, hid the long gaps that appear when one of a line's few buses goes out of service. Measuring between two consecutive *different trips* instead raised the number of measured lines from 291 to 384 and revealed hidden long waits on several low-frequency lines.
 
 **Route ends are unreliable.** Buses wait and turn around at the terminus, so passages there are often missed and create fake long gaps. Stops with clearly fewer detected passages than the rest of the route are excluded automatically.
@@ -48,10 +50,10 @@ flowchart LR
 | Metric | Definition |
 | --- | --- |
 | Typical wait | Median time between two consecutive trips at a stop |
-| Long wait | Share of gaps longer than 1.5× the typical wait in the same time band |
-| Bunching | Share of gaps shorter than 0.5× the typical wait in the same time band (two buses arrive almost together) |
+| Long wait | Share of gaps longer than 1.5× the typical wait on the same day type and in the same time band |
+| Bunching | Share of gaps shorter than 0.5× the typical wait on the same day type and in the same time band (two buses arrive almost together) |
 
-Rankings and highlights only include line-directions with at least 200 measurements and a typical wait of at least 3 minutes.
+Rankings only include line-directions with at least 200 measurements and a typical wait of at least 3 minutes; the highlights of the month additionally require a typical wait of at most 60 minutes, so that lines with only a few trips a day do not win "most punctual".
 
 ## Repository
 
@@ -81,7 +83,7 @@ streamlit run app.py
 ## Limitations
 
 - Planned timetables are not available as open data, so regularity is measured against each line's own typical wait, not against the schedule.
-- Weekday and weekend timetables are not separated yet.
+- Public holidays are not treated as a separate day type yet.
 - With ~60 requests per minute, the busiest hours can have more active lines than can be polled every 5 minutes. Some lines are then sampled every 6–8 minutes, which the analysis tolerates.
 - Rural and village lines with only a few trips a day can usually not be measured.
 

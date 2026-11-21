@@ -39,6 +39,8 @@ flowchart LR
 
 **Tarife gün içinde değişiyor.** Otobüsler akşam ve gece daha seyrek planlanıyor. Her beklemeyi hattın tüm günkü tipik beklemesiyle karşılaştırmak, akşamın planlı aralıklarını "uzun bekleme" gibi gösteriyordu. Artık her bekleme, aynı hattın **aynı saat dilimindeki** tipik beklemesiyle karşılaştırılıyor. Dilimler: gece, sabah zirvesi, gün içi, akşam zirvesi ve akşam. Hastane hatlarından birinde bu düzeltme uzun bekleme oranını %29'dan %20'ye indirdi.
 
+**Pazar tarifesi farklı.** İki haftalık veriyi karşılaştırınca, ortadaki hat-yönde pazar günü tipik bekleme hafta içinden %22 daha uzun çıktı; hat-yönlerin %30'unda 1,5 katından fazla. Tek bir referansla pazar günlerinin uzun bekleme oranı %15 yerine %30 çıkıyordu. Bu yüzden referans gün tipine göre de ayrılıyor (hafta içi, cumartesi, pazar).
+
 **Tek otobüslü hatlar da ölçülmeli.** Bekleme süresini başta "ardışık iki farklı otobüs" arasında ölçüyordum. Bu, tek otobüsle çalışan hatları hiç ölçmüyordu; daha önemlisi, bir otobüs seferden çekildiğinde oluşan uzun beklemeleri de görmüyordu. Kural "ardışık iki farklı sefer" olarak değiştirilince ölçülen hat sayısı 291'den 384'e çıktı ve bazı az otobüslü hatların gizli kalan uzun beklemeleri ortaya çıktı.
 
 **Hat uçları güvenilir değil.** Otobüsler son durakta bekleyip geri döndüğü için oradaki geçişler sık sık kaçırılıyor ve sahte uzun aralıklar oluşuyor. Güzergahın geri kalanına göre belirgin şekilde az geçiş tespit edilen duraklar otomatik olarak hesap dışı bırakılıyor.
@@ -48,10 +50,10 @@ flowchart LR
 | Ölçü | Tanım |
 | --- | --- |
 | Tipik bekleme | Bir durağa art arda gelen iki sefer arasındaki sürenin medyanı |
-| Uzun bekleme | Aynı saat dilimindeki tipik beklemenin 1,5 katından uzun aralıkların payı |
-| Yığılma | Aynı saat dilimindeki tipik beklemenin yarısından kısa aralıkların payı (iki otobüs neredeyse birlikte geliyor) |
+| Uzun bekleme | Aynı gün tipi ve saat dilimindeki tipik beklemenin 1,5 katından uzun aralıkların payı |
+| Yığılma | Aynı gün tipi ve saat dilimindeki tipik beklemenin yarısından kısa aralıkların payı (iki otobüs neredeyse birlikte geliyor) |
 
-Sıralamalar ve öne çıkanlar yalnızca en az 200 ölçümü olan ve tipik beklemesi en az 3 dakika olan hat-yönleri içeriyor.
+Sıralamalar yalnızca en az 200 ölçümü olan ve tipik beklemesi en az 3 dakika olan hat-yönleri içeriyor. Ayın öne çıkanlarında ayrıca tipik beklemenin en fazla 60 dakika olması gerekiyor; böylece günde birkaç sefer yapan hatlar "en dakik" seçilmiyor.
 
 ## Depo
 
@@ -81,7 +83,7 @@ streamlit run app.py
 ## Sınırlar
 
 - Planlanan tarifeler açık veride bulunmadığı için düzenlilik tarifeye göre değil, her hattın kendi tipik beklemesine göre ölçülüyor.
-- Hafta içi ve hafta sonu tarifeleri henüz ayrılmıyor.
+- Resmi tatiller henüz ayrı bir gün tipi olarak ele alınmıyor.
 - Dakikada yaklaşık 60 istekle, en yoğun saatlerde 5 dakikada bir sorgulanabilecekten daha fazla aktif hat olabiliyor. Bu durumda bazı hatlar 6-8 dakikada bir sorgulanıyor; analiz bunu tolere ediyor.
 - Günde yalnızca birkaç seferi olan ilçe ve köy hatları çoğunlukla ölçülemiyor.
 

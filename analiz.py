@@ -335,23 +335,36 @@ def aralik_sikistir(aralik):
 # medyanıyla karşılaştırmak, akşam/gece planlı seyrek seferleri "uzun bekleme" gibi gösteriyordu.
 SAAT_DILIMI = np.array([0] * 6 + [1] * 4 + [2] * 6 + [3] * 4 + [4] * 4)  # 0-5 gece, 6-9 sabah zirvesi,
 #                                                                          10-15 gün içi, 16-19 akşam zirvesi, 20-23 akşam
-MIN_DILIM_OLCUM = 20  # dilimde bundan az ölçüm varsa hattın tüm gün medyanı kullanılır
+MIN_DILIM_OLCUM = 20  # bir referans grubunda bundan az ölçüm varsa bir üst gruba düşülür
+
+
+def gun_tipi(gun):
+    """Yerel tarih -> 0 hafta içi, 1 cumartesi, 2 pazar (tarifeler bu üç gün tipine göre değişiyor)."""
+    hg = pd.to_datetime(pd.Series(np.asarray(gun, dtype=str))).dt.dayofweek.values
+    return np.where(hg <= 4, 0, np.where(hg == 5, 1, 2)).astype("int8")
 
 
 def aralik_isaretle(a):
     """
-    Her aralığı, kendi hat-yönünün aynı saat dilimindeki tipik aralığına (medyan) göre etiketler:
+    Her aralığı, kendi hat-yönünün AYNI GÜN TİPİ (hafta içi / cumartesi / pazar) ve AYNI SAAT
+    DİLİMİNDEKİ tipik aralığına (medyan) göre etiketler:
       yigilma = medyanın yarısından kısa (otobüsler üst üste geldi)
       uzun    = medyanın 1,5 katından uzun (durakta uzun bekleme)
+    Pazar tarifesi hafta içinden belirgin seyrek olduğu için tek bir referans, pazar günlerinin
+    planlı seyrek seferlerini "uzun bekleme" gibi gösteriyordu. Bir grupta yeterli ölçüm yoksa
+    sırasıyla gün tipinin tüm gün medyanına, o da yoksa hattın tüm aylık medyanına düşülür.
     """
-    dilim = SAAT_DILIMI[a.saat.astype(int).values]
-    g = a.assign(_dilim=dilim).groupby(HY + ["_dilim"]).aralik_dk
-    referans = g.transform("median")
-    yeterli = g.transform("size") >= MIN_DILIM_OLCUM
-    referans = referans.where(yeterli, a.groupby(HY).aralik_dk.transform("median"))
+    a["_tip"] = gun_tipi(a.gun)
+    a["_dilim"] = SAAT_DILIMI[a.saat.astype(int).values]
+    referans = None
+    for anahtar in (HY + ["_tip", "_dilim"], HY + ["_tip"], HY):
+        g = a.groupby(anahtar).aralik_dk
+        r = g.transform("median").where(g.transform("size") >= MIN_DILIM_OLCUM)
+        referans = r if referans is None else referans.fillna(r)
+    referans = referans.fillna(a.groupby(HY).aralik_dk.transform("median"))
     a["yigilma"] = a.aralik_dk < 0.5 * referans
     a["uzun"] = a.aralik_dk > 1.5 * referans
-    return a
+    return a.drop(columns=["_tip", "_dilim"])
 
 
 def metrikler(a, anahtar):
