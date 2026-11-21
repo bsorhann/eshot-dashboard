@@ -89,6 +89,27 @@ def yuzde(x):
     return f"{x * 100:.0f}%" if EN else f"%{x * 100:.0f}"
 
 
+def ek_i(n):
+    """Sayıya Türkçe belirtme/iyelik eki: 395'i, 7'si, 40'ı, 26'sı (son okunan kelimeye göre)."""
+    n = int(round(n))
+    if n == 0:
+        return "'ı"
+    birler = {1: "'i", 2: "'si", 3: "'ü", 4: "'ü", 5: "'i", 6: "'sı", 7: "'si", 8: "'i", 9: "'u"}
+    onlar = {1: "'u", 2: "'si", 3: "'u", 4: "'ı", 5: "'si", 6: "'ı", 7: "'i", 8: "'i", 9: "'ı"}
+    if n % 1000 == 0:
+        return "'i"           # bin
+    if n % 100 == 0:
+        return "'ü"           # yüz
+    if n % 10:
+        return birler[n % 10]
+    return onlar[(n % 100) // 10]
+
+
+def yuzde_i(x):
+    """'%7'si' gibi: Türkçe yüzde + doğru ek (İngilizce metinde kullanılmaz)."""
+    return yuzde(x) + ek_i(x * 100)
+
+
 def sayi(n):
     """Binlik ayırıcı: Türkçede nokta, İngilizcede virgül."""
     s = f"{int(n):,}"
@@ -223,7 +244,7 @@ tum_hat_listesi = hat_listesini_yukle(surum_ref())
 olculen = set(ozet.hat_id)
 olculemeyen = tum_hat_listesi[~tum_hat_listesi.hat_id.isin(olculen)].sort_values("hat_id")
 n_tum, n_olculen = len(tum_hat_listesi), len(olculen & set(tum_hat_listesi.hat_id))
-with st.expander(m(f"Sonuçları nasıl okumalı? (ESHOT'un {n_tum} hattından {n_olculen}'i bu ay ölçüldü)",
+with st.expander(m(f"Sonuçları nasıl okumalı? (ESHOT'un {n_tum} hattından {n_olculen}{ek_i(n_olculen)} bu ay ölçüldü)",
                    f"How to read the results ({n_olculen} of ESHOT's {n_tum} lines measured this month)")):
     st.markdown(m(f"""
 **Neden {n_tum} hattın hepsi yok?** Toplayıcı tüm hatları düzenli olarak soruyor. Bir hattın
@@ -299,14 +320,18 @@ if len(aday) >= 3:
     st.subheader(m(f"{ay_adi(ay)}: öne çıkanlar", f"{ay_adi(ay)}: highlights")
                  + ("" if secim["tamamlandi"] else m(" (şimdilik)", " (so far)")))
 
+    # Dakiklik iki yönlü: ne uzun bekleme ne de üst üste gelme olmalı. Yalnızca uzun beklemeye
+    # bakınca, otobüsleri sık sık üst üste gelen bir hat "en dakik" seçilebiliyordu.
+    aday = aday.assign(duzensiz=aday.uzun_bekleme_orani + aday.yigilma_orani)
+
     def dakik_cumle(r):
-        if r.uzun_bekleme_orani < 0.005:
-            return m("Hiçbir bekleyiş normalden uzun sürmedi", "No wait was longer than usual")
-        return m(f"Bekleyişlerin yalnızca {yuzde(r.uzun_bekleme_orani)}'i uzun sürdü",
-                 f"Only {yuzde(r.uzun_bekleme_orani)} of waits were long")
+        if r.duzensiz < 0.005:
+            return m("Hiçbir bekleyiş normalden uzun ya da kısa sürmedi", "No wait was longer or shorter than usual")
+        return m(f"Bekleyişlerin yalnızca {yuzde_i(r.duzensiz)} normalden uzun ya da çok kısa sürdü",
+                 f"Only {yuzde(r.duzensiz)} of waits were much longer or shorter than usual")
 
     kartlar = [
-        (m("En dakik", "Most punctual"), aday.nsmallest(1, "uzun_bekleme_orani").iloc[0], dakik_cumle),
+        (m("En dakik", "Most punctual"), aday.nsmallest(1, "duzensiz").iloc[0], dakik_cumle),
         (m("En çok bekleten", "Most long waits"), aday.nlargest(1, "uzun_bekleme_orani").iloc[0],
          lambda r: m(f"{her_n_de_bir(r.uzun_bekleme_orani).capitalize()} normalden uzun sürdü",
                      f"{her_n_de_bir(r.uzun_bekleme_orani).capitalize()} were longer than usual")),
@@ -469,7 +494,7 @@ else:
             .properties(height=260), width="stretch")
     en_kotu = s.loc[s.uzun_bekleme_orani.idxmax()]
     st.caption(m(f"En sorunlu saat: **{int(en_kotu.saat):02d}:00** — bu saatte bekleyişlerin "
-                 f"{yuzde(en_kotu.uzun_bekleme_orani)}'i uzun sürüyor. "
+                 f"{yuzde_i(en_kotu.uzun_bekleme_orani)} uzun sürüyor. "
                  f"{MIN_OLCUM_SAAT}'den az ölçümü olan saatler gösterilmiyor.",
                  f"Most problematic hour: **{int(en_kotu.saat):02d}:00**, when "
                  f"{yuzde(en_kotu.uzun_bekleme_orani)} of waits are long. "
@@ -571,7 +596,7 @@ with st.expander(m("Bu ölçümler nasıl yapıldı?", "How were these measured?
    birkaç puanlık fark yarattı.
 2. **Hayalet kayıt temizliği.** API, otobüslerin canlı konumunun yanında garaj, aktarma merkezi
    ve benzinlik gibi yerlerde kalmış eski konumlarını da döndürüyor. GPS'li kayıtların
-   **{yuzde(meta['hayalet_orani'])}'i** bu tür hayalet kayıt; zaman içinde hiç değişmeyen
+   **{yuzde_i(meta['hayalet_orani'])}** bu tür hayalet kayıt; zaman içinde hiç değişmeyen
    koordinatlar ayıklanıyor.
 3. **Güzergaha oturtma.** Her konum, hattın resmi güzergahı üzerine izdüşürülüyor ve
    "başlangıçtan kaç metre" bilgisine çevriliyor.
