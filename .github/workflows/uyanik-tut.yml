@@ -1,10 +1,11 @@
 name: Dashboard uyanik tut
 
-# Streamlit Community Cloud ziyaret edilmeyen uygulamalari uyutuyor. Bu is 6 saatte bir
-# sayfayi acar, uyuyorsa uyandirir; boylece linke tiklayan kisi bekleme ekrani gormez.
+# Streamlit Community Cloud 12 saat ziyaret edilmeyen uygulamalari uyutuyor. Bu is sayfayi
+# acar, uyuyorsa uyandirir; boylece linke tiklayan kisi bekleme ekrani gormez. GitHub zamanlanmis
+# isleri sik sik geciktirip atladigi icin 2 saatte bir istenir (pratikte gunde birkac kez calisir).
 on:
   schedule:
-    - cron: "41 */6 * * *"
+    - cron: "41 */2 * * *"
   workflow_dispatch:
 
 jobs:
