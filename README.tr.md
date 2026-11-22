@@ -6,7 +6,7 @@
 
 **Canlı dashboard:** https://eshot-dashboard.streamlit.app (Türkçe) · https://eshot-dashboard.streamlit.app/?lang=en (English)
 
-- **ESHOT'un 446 hattının tamamı:** çalışan her hat yaklaşık 5 dakikada bir, 7/24 sorgulanıyor
+- **ESHOT'un 446 hattının tamamı:** çalışan her hat 5-8 dakikada bir, 7/24 sorgulanıyor
 - **Tamamen otomatik ve ücretsiz:** veri toplama, depolama, gecelik analiz ve dashboard GitHub Actions ile Streamlit Community Cloud üzerinde çalışıyor
 - **Aylık sonuçlar** ve "ayın öne çıkanları": en dakik hat, en çok bekleten hat ve otobüslerin en çok üst üste geldiği hat
 
@@ -84,7 +84,7 @@ streamlit run app.py
 
 - Planlanan tarifeler açık veride bulunmadığı için düzenlilik tarifeye göre değil, her hattın kendi tipik beklemesine göre ölçülüyor.
 - Resmi tatiller henüz ayrı bir gün tipi olarak ele alınmıyor.
-- Dakikada yaklaşık 60 istekle, en yoğun saatlerde 5 dakikada bir sorgulanabilecekten daha fazla aktif hat olabiliyor. Bu durumda bazı hatlar 6-8 dakikada bir sorgulanıyor; analiz bunu tolere ediyor.
+- Dakikada yaklaşık 60 istek sınırı darboğaz: yoğun saatlerde aynı anda 400'den fazla hat çalışıyor, bu yüzden bir hat 5 yerine yaklaşık 8 dakikada bir sorgulanabiliyor (07:00-20:00 arası medyan 7,6-8,4 dakika). Analiz bunu tolere ediyor.
 - Günde yalnızca birkaç seferi olan ilçe ve köy hatları çoğunlukla ölçülemiyor.
 
 ## Veri ve lisans

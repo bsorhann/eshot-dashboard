@@ -6,7 +6,7 @@
 
 **Live dashboard:** https://eshot-dashboard.streamlit.app/?lang=en (English) · https://eshot-dashboard.streamlit.app (Türkçe)
 
-- **All 446 ESHOT lines**, every active line sampled about every 5 minutes, 24/7
+- **All 446 ESHOT lines**, every active line sampled every 5–8 minutes, 24/7
 - **Fully automated and free to run:** collection, storage, nightly analysis and the dashboard all run on GitHub Actions and Streamlit Community Cloud
 - **Monthly results** with "highlights of the month": the most punctual line, the line with the most long waits, and the line where buses bunch the most
 
@@ -84,7 +84,7 @@ streamlit run app.py
 
 - Planned timetables are not available as open data, so regularity is measured against each line's own typical wait, not against the schedule.
 - Public holidays are not treated as a separate day type yet.
-- With ~60 requests per minute, the busiest hours can have more active lines than can be polled every 5 minutes. Some lines are then sampled every 6–8 minutes, which the analysis tolerates.
+- With ~60 requests per minute, the API limit is the bottleneck: at peak times more than 400 lines are active at once, so a line is sampled about every 8 minutes instead of 5 (median 7.6–8.4 minutes between 07:00 and 20:00). The analysis tolerates this.
 - Rural and village lines with only a few trips a day can usually not be measured.
 
 ## Data and license

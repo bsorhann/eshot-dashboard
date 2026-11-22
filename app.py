@@ -205,11 +205,11 @@ if not aylar:
     st.stop()
 
 st.markdown(m(
-    "ESHOT'un tüm otobüs hatlarındaki araçların canlı konumları 5 dakikada bir kaydediliyor. "
+    "ESHOT'un tüm otobüs hatlarındaki araçların canlı konumları yaklaşık 5 dakikada bir (yoğun saatlerde 8 dakikaya kadar) kaydediliyor. "
     "Bu sayfa, otobüslerin duraklara **ne kadar düzenli** geldiğini ölçüyor: durakta tipik olarak "
     "ne kadar beklendiğini, otobüslerin ne sıklıkla üst üste geldiğini ve ne sıklıkla uzun bekleme oluştuğunu.",
     "The live position of every bus on all ESHOT lines (İzmir's municipal bus operator) is recorded "
-    "every 5 minutes. This page measures **how regularly** buses arrive at their stops: how long people "
+    "about every 5 minutes (up to 8 minutes at peak times). This page measures **how regularly** buses arrive at their stops: how long people "
     "typically wait, how often buses bunch together and how often unusually long waits occur."
 ))
 
@@ -589,7 +589,7 @@ st.caption(m("Durak geçiş anları 5 dakika arayla alınan iki konum arasında 
 with st.expander(m("Bu ölçümler nasıl yapıldı?", "How were these measured?")):
     st.markdown(m(f"""
 1. **Veri toplama.** İzmir Büyükşehir Belediyesi'nin açık veri API'sinden ESHOT'un tüm hatlarındaki
-   otobüslerin konumları 5 dakikada bir çekiliyor (GitHub Actions üzerinde, otomatik). Sonuçlar takvim
+   otobüslerin konumları yaklaşık 5 dakikada bir (yoğun saatlerde 8 dakikaya kadar) çekiliyor (GitHub Actions üzerinde, otomatik). Sonuçlar takvim
    ayı bazında hesaplanıyor: içinde bulunulan ay her gece güncelleniyor, biten aylar ayın 1'inde
    kesinleşiyor. Bu ay için {meta.get('gun_sayisi', '?')} günlük veri kullanıldı. Dakikalık veriyle
    yapılan karşılaştırmada 5 dakikalık örnekleme, tipik bekleme ve uzun bekleme oranında ancak
@@ -620,7 +620,7 @@ gün tipi olarak ele alınmıyor.
 Kaynak: [İzmir Büyükşehir Belediyesi Açık Veri Portalı](https://acikveri.bizizmir.com) ·
 İzmir Metropolitan Municipality Open Data License · Son güncelleme: {tarih(meta['guncelleme_utc'])}
 """, f"""
-1. **Collection.** The positions of all buses on every ESHOT line are fetched every 5 minutes from
+1. **Collection.** The positions of all buses on every ESHOT line are fetched about every 5 minutes (up to 8 at peak times) from
    İzmir Metropolitan Municipality's open data API (automatically, on GitHub Actions). Results are
    calculated per calendar month: the current month is updated every night and finished months are
    finalised on the 1st. This month uses {meta.get('gun_sayisi', '?')} days of data. Compared with

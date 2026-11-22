@@ -298,18 +298,18 @@ def _sinir_hatasi_mi(kod, hata):
     return kod == 429 or (hata is not None and "rate limit" in str(hata).lower())
 
 
-def _yerel(t):
+def _yerel_saat(t):
     from zoneinfo import ZoneInfo
     return datetime.fromtimestamp(t, ZoneInfo("Europe/Istanbul"))
 
 
 def gece_mi(t=None):
-    return GECE_BASLANGIC <= _yerel(t or time.time()).hour < GECE_BITIS
+    return GECE_BASLANGIC <= _yerel_saat(t or time.time()).hour < GECE_BITIS
 
 
 def gece_bitisine_kalan(t):
     """Gece modunun bitişine (yerel GECE_BITIS:00) kaç saniye kaldığı."""
-    y = _yerel(t)
+    y = _yerel_saat(t)
     return (y.replace(hour=GECE_BITIS, minute=0, second=0, microsecond=0) - y).total_seconds()
 
 
