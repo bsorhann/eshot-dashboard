@@ -4,6 +4,7 @@ name: Veri toplama
 # isi kendisi siraya koyar; o is bu bittigi anda baslar, boylece veri araliksiz toplanir.
 # GitHub'in zamanlayicisi (saatte bir) yalnizca zincir koparsa yedek olarak devreye girer.
 # Zinciri durdurmak icin: Actions > Veri toplama > ... > Disable workflow.
+# Zincir ayrica uyandirma isini ~3 saatte bir, gunluk analizi de 06:00 (yerel) sonrasi bir kez tetikler.
 # Ayni anda yalnizca bir is calisir. Her iste toplayici ~5,5 saat calisir:
 # Izmir API'sinin istek sinirina (dakikada ~60) uyarak otobusu olan hatlari 5 dakikada,
 # bos donen hatlari 30 dakikada bir sorar. Saatlik dosyalar git gecmisine degil,
@@ -63,10 +64,29 @@ jobs:
           # Toplayici 330 dk calisir; is 350 dk ile sinirli, son yuklemeye zaman kalir.
           python collector.py --tum-hatlar --planlayici --donen-klasor cikti --sure 330 &
           PID=$!
-          BASLANGIC=$(date +%s); SIRADAKI=0
+          BASLANGIC=$(date +%s); SIRADAKI=0; SON_UYANDIRMA=0
           while kill -0 "$PID" 2> /dev/null; do
             sleep 60
             yukle
+            SIMDI=$(date +%s)
+            # GitHub'in zamanlayicisi uyandirma ve analiz islerini saatlerce geciktirebiliyor;
+            # kesintisiz calisan bu zincir onlari da tetikler (zamanlayicilar yedek olarak kalir).
+            # Uyandirma: en fazla 3 saatte bir (Streamlit 12 saat ziyaretsiz kalan uygulamayi uyutuyor).
+            if [ $(( SIMDI - BASLANGIC )) -ge 600 ] && [ $(( SIMDI - SON_UYANDIRMA )) -ge 10800 ]; then
+              gh workflow run uyanik-tut.yml --ref "$GITHUB_REF_NAME" > /dev/null 2>&1 \
+                && echo "Uyandirma isi tetiklendi" || echo "Uyandirma isi tetiklenemedi"
+              SON_UYANDIRMA=$SIMDI
+            fi
+            # Gunluk analiz: 03:00 UTC'den (06:00 yerel) sonra, bugun henuz hic analiz calismadiysa.
+            if [ "$(date -u +%H)" -ge 3 ]; then
+              BUGUN=$(date -u +%F)
+              SON_ANALIZ=$(gh run list --workflow analiz.yml --limit 1 --json createdAt \
+                --jq '.[0].createdAt' 2> /dev/null | cut -c1-10)
+              if [ -n "$SON_ANALIZ" ] && [ "$SON_ANALIZ" != "$BUGUN" ]; then
+                gh workflow run analiz.yml --ref "$GITHUB_REF_NAME" > /dev/null 2>&1 \
+                  && echo "Gunluk analiz tetiklendi" || echo "Gunluk analiz tetiklenemedi"
+              fi
+            fi
             # Toplayici 10 dk ayakta kaldiysa bir sonraki isi siraya koy (hemen cokerse
             # sonsuz hizli dongu olmasin diye bekleniyor).
             if [ "$SIRADAKI" = 0 ] && [ $(( $(date +%s) - BASLANGIC )) -ge 600 ]; then
